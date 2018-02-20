@@ -1,0 +1,29 @@
+How does this system work.  The  system has to basically be a planning
+system in order correctly manage  the various constraints, this before
+that,  etc.  So,  what the  system does  is basically  plan for  these
+events and tell the user when  events are occuring.  Of course, it has
+to be flexible to allow for  unexpected events.  So one way this could
+work  is  with conformant  planning,  where  at  all times  there  are
+possibilities.  So  in other words,  I should make a  conformant plan,
+using MBP, for <REDACTED>.  At all times, if some event occurs, we may
+switch to that.  We could install an event loop I suppose.
+
+The simulator is an essential  part of this system.  Also thought that
+the  system  could  auto   classify  entities,  and  that  once  these
+translations are  complete we  would be good  to go.  In  other words,
+there are  certain kind of basic  tasks.  So, really,  the notion that
+this is a planner, with an agenda of possible todos is important.
+
+What  the user would  prefer todo  can be  modeled appropriately  as a
+sensing action.
+
+(program-computer do-task)
+
+So,  the  system  ought  to   work  for  starters,  like  Verber,  but
+dynamically, so that the user can  add things as needed to the system.
+In other words, planning for the entry process is also necessary.
+
+At the bottom line, control over Emacs could be planned by the system.
+
+(if its a new task that the  computer has never heard of, well that is
+important.)

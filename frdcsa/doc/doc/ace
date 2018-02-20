@@ -1,0 +1,44 @@
+every planner supports one or more input types
+every planner supports one or more output plan types
+each visualizer supports one or more plan types
+
+? each world has a world model
+
+? the world model consists of knowledge base, which updates its facts as the result of verified execution from the manager
+
+for every agent, there is a manager
+
+any manager can connect to one or more verber planners
+
+there is only one true world
+
+each agent maintains a model of the world, in planning it may maintain
+several world models to reason with, but these are known as possible
+worlds
+
+
+
+
+note because the various planners can solve different problems,
+
+
+How about a simplified architecture?
+
+
+# all  we want  to  do for  now, is  take  all those  PDDL files,  and
+generate a massive domain, and run LPG on them.  What do we need to do
+for that?
+
+# we  must list  all input  files, combine  them into  one  domain and
+# problem, and generate them to two new files
+
+# lpg requires to know these two files, and generates output files
+
+
+# so  all we have  to do,  is create  a new  object containing  a PDDL
+# domain, and  a PDDL  problem, iterate over  a list of  passed files,
+# loading these
+
+# then we generate the new files
+
+# then we run the planner on them, and get back the answer

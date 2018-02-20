@@ -1,0 +1,47 @@
+foreach my $year ($current_year..($current_year + $forward_window->years)) {
+  foreach my $modmonth (0..11) {
+    $month = ($modmonth + $forward_window->months) % 12;
+    foreach my $day (1..DaysInTheMonth
+		     (
+		      Month => $month,
+		      Year => $year,
+		     )) {
+      $ispayday->{$year}{$month}{$day} = 0;
+      # get the day of the week
+      $result = &day($month,$day,$year);
+      print "$result";
+    }
+  }
+}
+
+sub DaysInTheMonth {
+  my (%args) = @_;
+  # Thirty days hath September,
+  # April, June, and November.
+  # All the rest have thirty-one,
+  # Excepting February alone,
+  # And that has twenty-eight days clear,
+  # And twenty-nine in each leap year.
+  if ($args{Month} == 2) {
+    if (!($args{Year} % 4)) {
+      return 29;
+    } else {
+      return 28;
+    }
+  }
+  my $daysinthemonth =
+    {
+     1 => 31, 			# jan
+     3 => 31,			# mar
+     4 => 30,			# apr
+     5 => 31,			# may
+     6 => 30,			# jun
+     7 => 31,			# jul
+     8 => 31,			# aug
+     9 => 30,			# sep
+     10 => 31,			# oct
+     11 => 30,			# nov
+     12 => 31,			# dec
+    };
+  return $daysinthemonth->{$args{Month}};
+}

@@ -1,0 +1,12 @@
+./frdcsa/debian/libverber-perl/usr/share/perl5/Verber/Manager.pm:  while (! $abort and $i < scalar @{$self->MyPlan->Steps}) {
+./frdcsa/debian/libverber-perl/usr/share/perl5/Verber/Manager.pm:  my $totalsteps = scalar @{$self->MyPlan->Steps};
+./frdcsa/debian/libverber-perl/usr/share/perl5/Verber/Manager.pm:    my $planstep = $self->MyPlan->Steps->[$stepnum];
+./frdcsa/perl/Org-FRDCSA-Verber/lib/Org/FRDCSA/Verber/Manager.pm:  while (! $abort and $i < scalar @{$self->MyPlan->Steps}) {
+./frdcsa/perl/Org-FRDCSA-Verber/lib/Org/FRDCSA/Verber/Manager.pm:  my $totalsteps = scalar @{$self->MyPlan->Steps};
+./frdcsa/perl/Org-FRDCSA-Verber/lib/Org/FRDCSA/Verber/Manager.pm:    my $planstep = $self->MyPlan->Steps->[$stepnum];
+./Verber/Manager.pm:  while (! $abort and $i < scalar @{$self->MyPlan->Steps}) {
+./Verber/Manager.pm:  my $totalsteps = scalar @{$self->MyPlan->Steps};
+./Verber/Manager.pm:    my $planstep = $self->MyPlan->Steps->[$stepnum];
+./cpan/Org-FRDCSA-Verber/lib/Org/FRDCSA/Verber/Manager.pm:  while (! $abort and $i < scalar @{$self->MyPlan->Steps}) {
+./cpan/Org-FRDCSA-Verber/lib/Org/FRDCSA/Verber/Manager.pm:  my $totalsteps = scalar @{$self->MyPlan->Steps};
+./cpan/Org-FRDCSA-Verber/lib/Org/FRDCSA/Verber/Manager.pm:    my $planstep = $self->MyPlan->Steps->[$stepnum];

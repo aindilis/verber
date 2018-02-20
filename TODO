@@ -1,0 +1,24 @@
+Here is the plan for verber.
+
+;; ( We need  to get  a generation  working of a  visualization of  a plan,
+;; simply taking the plan SOL file as input.)
+
+;; (Next, we generate a working walkthrough of a plan.)
+
+;; (Then we add unit information to the plan synthesis component.)
+
+;; (We create a domain involving cooking velveeta.)
+
+;; (We generate the velveeta solution, and run it with the manager component.)
+
+Also, add multiple interface  methods, which are transparently handled
+by  Manager::Modality, or maybe  something in  audience, which  in any
+case handles the same  user interaction in different interfaces.  This
+system should be able to  handle speech, written (terminal, etc), GUI,
+and so on.
+
+You know, the  family continued rejectance of AI  reminds me very much
+of  the character  in  Candide who  refuses  to let  his sister  marry
+Candide  despite all  that  the  world has  endeavored  to teach  him.
+What's it going to be, another  3 years of isolation?  Seems to me its
+going to be more like 20 or 40.

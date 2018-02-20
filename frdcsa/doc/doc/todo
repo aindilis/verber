@@ -1,0 +1,50 @@
+
+Here is my plan for this.
+
+I would like to generate a real plan for several days.  This includes what people eat, as well as sleep, and so on.  To get this working, we need to get Verber working in a reasonable capacity.
+
+Perhaps I should investigate the use of GIPO by reading the manual at this point.
+
+I can read the manual in the background.  Goal is to read the manual.
+
+For simplicities sake, I can break the problem down into chunks.
+
+Get the World State Manager working.  This is a system that represents
+belief  in (just  saw a  paper  on belief  representation in  EPILOG),
+perhaps use EPILOG or not, but  this managers the world state as known
+to the computer.
+
+The goal system posits constraints on the world state.
+
+Plans must satisfy the constraints of the goal system.
+
+The goal to logic translator is very important, could use WSD, Cyc, etc for that.
+
+Or maybe just use PICForm.
+
+
+At the end of the day, however, must get these things working.
+
+We can write wrappers or virtuals which are goals that act on goals.
+
+The whole process is an opportunity for computer learning, interacting with the user on certain ones.
+
+For now, we could simply get Verber working pretty well, that is, taking and composing goals.
+
+Maybe, should model everything using UML so others can work on it.
+
+Can express goals as having preconditions, and codifying these
+preconditions, and automatically recognizing which goals have which
+preconditions, and then planning around achieving those preconditions,
+then presenting the user with the goal.
+
+The whole process is recursive in that if the system knew exactly what
+it was that needed to be done it could essentially execute that.  Some
+things require will and cannot be done (i.e. lead a horse to water but
+can't make it drink).
+
+I'm thinking just get the world state manager done for now.
+
+That depends on the system for generating plans.
+
+Can use a database to store states, etc.

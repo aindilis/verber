@@ -1,0 +1,434 @@
+<html>
+
+<pre>
+O :fluents
+O :disjunctive-preconditions
+X :derived-predicates
+X :negative-preconditions
+X :typing
+O :timed-initial-literals
+O :durative-actions
+O :equality
+X :conditional-effects
+</pre>
+
+<table><tbody><tr>  <td><p class="line862">Planner </td>
+  <td><p class="line862">acoplan </td>
+  <td><p class="line862">acoplan2 </td>
+  <td><p class="line862">arvand </td>
+  <td><p class="line862">brt </td>
+  <td><p class="line862">cbp </td>
+  <td><p class="line862">cbp2 </td>
+  <td><p class="line862">roamer </td>
+  <td><p class="line862">cpt4 </td>
+  <td><p class="line862">dae_yahsp </td>
+  <td><p class="line862">fd-autotune-1 </td>
+  <td><p class="line862">fd-autotune-2 </td>
+  <td><p class="line862">fdss-1 </td>
+  <td><p class="line862">fdss-2 </td>
+  <td><p class="line862">forkuniform </td>
+  <td><p class="line862">lama-2008 </td>
+  <td><p class="line862">lama-2011 </td>
+  <td><p class="line862">lamar </td>
+  <td><p class="line862">lprpgp </td>
+  <td><p class="line862">madagascar </td>
+  <td><p class="line862">madagascar-p </td>
+  <td><p class="line862">popf2 </td>
+  <td><p class="line862">probe </td>
+  <td><p class="line862">randward </td>
+  <td><p class="line862">satplanlm-c </td>
+  <td><p class="line862">sharaabi </td>
+  <td><p class="line862">yahsp2 </td>
+  <td><p class="line862">yahsp2-mt </td>
+</tr>
+<tr>  <td><span class="anchor" id="line-84"></span><p class="line862">supports predicate representations (:?) </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+
+</tr>
+<tr>  <td><span class="anchor" id="line-85"></span><p class="line862">supports object fluent representations (:object-fluents) </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+
+</tr>
+<tr>  <td><span class="anchor" id="line-86"></span><p class="line862">supports typed representations (:typing)</td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+</tr>
+<tr>  <td><span class="anchor" id="line-87"></span><p class="line862">supports untyped representations </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+
+</tr>
+<tr>  <td><span class="anchor" id="line-88"></span><p class="line862">supports schematic representations (:?)</td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+
+</tr>
+<tr>  <td><span class="anchor" id="line-89"></span><p class="line862">supports grounded representations (:?)</td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+
+</tr>
+<tr>  <td><span class="anchor" id="line-90"></span><p class="line862">supports negative conditions (:negative-preconditions)</td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+
+</tr>
+<tr>  <td><span class="anchor" id="line-91"></span><p class="line862">supports ADL conditions (:?)</td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+
+</tr>
+<tr>  <td><span class="anchor" id="line-92"></span><p class="line862">supports conditional effects (:conditional-effects)</td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+
+</tr>
+<tr>  <td><span class="anchor" id="line-93"></span><p class="line862">supports universal effects (:?)</td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+
+</tr>
+<tr>  <td><span class="anchor" id="line-94"></span><p class="line862">supports derived predicates (:derived-predicates)</td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">yes </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">(yes) </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+  <td><p class="line862">no </td>
+
+</tr>
+<tr>  <td><span class="anchor" id="line-95"></span><p class="line862">compiles and runs </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+  <td><p class="line862"> <img alt="(./)" height="15" src="./rightsidebar/img/checkmark.png" title="(./)" width="20" /> </td>
+
+</tr>
+<tr>  <td><span class="anchor" id="line-96"></span><p class="line862">special </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862">[1] </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862">[2] </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862"> </td>
+  <td><p class="line862"> </td>
+
+</tr>
+</tbody></table>
+</html>

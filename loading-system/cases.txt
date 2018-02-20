@@ -1,0 +1,42 @@
+groceries
+	busroute
+
+template/groceries
+template/busroute
+world/groceries
+world/busroute
+
+no args
+load groceries
+     load busroute
+     	  cp template/busroute world/busroute
+	  load-world world/busroute $busroute
+     cp template/groceries world/groceries
+     load-world world/groceries $groceries
+     add-domain $busroute $groceries
+
+write-domain $groceries staging/groceries
+plan staging/groceries
+
+
+groceries
+	busroute(federated)
+		tinytim
+
+no args
+load groceries
+     load busroute
+     	  load tinytime
+	       cp template/tinytim wrold/tinytim
+	       load-world world/tinytim $tinytim
+     	  # load template/busroute
+	  
+
+
+world is where either hand editted templates are copied to, or federated planning results are written to
+
+do worlds contain the facts from subproblems and subdomains?
+   yes???, they have to, because they are generated as a function of the subdomain
+
+all the facts are assembled using addproblem, and are written to staging
+

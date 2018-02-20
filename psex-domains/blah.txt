@@ -1,0 +1,2 @@
+;; ("costs" ("unilang-entry-fn" "107410") ("price" "60" "dollars"))
+;; ("has-formalism" ("system" "Formalize" "1.0022") ("unilang-entry-fn" "32532") ("and" ("blah" ?X) ("blah" ?Y)))

@@ -1,0 +1,25 @@
+#!/usr/bin/perl -w
+
+use Verber;
+
+use UniLang::Agent::Agent;
+use UniLang::Util::Message;
+
+$UNIVERSAL::debug = 1;
+
+$UNIVERSAL::agent = UniLang::Agent::Agent->new
+  (Name => "Verber",
+   ReceiveHandler => \&Receive);
+
+sub Receive {
+  my %args = @_;
+  # $UNIVERSAL::verber->MyManager->MyWorldModel->
+  # ProcessCommand(Message => $args{Message});
+  $UNIVERSAL::verber->ProcessMessage
+    (Message => $args{Message});
+}
+
+$UNIVERSAL::verber = Verber->new();
+$UNIVERSAL::verber->Execute;
+
+

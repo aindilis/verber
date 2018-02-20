@@ -1,0 +1,46 @@
+An Open  Source Planning, Scheduling  and Execution System  for People
+with Disabilities Affecting Time Management Skills
+
+A person  with time management  disabilities may not remember  to eat,
+even if hungry,  may not remember to turn the  temperature up, even if
+cold.   There is  probably a  considerable economic  loss  incurred by
+these disabilities,  let alone myriad problems  for individuals having
+them.   A  popular misconception  is  that  these  people simply  lack
+discipline.
+
+To solve  this problem, we  employ planning, scheduling  and execution
+software to the real life  domain which these people require.  For the
+sake of this project we  have identified the most critical domains.
+
+The way  the system works is  as follows.  Because the  user cannot be
+counted  on to  remember  to do  something  at a  particular time,  an
+interrupt  must  be  serviced   to  them  containing  the  appropriate
+scheduling information.  To maintain the  world state, and to impose a
+minimal  interference with  the normal  operations of  the  person, we
+choose to employ a  system based on bidirectional audio communication.
+That is, the  user should employ a headset  containing earphones and a
+voice recognition microphone.  For instance, a bluetooth headset would
+work, and would also provide  the advantage of being a wireless system
+with very  little distraction.  There are already  many computers such
+as  laptop and  other portables  which have  the ability  to  run this
+software.
+
+The current system uses sphinx2  for recognition and festival for text
+to  speech,  both  of  which  are conveniently  accessible  as  Debian
+packages.   We  are  working   on  using  sphinx4  for  more  accurate
+recognition results.
+
+Another  interesting aspect  of this  problem is  that dialog  must be
+planned as well.   For instance, the user may,  in certain conditions,
+need to become detached from the system, in which case the system must
+verify that  the user's tasks  are sufficiently simple that  they will
+come back into contact with it  in order to not violate the conditions
+of 
+
+Look into electronic elves.
+
+Advice - plan into Manuel Veloso
+
+
+
+We will want to develop COA planning capabilities.

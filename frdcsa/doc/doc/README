@@ -1,0 +1,29 @@
+Here is an update of how to use this software.
+
+I am working on  integrating bus-scheduling with the temporal planner,
+so that Verber  goals can involve accurate bus  planning information -
+dynamically generated from BusRoute, etc.
+
+Add train routes to and from city, among other things, maybe google
+transit.
+
+I will also have a microtheory system where one can define, in comment
+syntax, a  tpddl (template pddl - my  own term) file, so  that one can
+include submicrotheorys, i.e. ";; (include Laundry BusRoute)"
+
+But in  the mean time, I  have just started doing  plan generation and
+visualization.  Right now, its not much, but here is a start.
+
+If you have Java properly installed, you can run...
+
+"./launch 1",
+
+then it will load a java program.  Go into the menu and click on "load
+scene", and then when it prompts, select
+"plan_domains/verber-problem-1.pddl_1.SOL".  You will then see a gantt
+chart for the plan.  In the future, you could visualize more complex
+plans this way too.  This is the very beginnings of the Verber system
+that you see on the website.  I've made a lot of progress on it today,
+all because I was too lazy to try to figure out how to do my laundry,
+and get a hair cut.  This is what is meant by good programmers are
+lazy.

@@ -1,0 +1,106 @@
+groceries
+	busroute
+
+template/groceries
+template/busroute
+world/groceries
+world/busroute
+
+no args
+load groceries
+     load busroute
+          load-domain template/busroute $busroute
+	  write-world world/busroute $busroute
+     load-domain template/groceries $groceries
+     add-domain $groceries $busroute
+     write-world world/groceries
+plan world/groceries
+
+
+groceries
+	busroute(federated)
+		tinytim
+
+-f
+load groceries
+     load busroute
+     	  load tinytime
+	       load-domain template/tinytim $tinytim
+	       write-world world/tinytim $tinytim
+          load-domain template/busroute $busroute
+	  add-domain $busroute $tinytim
+	  federated-planning $busroute world/busroute
+     load-domain template/groceries $groceries
+     add-domain $groceries $busroute
+
+     write-world world/groceries
+plan world/groceries
+	  
+no args
+load groceries
+     load busroute
+          load-domain template/busroute $busroute
+	  write-world world/busroute $busroute
+     load-domain template/groceries $groceries
+     add-domain $groceries $busroute
+     write-world world/groceries
+plan world/groceries
+
+--check
+load groceries
+plan world/groceries
+
+
+
+
+
+world is where either hand editted templates are copied to, or federated planning results are written to
+
+do worlds contain the facts from subproblems and subdomains?
+   yes???, they have to, because they are generated as a function of the subdomain
+
+all the facts are assembled using addproblem, and are written to staging
+
+
+
+LoadDomain(Name => groceries)
+     LoadDomain(Name => busroute)
+     	  LoadDomain(Name => tinytime)
+	       load-domain template/tinytim $tinytim
+	       write-world world/tinytim $tinytim
+          load-domain template/busroute $busroute
+	  add-domain $busroute $tinytim
+	  federated-planning $busroute world/busroute
+     load-domain template/groceries $groceries
+     add-domain $groceries $busroute
+
+     write-world world/groceries
+plan world/groceries
+
+
+
+if (exists $self->Templates->{$world->Name}) {
+  # so run it
+  $self->Generate;
+}
+
+# $self->CWW->GetTimeUnits;
+
+# templates are never overwritten
+
+# --check means don't copy template to world (or do -f for that matter) (as in the case of having hand editted world (which should be forbidden, no?))
+
+# -f means generate world from template + federated
+#    otherwise load from world
+
+# what do we do in the following case:
+
+# check whether there is a federated planning that provides this, if
+
+# worlds is where to plan
+# templates are hand editted
+# staging is to be over written
+
+# manually-editted (templates)
+# computer-generated (world)
+# staging (staging)

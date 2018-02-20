@@ -1,0 +1,166 @@
+
+#   $self->MyVisualizer
+#     (Verber::Visualizer->new
+#      (World => $self->MyWorld));
+
+#   $self->MyWorld->Plan;
+#  $self->MyPlanner->World
+#     ($self->MyWorld);
+
+#   print Dumper($self->MyWorld);
+
+#   # plan
+#   $self->MyPlanner->Plan;
+
+#   if ($conf->{'--print'}) {
+#     $self->MyVisualizer->PrintSolution;
+#   }
+
+#   if ($conf->{'--vp'}) {
+#     # visualize plan
+#     $self->MyVisualizer->Display;
+#   }
+
+
+#   if ($conf->{'-m'}) {
+#     $self->MyManager
+#       (Verber::Manager->new
+#        (
+# 	World => $self->MyContext->CWW,
+#        ));
+
+#     $self->MyContext->CWW->Plans->{1}->LoadFiles();
+
+#     print Dumper
+#       ($self->MyContext->CWW->Plans->{1});
+
+#     # manage execution
+#     $self->MyManager->MonitorPlan
+#       (Plan => $self->MyContext->CWW->Plans->{1});
+#   }
+
+# sub ExecuteOld {
+#   my ($self,%args) = @_;
+#   my $conf = $self->Config->CLIConfig;
+
+#   if (exists $conf->{'--map-requirements'}) {
+#     $self->MapRequirements;
+#     return;
+#   }
+
+#   # what verber wants to do is just take the current model
+#   # and get it going
+
+#   # the model generates a plan for verbers continued execution
+
+#   my $list;
+#   if (exists $conf->{'-p'}) {
+#     $list = $conf->{'-p'};
+#   } else {
+#     if (exists $conf->{'-a'}) {
+#       $list = $self->ListPlanners;
+#     } else {
+#       $list = ["LPG"];
+#     }
+#   }
+#   $self->MyPlanners
+#     (PerlLib::Collection->new
+#      (Type => "Verber::Planner"));
+#   $self->MyPlanners->Contents({});
+
+#   my $dir = $UNIVERSAL::systemdir;
+#   foreach my $plannername (@$list) {
+#     require "$dir/Verber/Planner/$plannername.pm";
+#     my $planner = "Verber::Planner::$plannername"->new();
+#     $self->MyPlanners->Add
+#       ($plannername => $planner);
+#   }
+
+#   $self->MyContext
+#     (Verber::Context->new
+#      ());
+
+#   if (exists $conf->{'-d'}) {
+#     print Dumper($conf->{'-d'});
+#     $self->MyContext->AddWorld
+#       (
+#        Name => "temp",
+#        Domain => $conf->{'-d'}->{'<domain>'},
+#        Problem => $conf->{'-d'}->{'<problem>'},
+#       );
+#   } else {
+#     $self->MyContext->AddWorld
+#       (Name => $conf->{'-w'} || "integrate");
+#   }
+
+#   # choose a planner that can plan in that world, for now just choose
+#   # the first one
+
+#   foreach my $planner ($self->MyPlanners->Values) {
+#     $self->CWP($planner);
+#     $self->CWP->MyCapsule
+#       ($self->MyContext->CWW->MyCapsule);
+
+#     if (! $conf->{'--no-plan'}) {
+#       $self->MyContext->CWW->AddPlan
+# 	(Plan => $self->CWP->DevelopPlan
+# 	 (
+# 	  StartDate => $self->MyContext->CWW->StartDate,
+# 	  Units => $self->MyContext->CWW->Units,
+# 	 ));
+#     }
+#   }
+
+#   if ($conf->{'--response'}) {
+#     $UNIVERSAL::agent->SendContents
+#       (
+#        Receiver => $conf->{'--response'},
+#        Data => {
+# 		Plan => $self->MyContext->CWW->Plans->{1},
+# 	       },
+#       );
+#   }
+
+
+
+
+#   if ($conf->{'--iem'}) {
+#     #     $self->MyManager
+#     #       (Verber::Manager->new
+#     #        (World => $self->MyContext->CWW));
+
+#     $self->MyContext->CWW->Plans->{1}->LoadFiles();
+
+#     # send the plan to the execution monitor, say whether it is a plan
+#     # that should be abided by or just viewed
+
+#     # send all the requisite information: this is the plan, the verber
+#     # domains, the planning domains, the data on mappings between
+#     # goals and entry items (verber lacks that information, that is
+#     # with SPSE2), create a mechanism to transfer it
+
+#     # the interactive execution monitor should monitor the plan
+#     # progress, and send notifications which must be acknowledged by
+#     # some method - have a screen takeover method if necessary, which
+#     # is only used after initial results have failed
+
+#     # see if we can eventually interleave the process
+
+#     # work out a planning domain for contacting the user
+
+#     #     $UNIVERSAL::agent->SendContents
+#     #       (
+#     #        Receiver => "IEM",
+#     #        Contents => "ping",
+#     #       );
+
+#     $UNIVERSAL::agent->SendContents
+#       (
+#        Receiver => "IEM",
+#        Data => {
+# 		World => $self->MyContext->CWW,
+# 		# Plan => $self->MyContext->CWW->Plans->{1},
+# 	       },
+#       );
+#   }
+# }

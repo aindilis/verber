@@ -1,0 +1,16 @@
+(how to do the sync feature)
+(create any new tasks that have not been seen before - deal with recurrences)
+
+(deal with changes to time - so for instance, if a given item has
+      changed title or date, update it)
+
+(so there are a few concerns - setting up the proper dependencies on
+    tasks, so for instance, if we know that a specific task depends on
+    something)
+
+(set up a test domain and include the temporal planning aspect)
+
+(have a calendar sync, so that tasks that are scheduled, by say, a
+      plan, may be uploaded to the calendar)
+
+

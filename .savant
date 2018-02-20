@@ -1,0 +1,9 @@
+$VAR1 = {
+          '0' => bless( {
+                          'ID' => 0,
+                          'Parents' => undef,
+                          'Importance' => undef,
+                          'Children' => undef,
+                          'Description' => 'verber needs to actually work'
+                        }, 'Savant::Capability' )
+        };

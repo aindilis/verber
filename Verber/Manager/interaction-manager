@@ -1,0 +1,28 @@
+#!/usr/bin/perl -w
+
+# interaction manager
+
+# now, if  we want to do  something but can't for  certain reasons, we
+# ought to formalize what these reasons are.
+
+# As an  example, I can't  go to Brian's  for a few reasons.   I'm not
+# sure whether he would let me  and I don't feel like walking with the
+# bus.  If I really needed to I  could go.  I don't have an SVRE built
+# at his house yet.
+
+sub AlterWorldState {
+  # purpose of this function is to accept changed world states
+
+}
+
+sub ReadNextAction {
+  # read the next action in the current plan
+
+}
+
+sub PrepareForNextIndependentActionSequence {
+  # since in some  cases the user must do more  than one action before
+  # consulting the interaction-manager, this serves to prepare for the
+  # next independent action sequence.
+
+}
