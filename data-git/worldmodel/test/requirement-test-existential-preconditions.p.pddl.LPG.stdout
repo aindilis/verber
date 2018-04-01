@@ -1,0 +1,44 @@
+
+Parsing domain file:  domain 'REQUIREMENT-TEST-EXISTENTIAL-PRECONDITIONS' defined ... done.
+Parsing problem file:  problem 'REQUIREMENT-TEST-EXISTENTIAL-PRECONDITIONS' defined ... done.
+
+
+
+Modality: Fast Planner
+
+Number of actions             :       4
+Number of conditional actions :       0
+Number of facts               :       1
+
+
+Analyzing Planning Problem:
+	Temporal Planning Problem: NO
+	Numeric Planning Problem: NO
+	Problem with Timed Initial Litearals: NO
+	Problem with Derived Predicates: NO
+
+Evaluation function weights:
+     Action duration 0.00; Action cost 1.00
+
+
+Computing mutex... done
+
+Preprocessing total time: 0.00 seconds
+
+Searching ('.' = every 50 search steps):
+ solution found: 
+
+Plan computed:
+   Time: (ACTION) [action Duration; action Cost]
+ 0.0000: (ACTION1 OBJ1 OBJ2) [D:1.0000; C:1.0000]
+
+
+Solution found:
+Total time:      0.01
+Search time:     0.01
+Actions:         1
+Execution cost:  1.00
+Duration:        1.000
+Plan quality:    1.000
+     Plan file:       /var/lib/myfrdcsa/codebases/internal/verber/data/worldmodel/test/requirement-test-existential-preconditions.p.pddl.LPG.sol_1.SOL
+

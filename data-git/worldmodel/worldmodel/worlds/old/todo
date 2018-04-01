@@ -1,0 +1,32 @@
+We want to get this thing so that it will do a number of things.
+
+Firstly, we want to test that it can execute a function.
+
+After that,  have it get goals  from PSE or  something, in otherwords,
+planning.
+
+Based on these higher level goals, plan out all other activities for
+the duration of a cycle.
+
+Also plan the cycles end.
+
+Write a domain for being in contact with someone.  For battery power etc.
+
+Then have it plan its own planning at the end.
+
+(add automatic derivation of requirements from the PDDL parsed domain,
+and selection of planners based on which requirements each planner
+provides)
+
+(use a variant of epoch and code days etc as "at" statements (not "at" as in location))
+
+
+(make a list of peculiarities
+* LPG crashes if you attempt to assign functions values unless there is a (:metric ) statement
+      )	    
+
+(SGPlan has to have a defined cost for every item (unless I can find a way to check defined))
+
+(>= is in rpn so (>= 0 1) is true)
+
+(run the planners on the domain library to determine which ones succeed...)

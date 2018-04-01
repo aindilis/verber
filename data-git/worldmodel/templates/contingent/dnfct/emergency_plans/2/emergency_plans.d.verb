@@ -1,0 +1,87 @@
+(define (domain emergency_plans)
+
+ (:requirements
+  :typing
+  ;; :verb-contingent
+  )
+
+ (:types DATA DRIVE SYSTEM)
+
+ ;; (:includes)
+ ;;
+ ;; (:timing
+ ;;  (units 0000-00-00_24:00:00)
+ ;;  )
+
+ (:predicates
+  (not_exists ?data - DATA)
+  (on ?data - DATA ?drive - DRIVE)
+  (in ?drive - DRIVE ?system - SYSTEM)
+  ;; (copy_of ?data1 ?data2 - DATA)
+  ;; (accessed ?drive - DRIVE)
+  (failed ?drive - DRIVE)
+  (finished)
+  )
+
+ ;; (:functions)
+
+ (
+  :action SENSE_CHECK_DRIVE_T
+  :parameters (?drive - DRIVE ?system - SYSTEM)
+  :precondition (in ?drive ?system)
+  :effect (and (failed ?drive) (true))
+  )
+
+ (:action BACKUP
+  :parameters
+  (
+   ?data1 ?data2 - DATA
+   ?driveX ?driveY - DRIVE
+   )
+  :precondition
+  (and
+   (on ?data1 ?driveX)
+   (not_exists ?data2)
+   (not (failed ?driveX))
+   (not (failed ?driveY))
+   )
+  :effect
+  (and
+   (not (not_exists ?data2))
+   (on ?data2 ?driveY)
+   )
+  )
+
+ ;; (:action ACCESS
+ ;;  :parameters
+ ;;  (
+ ;;   ?data1 ?data2 - DATA
+ ;;   ?drive1 ?drive2 - DRIVE
+ ;;   )
+ ;;  :precondition
+ ;;  (and
+ ;;   (on ?data1 ?drive1)
+ ;;   (not (failed ?drive1))
+ ;;   )
+ ;;  :effect
+ ;;  (and
+ ;;   (accessed ?data1)
+ ;;   )
+ ;;  )
+
+ (:action FINISH
+  :parameters
+  (?data - DATA ?drive - DRIVE)
+  :precondition
+  (and
+   ;; (copy_of posiGitCopy posiGit)
+   (on posiGit2 hitachi3tbroot)
+   ;; (on ?data ?drive)
+   ;; (not (failed ?drive))
+   )
+  :effect
+  (and
+   (finished)
+   )
+  )
+ )

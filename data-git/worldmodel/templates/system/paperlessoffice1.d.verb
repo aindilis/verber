@@ -1,0 +1,72 @@
+(define
+
+ (domain SYSTEM_PAPERLESSOFFICE1)
+
+ (:timing
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:requirements :timed-initial-literals :negative-preconditions
+  :equality :typing :fluents :durative-actions
+  :derived-predicates)
+
+ (:types
+  entry person - object
+  sayer-index-entry pse-entry unilang-entry - entry
+  )
+
+ (:predicates
+  (completed ?e - entry)
+  (depends ?e1 ?e2 - entry)
+  (provides ?e1 ?e2 - entry)
+  (eases ?e1 ?e2 - entry)
+  (possible ?e - entry)
+  (has-time-constraints ?e - entry)
+  )
+
+ (:functions
+  (costs ?e - entry)
+  (earns ?e - entry)
+  (budget ?p - person)
+  (duration ?e - entry)
+  )
+
+ (:durative-action Complete
+  :parameters (?e1 - entry ?p - person)
+  :duration (= ?duration (duration ?e1))
+  :condition (and
+	      ;; ensure we have enough money
+	      (over all 
+	       (or 
+		(not (has-time-constraints ?e1))
+		(possible ?e1)))
+	      (at start 
+	       (>= (budget ?p) (costs ?e1))
+	       )
+	      ;; make sure there are no unsatisfied preconditions
+	      (at start
+	       (not 
+		(exists (?e2 - entry)
+		 (and
+		  (depends ?e1 ?e2)
+		  (not (completed ?e2))
+		  ))))
+	      ;; make sure if a provides exists one is used
+	      (at start
+	       (or
+		(not
+		 (exists (?e3 - entry) 
+		  (provides ?e3 ?e1)))
+		(exists (?e4 - entry)
+		 (and
+		  (provides ?e4 ?e1)
+		  (completed ?e4)))))
+	      (at start (not (completed ?e1)))
+	      )
+  :effect (and
+	   (at end (completed ?e1))
+	   (at start (decrease (budget ?p) (costs ?e1)))
+	   (at end (increase (budget ?p) (earns ?e1)))
+	   )
+  )
+ )

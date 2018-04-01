@@ -1,0 +1,8 @@
+GeomLabel(5.500,1.500)[output.lHEAT_VELVEETA]
+Rectangle((0.000,0.000),(11.000,0.300))[output.HEATVELVEETA]
+GeomLabel(16.501,4.000)[output.lCOOK_VELVEETA]
+Rectangle((11.001,2.500),(22.001,2.800))[output.COOKVELVEETA]
+Attribute(output.nameVisible=false)
+Attribute(lineWidth=4)
+Attribute(pointSize=0)
+Attribute(fillColor=green)

@@ -1,0 +1,14 @@
+(define
+ (problem SYSTEM_SPSE2)
+ (:domain SYSTEM_SPSE2)
+ (:includes)
+ (:timing
+  (start-date TZID=America/Chicago:20120819T155052)
+  (units 0000-00-00_01:00:00))
+ (:objects andy - person)
+ (:init
+  (= (budget andy) 500))
+ (:goal
+  (and))
+ (:metric minimize
+  (total-time)))

@@ -1,0 +1,55 @@
+;; <domain-file>
+
+(define (domain )
+
+ (:timing
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:requirements
+  ;; :negative-preconditions :conditional-effects :equality :typing
+  ;; :fluents :durative-actions :derived-predicates
+  ;; :disjunctive-preconditions :timed-initial-literals
+  )
+
+ (:types)
+ 
+ (:predicates)
+
+ (:functions)
+
+ ;; DERIVED
+ ;; (:derived (location-is-clean ?location - location)
+ ;;  (forall (?o - object) 
+ ;;   (imply
+ ;;    (at-location ?o ?location)
+ ;;     (not (dirty ?o)))))
+
+ ;; DURATIVE ACTIONS
+ ;; (:durative-action dry-laundry-load
+ ;;  :parameters (?p - person ?ll - laundry-load ?d - laundry-dryer-machine ?l - location)
+ ;;  :duration (= ?duration 1.25)
+ ;;  :condition (and
+ ;; 	      (at start (at-location ?p ?l))
+ ;; 	      (at start (at-location ?ll ?l))
+ ;; 	      (at start (at-location ?d ?l))
+ ;; 	      (at start (forall (?la - laundry)
+ ;; 			 (imply
+ ;; 			  (is-contained-by ?la ?ll)
+ ;; 			  (wet ?la))))
+ ;; 	      (at start (imply (has-fee-for-use ?d) (>= (cash ?p) (fee-for-use ?d))))
+ ;; 	      (over all (is-contained-by ?ll ?d))
+ ;; 	      )
+ ;;  :effect (and 
+ ;; 	   ;; (at end (forall (?la - laundry) 
+ ;; 	   ;; 	    (when (is-contained-by ?la ?ll)
+ ;; 	   ;; 	     (not (dirty ?la)))))
+ ;; 	   ;; (at end (when (has-fee-for-use ?d)
+ ;; 	   ;; 	    (decrease (cash ?p) (fee-for-use ?d))))
+ ;; 	   (at end (assign (actions) (+ (actions) 1)))
+ ;; 	   )
+ ;;  )
+
+ )
+
+;; </domain-file>

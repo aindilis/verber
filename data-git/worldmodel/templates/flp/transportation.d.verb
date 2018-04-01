@@ -1,0 +1,36 @@
+;; <domain-file>
+
+(define (domain transportation)
+
+ (:timing
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:requirements)
+
+ (:types)
+ 
+ (:predicates)
+
+ (:functions)
+
+ ;; DERIVED
+ ;; (:derived)
+
+ ;; DURATIVE ACTIONS
+ (:durative-action drive
+  :parameters (?p - person ?v - vehicle ?s - location ?e - location)
+  :duration (= ?duration (time-to-drive-leg ?v ?s ?e))
+  :condition (and
+ 	      (at start (in ?p ?v))
+ 	      (at start (at ?v ?s))
+ 	      (at start (has-enough-gas-for-leg ?v ?s ?e))
+ 	      )
+  :effect (and
+ 	   (at end (at ?v ?e))
+	   (at end (assign (gas ?v) (- (gas ?v) (gas-for-leg ?v ?s ?e))))
+ 	   )
+  )
+ )
+
+;; </domain-file>

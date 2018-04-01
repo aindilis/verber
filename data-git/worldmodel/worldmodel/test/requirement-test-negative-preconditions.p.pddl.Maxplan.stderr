@@ -1,0 +1,3 @@
+
+requirement-test-negative-preconditions.d.pddl: syntax error in line 3, ':NEGATIVE-PRECONDITIONS':
+requirement %s not supported by this IPP version :NEGATIVE-PRECONDITIONS

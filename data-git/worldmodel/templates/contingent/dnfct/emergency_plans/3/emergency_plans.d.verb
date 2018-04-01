@@ -1,0 +1,95 @@
+(define (domain emergency_plans)
+
+ (:requirements
+  :typing
+  ;; :verb-contingent
+  )
+
+ (:types DATA DRIVE SYSTEM)
+
+ ;; (:includes)
+ ;;
+ ;; (:timing
+ ;;  (units 0000-00-00_24:00:00)
+ ;;  )
+
+ (:predicates
+  (not_exists ?data - DATA)
+  (on ?data - DATA ?drive - DRIVE)
+  (in ?drive - DRIVE ?system - SYSTEM)
+  ;; (copy_of ?data1 ?data2 - DATA)
+  ;; (accessed ?drive - DRIVE)
+  (failed ?drive - DRIVE)
+  (finished)
+  )
+
+ ;; (:functions)
+
+ (
+  :action sense_check_drive_t
+  :parameters (?drive - DRIVE ?system - SYSTEM)
+  :precondition (in ?drive ?system)
+  :effect (and (failed ?drive) (true))
+  )
+
+ (:action backup
+  :parameters
+  (
+   ?data1 ?data2 - DATA
+   ?driveX ?driveY - DRIVE
+   )
+  :precondition
+  (and
+   (on ?data1 ?driveX)
+   (not_exists ?data2)
+   (not (failed ?driveX))
+   (not (failed ?driveY))
+   )
+  :effect
+  (and
+   (not (not_exists ?data2))
+   (on ?data2 ?driveY)
+   )
+  )
+
+ (:action recover
+  :parameters
+  (?drive - DRIVE)
+  :precondition
+  (and
+   (failed ?drive)
+   )
+  :effect
+  (and
+   (not (failed ?drive))
+   )
+  )
+
+ (:action finish
+  :parameters
+  (?data - DATA ?drive - DRIVE)
+  :precondition
+  (and
+
+   ;; ;; WORKING
+
+   ;; (copy_of posiGit1 posiGit2)
+   (on posiGit2 hitachi3TBRoot)
+
+   (not (failed hitachi3TBBackup))
+
+   
+   ;; ;; TESTING
+
+
+   ;; ;; NOT WORKING
+
+   ;; (on ?data ?drive)
+   ;; (not (failed ?drive))
+   )
+  :effect
+  (and
+   (finished)
+   )
+  )
+ )

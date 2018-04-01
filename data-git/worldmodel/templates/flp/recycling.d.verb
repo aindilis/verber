@@ -1,0 +1,144 @@
+;; (plastic utensils are trash)
+
+;; (
+;;  (are(returnable,recycleable,trash),bins)
+;;  (when
+;;   (plastic water bottles)
+;;   (take the tops off, crush the bottle, put the tops back on, put
+;;    them in the regular recycling area))
+;;  (when
+;;   (small energy drinks)
+;;   (regular recycables)
+;;   )
+;;  (when
+;;   (pop can)
+;;   (and
+;;    (rinse them out so they don't get sticky)
+;;    (put them in the returnable bin)
+;;    )
+;;   )
+;;  (when
+;;   (put in trash)
+;;   ()
+;;   )
+;;  (when
+;;   (cardboard)
+;;   (flatten it and put in recycle bin)
+;;   )
+;;  (when
+;;   (aluminum (non-pop can of food))
+;;   (wash them out before they get dry and impossible to wash out,
+;;    before they get dry, rip their labels off and put them in the
+;;    recycle bin))
+
+;; (when
+;;   (downstairs trash bin is full)
+;;   ()
+;;   )
+;;  (when
+;;   (downstairs returnable bin is full)
+;;   ()
+;;   )
+;;  (when
+;;   (downstairs recycling bin is full)
+;;   (and
+;;    (start another bag)
+;;    (move them to
+;;     (garage or target))))
+
+;;  (when
+;;   (downstairs trash area is full)
+;;   ()
+;;   )
+;;  (when
+;;   (downstairs returnable area is full)
+;;   ()
+;;   )
+;;  (when
+;;   (downstairs recycling area is full)
+;;   (and
+;;    (start another bag)
+;;    (move them to
+;;     (garage or target))))
+
+
+
+;;  (put them in the garage)
+;;  (if the garage is full and they )
+;;  (if they don't have room or you want to go out we'll take them
+;;   to Target)
+
+;;  )
+
+;; (only brown cardboard is recyclable)
+;; (little bowls are not)
+
+;; (suggest you separate aluminum can (non pop) lids from cans, else
+;;  you can cut yourself)
+
+
+;; (when
+;;  (plastic bags)
+;;  (put in recycleable bags)
+;;  )
+;; (when
+;;  (garage trash area is full)
+
+;;  )
+
+;; (when
+;;  (garage recycle bin is full)
+;;  (put it out on Tuesday morning))
+
+;; (put them in the garage if they fit)
+;; (or keep them down here)
+;; (move them to street corner on tuesday)
+
+;; (when
+;;  (street corner is full)
+;;  ()
+;;  )
+
+;; (when
+;;  (there is a bag that isn't properly sorted)
+;;  (sort it out)
+;;  )
+
+;; (need to better exploit our book resources
+;;  ()
+;;  )
+
+
+
+
+;; (make list of which stores accept which cans
+;;  (Walmart
+;;   (does
+;;    (rockstar)
+;;    (flavored water)
+;;    (pepsi)
+;;    (diet pepsi)
+;;    (mountain due voltage)
+;;    )
+;;   (does not
+;;    (lipton tea)
+;;    (kroger generic soda)
+;;    (gt cola)
+;;    (generic 5 hour energy)
+;;    )
+;;   (Kroger
+;;    (does
+;;     (rockstar)
+;;     (kroger generic soda)
+;;     ;; (pepsi)
+;;     ;; (diet pepsi)
+;;     ;; (mountain dew voltage)
+;;     )
+;;    (does not
+;;     (lipton)
+;;     (5 hour energy)
+;;     (gt cola?)
+o;;     )
+;;    )
+;;   )
+;;  )

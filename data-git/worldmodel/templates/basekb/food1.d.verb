@@ -1,0 +1,25 @@
+(define
+ (domain BASE_FOOD1)
+ (:requirements
+  :typing :derived-predicates
+
+  )
+ (:includes)
+ (:timing)
+ (:types
+  mealtype - collection
+  )
+ (:predicates
+  )
+ (:functions
+  (how-filling ?m - mealtype ?p - person)
+  (rate-of-eating ?p - person)
+  (food-ingested ?p - person)
+  (hunger-level ?p - person)
+  )
+ ;; derived predicates
+ ;; durative actions
+ )
+
+
+

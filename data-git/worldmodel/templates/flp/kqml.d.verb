@@ -1,0 +1,58 @@
+(define (domain kqml)
+
+ (:requirements :negative-preconditions :conditional-effects
+  :equality :typing :fluents :durative-actions
+  :derived-predicates)
+
+ (:types 
+  person - intelligentAgent
+  )
+
+ (:timing
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:predicates
+  (autonomous ?a - intelligentAgent)
+  )
+
+ (:functions
+  (travel-duration ?m - modeOfTransportation ?l0 ?l1 - physicalLocation)
+  )
+
+ (:durative-action tell
+  ;; tell(A,B,X) A states to B that A believes the content to be true.
+  :parameters (?a ?b - intelligentAgent ?x - assertion)
+  :duration (= ?duration 0)
+  :condition (and
+	      ;; Pre(A):
+	      (at start
+	       (believe ?a ?x))
+	      (at start
+	       (exists (?s)
+		(know ?a (want ?b (know ?b ?s)))))
+
+	      ;; Pre(B):
+	      (at start
+	       (exists (?s)
+		(or
+		 (equal ?s (believe ?b ?x))
+		 (equal ?s (not (believe ?b ?x))))))
+	      (at start
+	       (exists (?s)
+		(int ?b (know ?b ?s))))
+	      )
+  :effect (and
+	   ;; Post(A):
+	   (at end
+	    (know ?a
+	     (know ?b
+	      (believe ?a ?x))))
+
+	   ;; Post(B):
+	   (at end
+	    (know ?b
+	     (believe ?a ?x)))
+	   )
+  )
+ )

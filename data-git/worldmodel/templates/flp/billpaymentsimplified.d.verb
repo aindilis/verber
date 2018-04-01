@@ -1,0 +1,319 @@
+(define
+
+ ;; see also /var/lib/myfrdcsas/versions/myfrdcsa-1.0/codebases/releases/verber-0.2/verber-0.2/data/worldmodel/worlds/old/economic.d.pddl
+
+ (domain billpaymentsimplified)
+
+ (:timing
+  (units 0000-00-00_01:00:00)
+  )
+ 
+ (:requirements :negative-preconditions :conditional-effects
+  :equality :typing :fluents :durative-actions
+  :derived-predicates)
+
+ (:types 
+  intelligentAgent residence informationBearingThing - object
+  
+  party - intelligentAgent
+
+  person financialInstitution serviceProvider - intelligentAgent
+
+  consumerBankingCompany creditCardServiceCompany - financialInstitution
+  financialInstitution stateGovernmentAgency - institution
+
+  bankAccount - accountType
+  checkingAccount savingsAccount creditAccount foodStampsAccount cashAssistanceAccount - bankAccount
+
+  bankCard - moneyTenderType
+  bankCreditCard bankDebitCard - bankCard
+  foodStampsCard - bankDebitCard
+
+  utilitySupplier - serviceProvider
+
+  expense income - financialObligation
+
+  action amountInDollarsAndCents date dateTimeStamp confirmationNumber - informationBearingThing
+
+  amount - amountInDollarsAndCents
+
+  )
+
+ (:predicates
+
+  ;; BANK ACCOUNT SLOTS
+  (hasBankCard ?ba - bankAccount ?bc - bankCard)
+  (belongsTo ?ba - bankAccount ?ia - intelligentAgent)
+  (issuingInstitution ?ba - bankAccount ?i - institution)
+
+  ;; BILL SLOTS
+  (hasPayer ?b - bill ?ia - intelligentAgent)
+  (hasPayee ?b - bill ?ia - intelligentAgent)
+  (hasAmount ?b - bill ?a - amount)
+  (hasDueDate ?b - bill ?d - date)
+  (connectedToResidence ?b - bill ?r - residence)
+
+  ;; PAYMENT SLOTS
+  (hasBankAccount ?p - payment ?ba - bankAccount)
+  (hasExpectedDate ?p - payment ?d - date)
+  (hasPayee ?p - payment ?pa - party)
+  (hasAmount ?p - payment ?a - amount)
+
+  ;; DEPOSIT SLOTS
+  (hasBankAccount ?d - deposit ?ba - bankAccount)
+  (hasExpectedDate ?d - deposit ?da - date)
+  (hasDepositor ?d - deposit ?p - party)
+  (hasAmount ?d - deposit ?a - amount)
+
+
+  ;; TRANSACTION SLOTS
+  (deposited ?d - deposit)
+  (paid ?p - bill)
+  (paid ?p - payment)
+
+  (depositAuthorizedDate ?d - deposit ?d - date)
+  (paymentAuthorizedDate ?p - payment ?d - date)
+  (paymentAuthorizedDate ?b - bill ?d - date)
+
+  (depositPostedOnDate ?d - deposit ?d - date)
+  (paymentPostedOnDate ?p - payment ?d - date)
+  (paymentPostedOnDate ?b - bill ?d - date)
+
+  (acceptsPaymentMethod ?p - payee ?m - method)
+
+  (paymentMethod ?p - payment ?m - paymentMethod)
+  (paymentMethod ?b - bill ?m - billPaymentMethod)
+
+  ;; CALENDRICAL SLOTS
+  (before ?d1 - date ?d2 - date)
+
+  (locked ?ba - bankAccount)
+
+  ;; (allPendingTransactionsHavePostedForDate ?d - date)
+  )
+
+ (:functions
+  (availableBalance ?ba - bankAccount)
+  (currentBalance ?ba - bankAccount)
+
+  (duration ?da - durativeAction)
+  )
+
+ (:derived (depositAuthorized ?d - deposit)
+  (depositAuthorizedDate ?d - deposit ?d - date))
+
+ (:derived (paymentAuthorized ?p - payment)
+  (paymentAuthorizedDate ?p - payment ?d - date))
+
+ (:derived (depositPosted ?d - deposit)
+  (depositPostedOnDate ?d - deposit ?d - date))
+
+ (:derived (paymentPosted ?p - payment)
+  (paymentPostedOnDate ?p - payment ?d - date))
+
+ ;; (:derived (atOrBefore ?d1 - date ?d2 - date)
+ ;;  (or
+ ;;   (= ?d1 ?d2)
+ ;;   (or
+ ;;    (before ?d1 ?d2)
+ ;;    (atOrBefore ?d1 ?d2))))
+
+ ;; (:derived (hasNegativeAvailableBalance ?ba - bankAccount ?dts - dateTimeStamp)
+ ;;  (< (availableBalance ?ba ?dts) 0))
+
+ ;; (:derived (isOverdrafted ?ba - bankAccount ?d - date ?dts - dateTimeStamp)
+ ;;  (hasNegativeAvailableBalance ?ba ?dts)
+ ;;  (transactionsHavePostedForDate ?d))
+
+ ;;  (< (availableBalance ?ba ?dts) 0)
+
+
+ (:durative-action pay
+  :parameters (?p - payment ?ia - intelligentAgent ?pa - party ?ba - bankAccount ?a - amount ?d1 - date ?d2 - date)
+  :duration (= ?duration (duration deposit))
+  :condition (and
+	      (at start
+	       (hasPayee ?b ?p)
+	       (inIntelligentAgentsName ?p ?ia)
+	       (not (paymentAuthorized ?b))
+	       )
+	      (over all
+	       (and
+		;; GET PAYMENT INFORMATION
+		(hasPayee ?p - payment ?pa - party)
+		(hasExpectedDate ?p - payment ?d - date)
+		(hasAmount ?p - payment ?a - amount)
+
+		;; ensure we have an account available to make the payment
+
+		;; retrieve the bill info
+
+		(hasBill ?r ?sp ?a ?duedate)
+
+		;; ensure that the payment is on time.
+
+		;; eventually replace this with a function to
+		;; anticipate how long it will possibly or necessarily
+		;; take to clear
+
+		(currentDate ?currentdate)
+		(atOrbefore ?currentdate ?duedate)
+
+		;; ensure there are sufficient funds
+
+		(not (hasNegativeAvailableBalance ?ba ?dts))
+		)
+	       )
+	      )
+  :effect (and
+	   (over all
+	    (locked ?ba1)
+	    )
+ 	   (at end
+	    (assign (availableBalance ?ba1) (- (availableBalance ?ba1) ?a))
+	    (paymentHasBeenSentForBill ?r ?sp ?a ?duedate ?currentdate)
+	    )
+	   )
+  )
+
+ (:durative-action payBill
+  :parameters (?ia - intelligentAgent ? ?ba1 - bankAccount ?ba2 - bankAccount ?fi - financialInstitution  ?r - residence ?sp - serviceProvider ?a - amount ?duedate - date ?currentdate - date)
+  :duration (= ?duration (duration deposit))
+  :condition (and
+	      (over all
+	       (and
+
+		;; ensure we have an account available to make the payment
+
+		(belongsTo ?ba1 - bankAccount ?ia - intelligentAgent)
+
+
+		;; retrieve the bill info
+
+		
+
+		(hasBill ?r ?sp ?a ?duedate)
+
+
+		;; ensure that the payment is on time.
+
+		;; eventually replace this with a function to
+		;; anticipate how long it will possibly or necessarily
+		;; take to clear
+
+		(currentDate ?currentdate)
+		(atOrbefore ?currentdate ?duedate)
+
+
+		;; ensure there are sufficient funds
+
+		(not (hasNegativeAvailableBalance ?ba ?dts))
+		)
+	       )
+	      )
+  :effect (and
+	   (over all
+	    (locked ?ba1)
+	    )
+ 	   (at end
+	    (assign (availableBalance ?ba1) (- (availableBalance ?ba1) ?a))
+	    (paymentHasBeenSentForBill ?r ?sp ?a ?duedate ?currentdate)
+	    )
+	   )
+  )
+
+ (:durative-action deposit
+  :parameters (?ba1 - bankAccount ?ia - intelligentAgent ?fi - financialInstitution ?ba2 - bankAccount ?a - amount)
+  :duration (= ?duration (duration deposit))
+  :condition (and
+	      (over all
+	       (hasAccountWith ?ba1 - bankAccount ?ia - intelligentAgent ?fi - financialInstitution ?ba2 - bankAccount)
+	       )
+	      )
+  :effect (and
+ 	   (at end (assign (availableBalance ?ba1) (+ (availableBalance ?ba1) ?a)))
+	   )
+  )
+
+
+
+ (:durative-action pay
+  :parameters (?ba1 - bankAccount ?ia - intelligentAgent ?fi - financialInstitution ?ba2 - bankAccount ?a - amount)
+  :duration (= ?duration (duration withdrawal))
+
+  ;; we have to distinguish different kinds of withdrawals and
+  ;; deposits, like at an ATM, a check deposit via a cell phone app,
+  ;; in store via a clerk, instore via a machine, in the
+  ;; drive-through, etc.  We have to distinguish which hours these
+  ;; things are possible, how soon they go into effect etc.
+
+  ;; for now we can just take care of the actual change in values in
+  ;; the account, and assume other things don't apply.  Just to
+  ;; abstract the problem a bit.
+
+  :condition (and
+	      (over all
+	       (belongsTo ?ba1 - bankAccount ?ia - intelligentAgent)
+	       ;; (?fi - financialInstitution ?ba2 - bankAccount)
+	       )
+	      )
+  :effect (and
+ 	   (at end (assign (availableBalance ?ba1) (- (availableBalance ?ba1) ?a)))
+	   )
+  )
+
+ (:durative-action makeOnlinePayment
+
+  )
+
+ (:durative-action makeInStorePayment
+
+  )
+
+ ;; (:durative-action Complete
+ ;;  :parameters (?e1 - entry ?p - person)
+ ;;  :duration (= ?duration (duration ?e1))
+ ;;  :condition (and
+ ;; 	      ;; ensure we have enough money
+ ;; 	      (over all 
+ ;; 	       (or 
+ ;; 		(not (has-time-constraints ?e1))
+ ;; 		(possible ?e1)))
+ ;; 	      (at start 
+ ;; 	       (>= (budget ?p) (costs ?e1))
+ ;; 	       )
+ ;; 	      ;; make sure there are no unsatisfied preconditions
+ ;; 	      (at start
+ ;; 	       (not 
+ ;; 		(exists (?e2 - entry)
+ ;; 		 (and
+ ;; 		  (depends ?e1 ?e2)
+ ;; 		  (not (completed ?e2))
+ ;; 		  ))))
+ ;; 	      ;; make sure if a provides exists one is used
+ ;; 	      (at start
+ ;; 	       (or
+ ;; 		(not
+ ;; 		 (exists (?e3 - entry) 
+ ;; 		  (provides ?e3 ?e1)))
+ ;; 		(exists (?e4 - entry)
+ ;; 		 (and
+ ;; 		  (provides ?e4 ?e1)
+ ;; 		  (completed ?e4)))))
+ ;; 	      (at start (not (completed ?e1)))
+ ;; 	      )
+ ;;  :effect (and
+ ;; 	   (at end (completed ?e1))
+ ;; 	   (at start (decrease (budget ?p) (costs ?e1)))
+ ;; 	   (at end (increase (budget ?p) (earns ?e1)))
+ ;;        ;; (at end (assign (actions) (+ (actions) 1)))
+ ;; 	   )
+ ;;  )
+
+ )
+
+;; /Doug/data/ai.frdcsa.org/s3/backup/repositories/git/ors/punyanuch/new-ors/ORS/translation/SUMO_to_Prolog/suo-kif_to_prolog.py
+
+;; in order to help translate this into something we can generate a pddl domain from:
+
+;; /Doug/data/ai.frdcsa.org/s3/backup/repositories/cvs/sigmakee/KBs/FinancialOntology.kif

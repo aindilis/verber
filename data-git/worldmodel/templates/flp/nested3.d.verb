@@ -1,0 +1,48 @@
+;; <domain-file>
+
+(define (domain nested3)
+
+ (:timing
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:requirements :negative-preconditions :conditional-effects :equality
+  :typing :fluents :durative-actions :derived-predicates
+  :disjunctive-preconditions :timed-initial-literals)
+
+ (:types
+  agent term location object - object
+  )
+ 
+ (:predicates
+  (neg ?term - term)
+  (knows ?a - agent ?t - term)
+  (location ?o - object ?l - location)
+  )
+
+ (:functions)
+
+ (:derived (location ?object - object ?location - location)
+  (exists (?a - agent)
+   (knows ?a (location ?object ?location))))
+
+ ;; DURATIVE ACTIONS
+ (:durative-action learn
+  :parameters (?a - agent ?t - term)
+  :duration (= ?duration 1.0)
+  :condition (and
+ 	      (at start (and
+			 (not (knows ?a (location ?o ?l)))
+			 )
+	       )
+ 	      )
+  :effect (and 
+ 	   (at end (and
+		    (knows ?a (location ?o ?l))
+		    )
+	    )
+	   )
+  )
+ )
+
+;; </domain-file>

@@ -1,0 +1,5 @@
+
+/var/lib/myfrdcsa/codebases/internal/verber/data/worldmodel/test/requirement-test-timed-initial-literals.d.pddl: syntax error in line 3, ':TIMED-INITIAL-LITERALS':
+requirement %s not supported by this IPP version :TIMED-INITIAL-LITERALS
+
+Memory limit exceeded: bb system call, OR Time limit exceeded: bb system call, OR bb internal error

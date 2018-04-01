@@ -1,0 +1,28 @@
+;; $VAR1 = {
+;;           'Includes' => {
+;;                           'CYCLE_WEEKLY2' => {
+;;                                                'UTIL_DATE1' => 1
+;;                                              },
+;;                           'CYCLE_WEEKLY1' => {
+;;                                                'BASEKB_FOOD1' => 1,
+;;                                                'BASEKB_ECONOMIC1' => 1,
+;;                                                'BASEKB_BIOMAINTENANCE1' => 1,
+;;                                                'BASEKB_WORK1' => 1,
+;;                                                'BASEKB_SECURITY1' => 1,
+;;                                                'BASEKB_SPACE1' => 1,
+;;                                                'BASEKB_TOOL1' => 1,
+;;                                                'BASEKB_DEONTIC1' => 1,
+;;                                                'BASEKB_HYGIENE1' => 1,
+;;                                                'BASEKB_AGENT1' => 1,
+;;                                                'BASEKB_CHORES1' => 1,
+;;                                                'BASEKB_MISC1' => 1
+;;                                              }
+;;                         },
+;;           'Units' => '0000-00-00_01:00:00'
+;;         };
+
+(define
+ (domain CYCLE_WEEKLY2)
+ (:requirements :typing :conditional-effects :negative-preconditions :equality :derived-predicates :fluents :timed-initial-literals :durative-actions :disjunctive-preconditions)
+ (:includes BASEKB_MISC1 BASEKB_SPACE1 BASEKB_HYGIENE1 BASEKB_SECURITY1 BASEKB_TOOL1 BASEKB_AGENT1 BASEKB_WORK1 BASEKB_BIOMAINTENANCE1 BASEKB_CHORES1 BASEKB_DEONTIC1 BASEKB_ECONOMIC1 BASEKB_FOOD1 UTIL_DATE1)
+ (:types))

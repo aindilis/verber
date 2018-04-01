@@ -1,0 +1,19 @@
+;;;Plan : 
+(define (plan ___undefined___)        
+        (:problem conformant_sort_pb)    
+        (:domain conformant_sort)     
+        (:body 
+               (sequence 
+                    (action (sort 2 5))
+                    (action (sort 4 3))
+                    (action (sort 1 2))
+                    (action (sort 2 5))
+                    (action (sort 1 4))
+                    (action (sort 3 2))
+                    (action (sort 2 5))
+                    (action (sort 4 3))
+                    (action (sort 3 2))
+                    (action (sort 5 1))
+                    (done)
+               )
+              ))

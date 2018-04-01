@@ -1,0 +1,19 @@
+
+
+(define (domain conformant_sort)
+  (:types element_no)
+  (:functions
+       (element_value ?e - element_no) - element_no)
+
+  (:action sort
+   :parameters (?e1 - element_no
+                ?e2 - element_no)
+   :precondition (not (= ?e1 ?e2))
+   :effect       
+           (when (> (element_value ?e1) (element_value ?e2))
+               (and
+                  (assign (element_value ?e1) (element_value ?e2))
+                  (assign (element_value ?e2) (element_value ?e1)))))
+)
+
+

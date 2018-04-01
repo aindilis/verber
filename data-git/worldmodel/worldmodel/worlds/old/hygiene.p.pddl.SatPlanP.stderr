@@ -1,0 +1,5 @@
+
+/var/lib/myfrdcsa/codebases/internal/verber/data/worldmodel/worlds/hygiene.d.pddl: syntax error in line 4, ':NEGATIVE-PRECONDITIONS':
+requirement %s not supported by this IPP version :NEGATIVE-PRECONDITIONS
+
+Memory limit exceeded: bb system call, OR Time limit exceeded: bb system call, OR bb internal error

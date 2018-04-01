@@ -1,0 +1,75 @@
+;; <domain-file>
+
+(define (domain fffopcsw)
+
+ (:timing
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:requirements :negative-preconditions :conditional-effects :equality
+  :typing :fluents :durative-actions :derived-predicates
+  :disjunctive-preconditions :timed-initial-literals)
+
+ (:types
+  arg value - object
+  id pred myObject - value
+  agent location - myObject
+  )
+ 
+ (:predicates
+  (argIsa ?s - id ?arg - arg ?value - value)
+  )
+
+ (:functions)
+
+ ;; DERIVED
+ ;; (:derived (location-is-clean ?location - location)
+ ;;  (forall (?o - object) 
+ ;;   (imply
+ ;;    (at-location ?o ?location)
+ ;;     (not (dirty ?o)))))
+
+ ;; DURATIVE ACTIONS
+ (:durative-action learn
+  :parameters (?a - agent ?v1v1 ?v1v2 ?v1v3 ?v2v1 - id)
+  :duration (= ?duration 1.0)
+  :condition (and
+ 	      (at start
+	       ;; (not (knows ?a ?fact))
+	       (and
+		(argIsa ?v1v1 a0 neg)
+		(argIsa ?v1v1 a1 ?v1v2)
+
+		(argIsa ?v1v2 a0 knows)
+		(argIsa ?v1v2 a1 ?a)
+		(argIsa ?v1v2 a2 ?v1v3)
+		)
+	       )
+ 	      )
+  :effect (and 
+ 	   (at end
+	    ;; (retract (not (knows ?a ?fact)))
+	    (and
+	     (not (argIsa ?v1v1 a0 neg))
+	     (not (argIsa ?v1v1 a1 ?v1v2))
+	     (not (argIsa ?v1v1 a2 null))
+
+	     (not (argIsa ?v1v2 a0 knows))
+	     (not (argIsa ?v1v2 a1 ?a))
+	     (not (argIsa ?v1v2 a2 ?v1v3))
+	     )
+	    )
+ 	   (at end
+	    ;; (assert (knows ?a ?fact))
+	    (and
+	     (argIsa ?v2v1 a0 knows)
+	     (argIsa ?v2v1 a1 ?a)
+	     (argIsa ?v2v1 a2 ?v1v3)
+	     )
+	    )
+ 	   )
+  )
+
+ )
+
+;; </domain-file>

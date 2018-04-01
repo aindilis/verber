@@ -1,0 +1,69 @@
+;; <problem-file>
+
+(define (problem flpCausal1p1)
+
+ (:domain flpCausal1)
+
+ (:includes)
+
+ (:timing
+  (start-date TZID=America/Chicago:20161228T010000)
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:objects
+  a b c d - event
+  co - condition
+  )
+
+ (:init
+  (directlyCauses a b)
+  (directlyCauses b c)
+  (directlyCauses c d)
+
+  (at 2 (happened a))
+  )
+
+ (:goal
+  (and
+   ;; (indirectlyCauses a d)
+   ;; (aboutToHappen d)
+   (happened d)
+   )
+  )
+
+ ;; (:goal
+ ;;  (and
+ ;;   (forall (?e - event)
+ ;;    (imply
+ ;;     (reachable ?e)
+ ;;     (happened ?e)))
+ ;;   )
+ ;;  )
+
+ ;; (:goal
+ ;;  (and
+ ;;   (forall (?e - event)
+ ;;    (happened ?e)
+ ;;    )
+ ;;   )
+ ;;  )
+
+ ;; (:goal
+ ;;  (and
+ ;;   (forall (?e1 ?e2 - event)
+ ;;    (imply
+ ;;     (and
+ ;;      (causes ?e1 ?e2)
+ ;;      (happened ?e1)
+ ;;      )
+ ;;     (happened ?e2))
+ ;;    )
+ ;;   )
+ ;;  )
+ 
+ (:metric minimize (total-time))
+ 
+ )
+
+;; </problem-file>

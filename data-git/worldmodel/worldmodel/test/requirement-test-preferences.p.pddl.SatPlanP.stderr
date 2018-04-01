@@ -1,0 +1,5 @@
+
+/var/lib/myfrdcsa/codebases/internal/verber/data/worldmodel/test/requirement-test-preferences.d.pddl: syntax error in line 3, ':PREFERENCES':
+requirement %s not supported by this IPP version :PREFERENCES
+
+Memory limit exceeded: bb system call, OR Time limit exceeded: bb system call, OR bb internal error

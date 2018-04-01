@@ -1,0 +1,18 @@
+(define (plan smartplan)
+        (:problem satbal_pb)
+        (:domain satbal)
+        (:body 
+             (sequence 
+               (while (not (= 6
+                 (+ 
+                    (engine_power 1) 
+                    (+ 
+                      (engine_power 2)
+                      (engine_power 3)))))
+                 (sequence
+                    (action (increase_power 1))
+                    (action (increase_power 2))
+                    (action (increase_power 3))))
+               (repeat (action (nop))))))
+
+

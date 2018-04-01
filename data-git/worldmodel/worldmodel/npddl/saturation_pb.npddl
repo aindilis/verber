@@ -1,0 +1,29 @@
+(define (problem satbal_pb)
+        (:domain saturation_balancing)
+        (:typedef 
+            engine_no         - (range 1 3)
+            total_power_range - (range 0 6)
+            power_range       - (range 0 2))
+	(:init 
+           (= (desired_power) 6)
+           (forall (?e - engine_no)
+              (= (engine_power ?e) (inf power_range))))
+        (:ctlgoal
+           (and
+             (ag (af (= (desired_power) 
+                  (sum (?e - engine_no) (engine_power ?e)))))
+             (forall (?e1 - engine_no)
+               (forall (?e2 - engine_no)
+                  (ag  (not (or
+                              (and (> (engine_power 1) 0) 
+                                   (< (engine_power 1) 2)
+                                   (> (engine_power 2) 0) 
+                                   (< (engine_power 2) 2))
+                              (and (> (engine_power 1) 0) 
+                                   (< (engine_power 1) 2)
+                                   (> (engine_power 3) 0) 
+                                   (< (engine_power 3) 2))
+                              (and (> (engine_power 2) 0) 
+                                   (< (engine_power 2) 2)
+                                   (> (engine_power 3) 0) 
+                                   (< (engine_power 3) 2))))))))))

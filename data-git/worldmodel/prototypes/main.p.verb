@@ -1,0 +1,10 @@
+
+
+(define
+ (problem main)
+ (:domain main)
+ (:includes groceries)
+ (:objects)
+ (:init)
+ (:goal
+  (and)))

@@ -1,0 +1,112 @@
+ANML for Scenario A: LEO Imaging Satellite
+
+Payloads: EO imager (narrow FOV ("soda straw"))	      
+
+Each orbit: 90 minutes
+
+Communication:  Can communicate new mission goals to satellite every 90 minutes. Images can be relayed to the ground at any time, but must be prioritized.   During the rest of the 90 minutes all mission activities (threat detection, threat avoidance, imaging, etc.) are autonomous on-board with no interaction from the ground.  
+
+Planning's role:
+
+Given high-level goals sent up, at most, every 90 minutes, of the form:
+
+* Take image of location X between T1 and T2 and send to Y by T3 (> T2) with priority 1-5 
+
+Construct a sequence of primitive SCL actions that achieve the goals while keeping the spacecraft safe from threats.  If goals cannot all be achieved then maximize the priorities of goals that can be achieved.   
+
+Planning model
+
+Types
+	Location: longitude and latitude on earthÕs surface
+	Attitude: satellite attitude
+	
+Functions
+	Assumed SCL scripts
+		open_imager_shutter()
+		close_imager_shutter()
+		power_on_imager()
+		power_off_imager()
+		point_at_location(Location location)
+		take_images(int number_of_images)
+		send_images(int image_index, int number_of_images)
+
+	Other functions
+		float fuel_consumption(Attitude start_attitude,Attitude end_attitude)
+		Attitude location_to_attitude(Location location)
+
+Variables (assumed available from system bus)
+	shutter_position: either OPEN or CLOSED
+      imager_state: either ON or OFF
+      available_memory: number of images that can be stored
+      comm._link: free or busy
+
+Planning actions
+
+// time units are seconds
+action open_imager_shutter() {
+  duration := 1;
+  [all] shutter_position == CLOSED :-> OPEN;
+}
+
+action close_imager_shutter() {
+  duration := 1;
+  [all] shutter_position == OPEN :-> CLOSED;
+}
+
+action power_on_imager() {
+	duration := 60;
+	[all] imager_state == OFF :-> ON;
+}
+
+action power_off_imager() {
+	duration := 10;
+	[all] imager_state == ON :-> OFF;
+}
+
+action point_at_location(Location location) {
+  [start] {
+    constant Attitude 
+      cAtt := attitude,
+      gAtt := location_to_attitude(location);
+  }
+  duration := swing_time(cAtt,gAtt);
+
+  (all] attitude :-> gAtt;
+  [all] fuel :consumes fuel_consumption(cAtt,gAtt); 
+}
+
+
+action take_images(int number_of_images) {
+  duration := 0.1 * number_of_images;
+  [start] {
+    shutter_position == OPEN;
+    imager_state == ON;
+  }
+  [start] constant Attitude cAtt := attitude;
+  [all] attitude == cAtt;
+// or just: [all] attitude == [start] attitude;
+
+// where does size_of_image come from?
+  [start] memory >= size_of_image * number_of_images;
+// or make the type of memory be [0,<SOME_UPPER_BOUND>]
+// (and then following line automatically enforces prior line)
+  [end] memory :consumes size_of_image * number_of_images;
+// Ô[all] memory :consumes size_of_image * number_of_images;Õ
+// is a safer model.
+
+// should have effects that set image indices?
+}
+
+action send_images(int start_image_index, int number_of_images) {
+  duration := 0.5 * number_of_images;
+      	
+  [all] comm_link == free := busy := free;
+  [end] memory :produces size_of_image * number_of_images;
+// [all] memory :produces size_of_image * number_of_images;
+// is a safer model, but that is less of an issue than
+// the example above b/c of the way memory works
+// for energy storage on a battery, upper and lower
+// bounds are both very serious concerns
+}
+
+

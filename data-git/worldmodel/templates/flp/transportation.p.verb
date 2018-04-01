@@ -1,0 +1,30 @@
+;; <problem-file>
+
+(define (problem )
+
+ (:domain )
+
+ (:includes)
+
+ (:timing
+  (start-date TZID=America/Chicago:20161228T010000)
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:objects
+  
+  )
+
+ (:init
+  
+  )
+
+ (:goal
+
+  )
+ 
+ (:metric)
+ 
+ )
+
+;; </problem-file>

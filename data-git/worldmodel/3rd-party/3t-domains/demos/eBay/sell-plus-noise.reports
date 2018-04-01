@@ -1,0 +1,10 @@
+;;; transmissions from/to our employee Wally
+;;;  he's selling but there is also noise that suggests he's gambling
+(transmitted wally bodog.com https memberacctform) ;;--gambling
+(transmitted wally ebay.com http listingform)
+(transmitted wally ebay.com http auctionpgreq)
+(transmitted ebay.com wally http auctionpg)
+(transmitted wally ebay.com http bidform) ;;--bidding on something as well
+(transmitted ebay.com wally smtp itemsold) ;;--which item? bid, or sell?!
+(transmitted ebay.com wally eft saleprice)
+(transmitted ebay.com wally smtp bidack);;--more evidence he's also buying

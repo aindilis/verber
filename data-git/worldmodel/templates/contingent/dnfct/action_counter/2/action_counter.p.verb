@@ -1,0 +1,42 @@
+(define (problem action_counter) 
+
+ (:domain action_counter)
+
+ ;; (:includes)
+
+ ;; (:timing
+ ;;  (start-date TZID=America/Chicago:20170801T000000)
+ ;;  (units 0000-00-00_24:00:00)
+ ;;  )
+
+ (:objects
+  n0 n1 n2 n3 n4 n5 n6 n7 - COUNT
+  actions - COUNTERTYPE
+  )
+ 
+ (:init
+  (and
+   (succ n0 n1)
+   (succ n1 n2)
+   (succ n2 n3)
+   (succ n3 n4)
+   (succ n4 n5)
+   (succ n5 n6)
+   (succ n6 n7)
+
+   (not (finished))
+
+   (action_pending)
+
+   (counter actions n0)
+
+   (cap actions n7)
+   )
+  )
+
+ (:goal
+  (and
+   (finished)
+   )
+  )
+ )

@@ -1,0 +1,58 @@
+(define (domain deadlines)
+
+ (:requirements :negative-preconditions :conditional-effects
+  :equality :typing :fluents :durative-actions
+  :derived-predicates)
+
+ (:types 
+  deadline - item
+  datetime - datatype
+  appointment - event
+  appointmentSpec - information
+  person - intelligentAgent
+  participantSet - setOfIntelligentAgents
+  agendaSet - setOfAgendaItems
+  )
+
+ (:timing
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:predicates
+  ;; (getCurrentDateTime ?da - datetime)
+  ;; (appointment ?ap - appointment ?p - participantSet ?s - appointmentSpec)
+
+  (deadline ?e - event ?da - datetime)
+  (hasMeetingAgenda ?e - event ?a - agendaSet)
+  (hasLocation ?e - event ?l - location)
+
+  (autonomous ?a - intelligentAgent)
+  (participant ?e - event ?a - intelligentAgent)
+  )
+
+ (:functions
+  )
+
+ (:durative-action attend-event
+  :parameters (?e - event)
+  :duration (= ?duration 0)
+  :condition (over all
+	      (and
+	       (exists (?l - location)
+		(hasLocation ?e ?l)
+		(forall
+		 (?p - participant)
+		 (implies
+		  (participant ?e ?p)
+		  (and
+		   (autonomous ?a)
+		   (location ?p ?l)))))))
+  :effect (and
+	   (at end
+	    (forall
+	     (?p - participant)
+	     (implies
+	      (participant ?e ?p)	      
+	      (attended-event ?p ?e)))))
+  )
+ )

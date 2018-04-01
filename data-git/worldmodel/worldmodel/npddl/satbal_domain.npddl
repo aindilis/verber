@@ -1,0 +1,20 @@
+
+
+(define (domain saturation_balancing)
+  (:types engine_no power_range total_power_range)
+  (:functions
+       (engine_power ?e - engine_no) - power_range
+       (desired_power)               - total_power_range)
+
+  (:action increase_power
+   :parameters (?e - engine_no)
+   :precondition (not (= (engine_power ?e) (sup power_range)))
+   :effect        (assign (engine_power ?e) (+ (engine_power ?e) 1)))
+  
+  (:action decrease_power
+   :parameters (?e - engine_no)
+   :precondition (not (= (engine_power ?e) (inf power_range)))
+   :effect        (assign (engine_power ?e) (- (engine_power ?e) 1)))
+
+  (:action nop)
+)

@@ -1,0 +1,57 @@
+(define
+
+ (domain pgourmet)
+
+ ;; [2018-03-05,06:50:34] domain very incomplete
+
+ ;; see also /var/lib/myfrdcsas/versions/myfrdcsa-1.0/codebases/releases/verber-0.2/verber-0.2/data/worldmodel/worlds/old/velveeta.d.pddl
+
+ ;; see also /var/lib/myfrdcsas/versions/myfrdcsa-1.0/codebases/releases/verber-0.2/verber-0.2/data/worldmodel/worlds/old/gourmet.d.pddl
+
+ (:timing
+  (units 0000-00-00_01:00:00)
+  )
+ 
+ (:requirements :negative-preconditions :conditional-effects
+  :equality :typing :fluents :durative-actions
+  :derived-predicates)
+
+ (:types 
+  person - object
+
+  nutritionix_id info_type - abstract
+  )
+
+ (:predicates
+  (brand_id ?nid - nutritionix_id '51db37c1176fe9790a89907e')
+  (brand_name ?nid - nutritionix_id 'Campbell_SINGLEQUOTE_s')
+  (item_id ?nid - nutritionix_id '?nid - nutritionix_id')
+  (item_name ?nid - nutritionix_id 'Chunky Soup, Chicken Tortilla with Grilled Chicken')
+  (nf_serving_size_unit ?nid - nutritionix_id cup)
+
+  (rdv_preference ?type - info_type ?p - person ?preftype - rdv_preference_type)
+  )
+
+ (:functions
+  (nf ?type - info_type ?nid - nutritionix_id)
+  (rdv ?type - info_type ?p - person)
+  
+  )
+
+ (:durative-action eat
+  :parameters (?ia - intelligentAgent ?dts - dateTimeStamp ?fi - foodItem)
+  :duration 0.1 ;; (= ?duration (duration withdrawal))
+  :condition (and
+	      (over all
+	       (> 1 0)
+	       )
+	      )
+  :effect (and
+ 	   (at end
+	    (and
+	     (ate ?ia ?dts ?fi))
+	    )
+	   )
+  )
+
+ )

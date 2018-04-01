@@ -1,0 +1,1 @@
+(define (problem TAKEBUS) (:domain BUSROUTE TAKEBUS) (:objects AndrewDougherty - person Bus67A Bus67F - bus ForbesOPPCraigSt DallasANDPennham - stop) (:init <TRANSIT-INFORMATION> (at AndrewDougherty ForbesOPPCraigSt)) (:goal (and (at AndrewDougherty DallasANDPennham))))

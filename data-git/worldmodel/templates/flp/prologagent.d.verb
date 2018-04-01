@@ -1,0 +1,355 @@
+;; <domain-file>
+
+(define (domain )
+
+ (:timing
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:requirements)
+
+ (:types
+  data_structure filesystem_object process - aie
+  symbol integer string list fluent - data_structure
+  assertion_id - integer
+  shell - process
+  dir - filesystem_object
+  file - filesystem_object
+  )
+ 
+ (:predicates
+  (in_shell ?s - shell)
+  (cwd ?d - directory)
+  (directory_exists ?d)
+  (unused_assertion_id ?aid - assertion_id)
+  (var ?s - symbol ?aid - assertion_id)
+  (p ?pred - symbol ?aid1 ?aid2 ?aid3 ?aid4 ?aid5 ?aid6 - argument_id)
+  (dot ?aid1 ?a ?b - items)
+  )
+
+ (:functions)
+
+ ;; DERIVED
+ ;; (:derived)
+
+ ;; DURATIVE ACTIONS
+ ;; (:durative-action)
+
+ (:durative-action shell_command_cd
+  :parameters (?s - shell ?cwd ?destination - directory)
+  :duration (= ?duration (duration cd))
+  :condition (and
+	      (at start
+	       (shell ?s)
+	       (cwd ?cwd)
+	       (directory_exists ?cwd)
+	       (directory_exists ?destination)
+	       )
+	      (at end
+	       (directory_exists ?destination)
+	       )
+	      )
+  :effect (and
+ 	   (at end
+	    (not (cwd ?cwd))
+	    (cwd ?destination)
+	    )
+	   )
+  )
+
+ 
+ (:durative-action shell_command_mv
+  :parameters (?shell - shell ?file - file ?destination - directory)
+  :duration (= ?duration (duration shell_command_mv))
+  :condition (and
+	      (at start
+	       (file_exists_p ?file)
+	       (in_shell ?shell)
+	       (cwd ?cwd)
+	       )
+	      )
+  :effect (and
+ 	   (at end
+	    (not (cwd ?cwd))
+	    (cwd ?destination)
+	    )
+	   )
+  )
+
+(:durative-action directory_exists_p
+  :parameters (?shell - shell ?d - directory)
+  :duration (= ?duration (duration directory_exists_p))
+  :condition (and
+	      (at start
+	       
+	       )
+	      )
+  :effect (and
+ 	   (at end
+	    (directory_exists ?d)
+	    )
+	   )
+  )
+
+
+(:durative-action confirm
+  :parameters (?s - shell ?f - fluent ?aid1 ?aid2 ?aid3 - assertion_id)
+  :duration (= ?duration (duration confirm))
+  :condition (and
+	      (at start
+	       (unused_assertion_id ?aid2)
+	       )
+	      )
+  :effect (and
+ 	   (at end
+	    (knows ?aid1 ?aid2)
+	    (file_exists ?aid2 ?aid3)
+	    (var file ?aid3)
+	    )
+	   )
+ )
+
+(:durative-action confirm2
+  :parameters (?s - shell ?f - fluent ?aid1 ?aid2 ?aid3 - assertion_id)
+  :duration (= ?duration (duration confirm))
+  :condition (and
+	      (at start
+	       (unused_assertion_id ?aid2)
+	       )
+	      )
+  :effect (and
+ 	   (at end
+	    (p knows ?aid1 ?aid2)
+	    (p file_exists ?aid2 ?aid3)
+	    (p var file ?aid3)
+	    )
+	   )
+ )
+
+(:durative-action grep
+  :parameters (?s - shell ?p - pattern ?filelist - list)
+  :duration (= ?duration (duration grep))
+  :condition (and
+	      (at start
+	       )
+	      )
+  :effect (and
+ 	   (at end
+	    )
+	   )
+ )
+
+(:durative-action sudo
+  :parameters (?s - shell ?c - command)
+  :duration (= ?duration (duration grep))
+  :condition (and
+	      (at start
+	       )
+	      )
+  :effect (and
+ 	   (at end
+	    )
+	   )
+  )
+
+
+;; </domain-file>
+
+;; ls
+;; cd
+;; pushd
+;; screen
+;; find
+;; mv
+;; tr
+;; grep
+;; sudo
+;; locate
+;; mkdir
+;; cp
+;; rm
+;; git
+;; swipl
+;; ssh
+;; ln
+;; wget
+;; ps
+;; du
+;; emacs
+;; pdftotext
+;; df
+;; cat
+;; boss
+;; e
+;; which
+;; date
+;; chmod
+;; packager
+;; history
+;; ping
+;; chase
+;; cal
+;; scp
+;; s
+;; pwd
+;; vagrant
+;; mplayer
+;; popd
+;; rmdir
+;; fg
+;; radar
+;; tar
+;; for
+;; top
+;; mount
+;; kill
+;; chess
+;; killall
+;; dlocate
+;; catwhich
+;; sbt
+;; apg
+;; l
+;; dpkg
+;; rsync
+;; mvn
+;; file
+;; export
+;; touch
+;; perl
+;; diff
+;; spse2
+;; head
+;; elog
+;; echo
+;; yes
+;; p
+;; unzip
+;; rte
+;; gsettings
+;; function
+;; fin
+;; sshfs
+;; man
+;; shopt
+;; alias
+;; w3m
+;; vlc
+;; sl
+;; make
+;; wn
+;; xvpviewer
+;; mencoder
+;; java
+;; y
+;; tail
+;; digi
+;; Welcome
+;; VBoxManage
+;; Please
+;; For
+;; debuild
+;; cpm
+;; Copyright
+;; and
+;; scr
+;; pvnp
+;; lcd
+;; gradle
+;; dzil
+;; swilgt
+;; python
+;; objdump
+;; kbs2
+;; javac
+;; d
+;; todoist
+;; svn
+;; pip
+;; openssl
+;; mkvinfo
+;; gcc
+;; g
+;; fig
+;; complete
+;; clear
+;; bard
+;; whois
+;; timestamp
+;; n
+;; mkvextract
+;; lls
+;; k
+;; iostat
+;; gksudo
+;; convert
+;; cla
+;; uniplayer
+;; sort
+;; scd
+;; python3
+;; play
+;; perlbrew
+;; pdftoppm
+;; ld
+;; hg
+;; gunzip
+;; firefox
+;; c
+;; b
+;; 4
+;; xview
+;; wmctrl
+;; wc
+;; virtualbox
+;; pdfunite
+;; lsof
+;; gpg
+;; free
+;; findabs
+;; emac
+;; corpus
+;; clisp
+;; at
+;; ant
+;; zip
+;; xdotool
+;; VirtualBox
+;; startx
+;; sls
+;; she
+;; r2
+;; pvpn
+;; mongorestore
+;; lua
+;; es
+;; dmesg
+;; dig
+;; cpanm
+;; cmake
+;; certbot
+;; audacity
+;; xpdf
+;; Use
+;; unrar
+;; umount
+;; tcd
+;; ret
+;; podp
+;; nslookup
+;; ncftp
+;; mdr
+;; md5sum
+;; lsb_release
+;; lpushd
+;; kbfs
+;; isd
+;; iotop
+;; hostname
+;; gimp
+;; gedit
+;; fidn
+;; eclipse
+;; dos2unix
+;; dirs
+;; datestamp

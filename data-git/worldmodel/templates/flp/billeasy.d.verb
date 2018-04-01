@@ -1,0 +1,72 @@
+;; <domain-file>
+
+;; For metric planning overview, see /home/andrewdo/1-s2.0-S0004370208000052-main.pdf
+
+(define (domain billeasy)
+
+ (:timing
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:requirements :negative-preconditions :conditional-effects :equality
+  :typing :fluents :durative-actions :derived-predicates
+  :disjunctive-preconditions :timed-initial-literals )
+
+ (:types
+  person corporation - accountHolder
+  accountHolder transactionType product - object
+  amount - number
+  )
+ 
+ (:predicates
+  (own ?pe - person ?pr - product)
+  )
+
+ (:functions
+  (balance ?a - accountHolder)
+  (cost ?pr - product)
+  (promiseToPay ?a1 ?a2 - accountHolder)
+  )
+
+ ;; DERIVED
+ ;; (:derived (location-is-clean ?location - location)
+ ;;  (forall (?o - object) 
+ ;;   (imply
+ ;;    (at-location ?o ?location)
+ ;;     (not (dirty ?o)))))
+
+ ;; DURATIVE ACTIONS
+
+ (:durative-action buy
+  :parameters (?pe - person ?pr - product)
+  :duration (= ?duration 0)
+  :condition (and
+ 	      (at start (not (own ?pe ?pr)))
+	      (at start (>= (balance ?pe) (cost ?pr)))
+ 	      )
+  :effect (and 
+	   (at end (own ?pe ?pr))
+	   (at end (decrease (balance ?pe) (cost ?pr)))
+ 	   )
+  )
+
+ (:durative-action pay
+  :parameters (?a1 ?a2 - accountHolder)
+  :duration (= ?duration 0)
+  :condition (and
+ 	      (at start (>= (balance ?a1) (promiseToPay ?a1 ?a2)))
+ 	      )
+  :effect (and 
+ 	   (at end
+ 	    (and
+ 	     (decrease (balance ?a1) (promiseToPay ?a1 ?a2))
+ 	     (increase (balance ?a2) (promiseToPay ?a1 ?a2))
+ 	     (assign (promiseToPay ?a1 ?a2) 0)
+ 	     )
+ 	    )
+ 	   )
+  )
+ )
+
+
+ ;; </domain-file>

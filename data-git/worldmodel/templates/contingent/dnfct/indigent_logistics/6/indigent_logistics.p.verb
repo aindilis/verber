@@ -1,0 +1,81 @@
+(define (problem indigent_logistics) 
+
+ (:domain indigent_logistics)
+
+ ;; (:includes)
+
+ ;; (:timing
+ ;;  (start-date TZID=America/Chicago:20170801T000000)
+ ;;  (units 0000-00-00_24:00:00)
+ ;;  )
+
+ (:objects
+
+
+  john - PERSON
+
+
+  food1 warmMeal1 freeCellularPhone1 - OBJECT
+
+
+  startingLocation
+
+  foodPantry1 soupKitchen1 cricketWirelessStore1 ;; freeGeek1 ;; carDealership1
+
+  nonexistent1 nonexistent2 nonexistent3 ;; nonexistent4 ;; nonexistent5
+
+  - LOCATION
+
+
+  )
+ 
+ (:init
+  (and
+
+   (at_pl john startingLocation)
+
+   (not (in_op food1 john))
+   (not (in_op warmMeal1 john))
+   (not (in_op freeCellularPhone1 john))
+   ;; (not (in_op computer1 john))
+   ;; (not (in_op van1 john))
+
+   (oneof
+    (at_ol food1 foodPantry1)
+    (not (at_ol food1 foodPantry1))
+
+    )
+
+   (oneof
+    (at_ol warmMeal1 soupKitchen1)
+    (not (at_ol warmMeal1 soupKitchen1))
+    )
+
+   (oneof
+    (at_ol freeCellularPhone1 cricketWirelessStore1)
+    (not (at_ol freeCellularPhone1 cricketWirelessStore1))
+    )
+
+   ;; (oneof
+   ;;  (at_ol computer1 freeGeek1)
+   ;;  (at_ol computer1 nonexistent4)
+   ;;  )
+
+   ;; (oneof
+   ;;  (at_ol van1 carDealership1)
+   ;;  (at_ol van1 nonexistent5)
+   ;;  )
+
+   ;; (= (travelTime startingLocation foodPantry1) 3.0)
+   ;; (= (travelTime startingLocation soupKitchen1) 10.0)
+   ;; (= (travelTime foodPantry1 soupKitchen1) 13.0)
+   )
+  )
+ (:goal
+  (and
+   (finished john)
+   )
+  )
+ )
+
+

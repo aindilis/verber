@@ -1,0 +1,75 @@
+(define
+
+ (domain mealPlanningPantry)
+
+ (:requirements
+  :negative-preconditions :conditional-effects :equality :typing
+  :fluents :durative-actions :derived-predicates
+  :disjunctive-preconditions :timed-initial-literals
+  )
+
+ (:types
+  LOCATION PRODUCT INSTANCE RECIPE INGREDIENT UNIT SUPPLIER - object
+  )
+ 
+ (:predicates
+  (discarded ?instance - INSTANCE)
+  (hasIngredient ?recipe - RECIPE ?ingredient - INGREDIENT ?unit - UNIT)
+  (productContains ?product - PRODUCT ?ingredient - INGREDIENT)
+  (instanceFn ?product - PRODUCT ?instance - INSTANCE)
+  (storage_location ?location - LOCATION)
+  (prepared ?recipe - RECIPE)
+  )
+
+ (:functions
+  (hasIngredientAmount ?recipe - RECIPE ?ingredient - INGREDIENT ?unit - UNIT)
+  (productContainsAmount ?product - PRODUCT ?ingredient - INGREDIENT ?unit - UNIT)
+  (instanceRemainingAmount ?instance - PRODUCT ?ingredient - INGREDIENT ?unit - UNIT)
+  (costs ?product - PRODUCT ?supplier - SUPPLIER)
+  (actions)
+  )
+
+ ;; DURATIVE ACTIONS
+ (:durative-action PREPARE_RECIPE
+  :parameters (?recipe - RECIPE)
+  :duration (= ?duration 0.1)
+  :condition (and
+ 	      (at start (forall (?ingredient - INGREDIENT)
+			 (or
+			  (not
+			   (hasIngredient ?recipe ?ingredient))
+			  (exists (?product - PRODUCT ?instance - INSTANCE ?unit - UNIT)
+			   (and
+			    (productContains ?product ?ingredient)
+			    (instanceFn ?product ?instance)
+			    (>=
+			     (instanceRemainingAmount ?instance ?ingredient ?unit)
+			     (hasIngredientAmount ?recipe ?ingredient ?unit)
+			     )
+			    )
+			   )
+			  )
+			 )
+	       )
+	      )
+  :effect (and 
+	   (at end (forall (?ingredient - INGREDIENT)
+		    (or
+		     (not
+		      (hasIngredient ?recipe ?ingredient))
+		     (exists (?product - PRODUCT ?instance - INSTANCE ?unit - UNIT)
+		      (productContains ?product ?ingredient)
+		      (instanceFn ?product ?instance)
+		      (descrease
+		       (instanceRemainingAmount ?instance ?ingredient ?unit)
+		       (hasIngredientAmount ?recipe ?ingredient ?unit)
+		       )
+		      )
+		     )
+		    )
+	    )
+	   (at end (prepared ?recipe))
+	   (at end (assign (actions) (+ (actions) 1)))
+	   )
+  )
+ )

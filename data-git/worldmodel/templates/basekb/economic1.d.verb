@@ -1,0 +1,20 @@
+(define
+ (domain BASEKB_ECONOMIC1)
+ (:requirements
+  :typing :derived-predicates
+
+  )
+ (:includes)
+ (:timing)
+ (:types
+  )
+ (:predicates
+  (has-fee-for-use ?o - object)
+  )
+ (:functions
+  (cash ?p - person)
+  (fee-for-use ?o - object)
+  )
+ ;; derived predicates
+ ;; durative actions
+ )

@@ -1,0 +1,47 @@
+  ;; BASEKB_MISC1
+  ;; BASEKB_SPACE1
+  ;; BASEKB_HYGIENE1
+  ;; BASEKB_SECURITY1
+  ;; BASEKB_TOOL1
+  ;; BASEKB_AGENT1
+  ;; BASEKB_WORK1
+  ;; BASEKB_BIOMAINTENANCE1
+  ;; BASEKB_CHORES1
+  ;; BASEKB_DEONTIC1
+  ;; BASEKB_ECONOMIC1
+  ;; BASEKB_FOOD1
+
+
+;; undeclared predicates
+;; workday/1, today/1, day-of-week/2
+
+;; undeclared types
+;; day-of-week
+
+(define (domain CYCLE_WEEKLY1)
+
+ (:requirements :negative-preconditions :conditional-effects
+  :equality :typing :fluents :durative-actions :derived-predicates
+  :disjunctive-preconditions :timed-initial-literals
+  )
+ (:includes
+  BASEKB_MISC1 BASEKB_SPACE1 BASEKB_HYGIENE1 BASEKB_SECURITY1
+  BASEKB_TOOL1 BASEKB_AGENT1 BASEKB_WORK1 BASEKB_BIOMAINTENANCE1
+  BASEKB_CHORES1 BASEKB_DEONTIC1 BASEKB_ECONOMIC1 BASEKB_FOOD1
+  )
+ (:timing
+  (start-date TZID=America/Chicago:20120819T155052)
+  (end-date TZID=America/Chicago:20120826T235959)
+  (units 0000-00-00_01:00:00))
+ (:types 
+  )
+ (:predicates
+  )
+ (:functions
+  )
+ ;; DERIVED-PREDICATES
+ ;; DURATIVE-ACTIONS
+ )
+
+
+;; (total-time)

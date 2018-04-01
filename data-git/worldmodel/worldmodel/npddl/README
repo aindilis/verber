@@ -1,0 +1,70 @@
+This directory contains some solutions to the assignments provided as
+a part of the AIPS'02 tutorial on Planning via Model Checking.
+
+Feedback and bug reports are *very* welcome: send them to mbp@irst.itc.it
+
+
+
+
+
+======================================================================
+Contents
+======================================================================
+
+Robot navigation problems, page 8-16
+======================================================================
+
+Domains:
+robot_navigation_0.npddl : the domain depicted at page 8
+robot_navigation_1.npddl : the domain described at page 12
+robot_navigation_2.npddl : the domain described at page 13
+robot_navigation_3.npddl : the domain described at page 15 
+                           (including smelling, see last item)
+Problems:
+robot_weak_pb.npddl         : "find a weak plan to reach store from dep"
+robot_strong_pb.npddl       : "find a strong plan to reach store from dep"
+robot_strongcyclic_pb.npddl : "find a strong cyclic plan to reach store from dep"
+robot_conformant_pb.npddl   : "find a weak plan to reach store from dep"
+robot_po_pb.npddl           : "find a weak plan to reach store from
+                              dep, *** when one of the doors is open ***"
+
+
+Advanced assignments: extended goals, page 16-18
+==============================================================
+satbal_domain.npddl         : the engines domain, page 16
+balancing_pb.npddl          : the balancing problem, page 16 (third item)
+balancing_smart_plan.npddl  : a smart plan for balancing, page 16
+saturation_pb.npddl         : the saturation problem, page 17 (second item)
+balancing_smart_plan.npddl  : a smart plan for saturation, page 17 
+
+Advanced assignments: conformant goals, page 19
+==============================================================
+conformant_sort.npddl       : sorting domain, page 19 (see first two items)
+conformant_sort_pb.npddl    : sorting problem, page 19 (see last two items)
+
+Advance assignments: partial observability, page 20
+==============================================================
+supply_domain.npddl         : power supply domain, page 20 (see items 1-5)
+supply_pb.npddl             : supply problem, page 20 (see item #6)
+supply_smart_plan.npddl     : a possible smart plan.
+
+
+
+
+
+
+
+
+
+
+=========================================================================
+Solving procedure
+=========================================================================
+
+For all examples, for solving a <problem> for a <domain>:
+MBP-solve -plan_output - <domain> <problem>
+
+For all examples, for validating a <plan> against a <domain> and a <problem>:
+MBP-validate <domain> <problem> <plan>
+
+

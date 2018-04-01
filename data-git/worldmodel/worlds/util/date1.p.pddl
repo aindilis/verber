@@ -1,0 +1,33 @@
+
+
+(define
+ (problem UTIL_DATE1)
+ (:domain UTIL_DATE1)
+ (:objects Wednesday Tuesday Thursday Sunday Saturday Monday Friday - day-of-week date-20180213 date-20180212 date-20180211 date-20180210 date-20180209 date-20180208 date-20180207 date-20180206 - date)
+ (:init
+  (at 0 (today date-20180206))
+  (at 120 (not (today date-20180210)))
+  (at 120 (today date-20180211))
+  (at 144 (not (today date-20180211)))
+  (at 144 (today date-20180212))
+  (at 168 (not (today date-20180212)))
+  (at 168 (today date-20180213))
+  (at 192 (not (today date-20180213)))
+  (at 24 (not (today date-20180206)))
+  (at 24 (today date-20180207))
+  (at 48 (not (today date-20180207)))
+  (at 48 (today date-20180208))
+  (at 72 (not (today date-20180208)))
+  (at 72 (today date-20180209))
+  (at 96 (not (today date-20180209)))
+  (at 96 (today date-20180210))
+  (day-of-week date-20180206 Tuesday)
+  (day-of-week date-20180207 Wednesday)
+  (day-of-week date-20180208 Thursday)
+  (day-of-week date-20180209 Friday)
+  (day-of-week date-20180210 Saturday)
+  (day-of-week date-20180211 Sunday)
+  (day-of-week date-20180212 Monday)
+  (day-of-week date-20180213 Tuesday))
+ (:goal
+  (and)))

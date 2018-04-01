@@ -1,0 +1,51 @@
+(define
+ (domain BASEKB_WORK1)
+ (:requirements
+  :typing :derived-predicates
+  )
+ (:includes)
+ (:timing)
+ (:types
+  )
+ (:predicates
+  (all-pending-work-accomplished ?p - person ?d - date)
+  (ready-for-work ?p - person)
+  )
+ (:functions
+  (hours-worked-on-date ?p - person ?d - date)
+  )
+ ;; derived predicates
+ (:derived (ready-for-work ?p - person)
+  (and
+   (presentable ?p)
+   ;; add more conditions here
+   (not (exhausted ?p))
+   ))
+ ;;  (:derived (all-pending-work-accomplished ?p - person ?d - date)
+ ;;   (>= (hours-worked-on-date ?p ?d) 8))
+ ;; durative actions
+ (:durative-action work-fifteen-minutes
+  :parameters (?p - person ?c - computer ?o - officeroom ?d - date)
+  :duration (= ?duration 0.25)
+  :condition (and
+	      (over all (ready-for-work ?p))
+	      ;; (over all (not (use-is-required finger-clippers)))
+	      (over all (at-location ?p ?o))
+	      (over all (at-location ?c ?o))
+	      ;; (over all (or (plugged-in ?c)
+	      ;; (>= (charge-level ?c) 0.5)))
+	      (over all (not (exhausted ?p)))
+	      (over all (and
+			 (today ?d)
+			 (workday ?d)))
+	      (over all (<= (hours-worked-on-date ?p ?d) 10))
+	      (over all (<= (food-ingested ?p) 0))
+	      ;; (over all (<= (hunger-level ?p) 0.25))
+	      )
+
+  :effect (and 
+	   (at end (assign (hours-worked-on-date ?p ?d) (+ (hours-worked-on-date ?p ?d) 0.25)))
+	   (at end (assign (actions) (+ (actions) 1)))
+	   )
+  )
+ )

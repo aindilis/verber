@@ -1,0 +1,20 @@
+This directory has several domains to give you an idea how to write planning
+applications and some practice running AP.
+
+CL-USER> (load-system 'ap :compile t) ; or ap-gui or ap-beliefs
+
+To get a menu asking you which domain to load:
+
+cl-user> (load-pddl)
+
+The current demo applications:
+
+Blocks	Blocks world where "robot" is the ?planner
+        In blocks;Multi-agent.pddl (which uses blocks)
+       	Robot has two agents, strong-arm and weak-arm, and 
+	the weight of the blocks matters. 
+
+YSPv*  Variations on the Yale Shooting Problem that demonstrate
+       different ways to approach domain design.
+
+

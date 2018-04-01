@@ -1,0 +1,7 @@
+(define (problem navigation_problem)
+        (:domain robot_navigation)
+	(:init       (= (robot_position) store )
+                     (oneof
+                       (open_door d1) (open_door d2) (open_door d3)))
+        (:postronggoal (= (robot_position) dep   )))
+  

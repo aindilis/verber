@@ -1,0 +1,24 @@
+(define (plan supplyrestoration_plan)
+        (:problem supply_pb)
+        (:domain  supply_restoration)
+        (:body
+        (sequence
+           (action (close_device cb))
+           (action (close_device s3))
+           (action (close_device s4))
+           (if (power_reaches_switch)
+               (sequence
+                 (action (set_switch 2))
+                 (done))
+               (sequence
+                  (action (close_device s1))
+                  (action (close_device s2))
+                  (if (power_reaches_switch)
+                      (done)
+                      (sequence
+                        (action (open_device s1))
+                        (action (close_device cb))
+                        (action (close_device s5))
+                        (action (close_device s6))
+                        (action (set_switch 3))
+                        (done))))))))

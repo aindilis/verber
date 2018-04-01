@@ -1,0 +1,17 @@
+;; $VAR1 = {
+;;           'Units' => undef,
+;;           'Includes' => {
+;;                           'TEST_TEST2' => {
+;;                                             'UTIL_DATE1' => 1
+;;                                           }
+;;                         }
+;;         };
+
+(define
+ (domain TEST_TEST2)
+ (:requirements :typing)
+ (:includes UTIL_DATE1)
+ (:types day-of-week date - string string - object)
+ (:predicates
+  (day-of-week ?date - date ?dow - day-of-week)
+  (pay-day ?date - date)))

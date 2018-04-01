@@ -1,0 +1,38 @@
+This directory contains the code for the AP-beliefs system.  This system 
+converts an AP plan into a Bayesian Belief Network.
+
+----dependencies------------
+This system depends on a Lisp interface that wraps around
+Netica's NeticaJ Java API. This interface, called NeticaL, uses
+Allegro's Jlinker subsystem.  You must own a copy of Netica and NeticaJ.
+(see http://www.norsys.com)
+
+If you convert to a newer version of Allegro, you will have to 
+recompile NeticaL.  to do that:
+cl-user: (load "c:\\Program Files\\Netica\\NeticaL\\NeticaL.system")
+cl-user: (compile-system :neticaL :recompile t)
+
+You will also have to recompile the diagnostic-analysis subsystem:
+cl-user: (load "ap:belief-network;diagnostic-analysis;da.system")
+cl-user: (compile-system :diagnostic-analysis :recompile t)
+
+For regular use, you should be able to load everything with the following:
+cl-user:  (mk:compile-system 'ap-beliefs)
+-------------------------
+
+The system works as follows:
+
+1) an AP plan is converted into "inodes" [for intermediate nodes].
+Inodes represent each of the relations in the probability model
+for the actions in the plan, and the actions in the plan.
+
+2) indoes are converted to diagram nodes in Netica by writing
+a Netica format .dne file and reading in that file. 
+
+3) the resulting belief network can be displayed using Netica and updated
+using NeticaL code.  Note that at this point, updating the Java image of the
+belief network will NOT change the version loaded in the Netica GUI. that is
+a Netica issue, supposed to be fixed in the future.
+
+
+Last updated:  April 7, 2008

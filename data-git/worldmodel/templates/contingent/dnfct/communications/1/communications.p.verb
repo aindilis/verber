@@ -1,0 +1,35 @@
+(define (problem communications)
+
+ (:domain communications)
+
+ (:objects
+  computer andrewDougherty - AGENT
+
+  computersSpeaker - SPEAKER
+  computersHearer - HEARER
+
+  andrewDoughertysSpeaker - SPEAKER
+  andrewDoughertysHearer - HEARER
+
+  message1 - MESSAGE
+  )
+
+ (:init
+  (and
+   (enabled_a computer)
+   (attached_as computer computersSpeaker)
+   (enabled_s computersSpeaker)
+
+   (enabled_a andrewDougherty)
+   (attached_ah andrewDougherty andrewDoughertysHearer)
+   (enabled_h andrewDoughertysHearer)
+
+   (in_range_of_as andrewDougherty computersSpeaker)
+   )
+  )
+ (:goal
+  (and
+   (heard_am andrewDougherty message1)
+   )
+  )
+ )

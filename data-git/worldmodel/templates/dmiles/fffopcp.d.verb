@@ -1,0 +1,60 @@
+;; <domain-file>
+
+(define (domain fffopcp)
+
+ (:timing
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:requirements :negative-preconditions :conditional-effects :equality
+  :typing :fluents :durative-actions :derived-predicates
+  :disjunctive-preconditions :timed-initial-literals)
+
+ (:types
+  pred selfOrObject - object
+  myObject self - selfOrObject
+  agent location - myObject
+  )
+ 
+ (:predicates
+  (p0 ?p - pred ?s - self)
+  (p1 ?p - pred ?s - self ?arg1 - selfOrObject)
+  (p2 ?p - pred ?s - self ?arg1 ?arg2 - selfOrObject)
+  (p3 ?p - pred ?s - self ?arg1 ?arg2 ?arg3 - selfOrObject)
+  )
+
+ (:functions)
+
+ ;; DERIVED
+ ;; (:derived (location-is-clean ?location - location)
+ ;;  (forall (?o - object) 
+ ;;   (imply
+ ;;    (at-location ?o ?location)
+ ;;     (not (dirty ?o)))))
+
+ ;; DURATIVE ACTIONS
+ (:durative-action learn
+  :parameters (?a - agent ?v1v1 ?v1v2 ?v1v3 ?v2v1 - self)
+  :duration (= ?duration 1.0)
+  :condition (and
+ 	      (at start (and
+			 (p1 neg ?v1v1 ?v1v2)
+			 (p2 knows ?v1v2 ?a ?v1v3)
+			 )
+	       )
+ 	      )
+  :effect (and 
+ 	   (at end (and
+		    (not (p1 neg ?v1v1 ?v1v2))
+		    (not (p2 knows ?v1v2 ?a ?v1v3))
+		    )
+	    )
+ 	   (at end (and
+		    (p2 knows ?v2v1 ?a ?v1v3))
+		    )
+ 	   )
+  )
+
+ )
+
+;; </domain-file>

@@ -1,0 +1,45 @@
+(define (problem communications)
+
+ (:domain communications)
+
+ (:objects
+  computer andrewDougherty - AGENT
+
+  computersSpeaker - SPEAKER
+  computersHearer - HEARER
+
+  andrewDoughertysSpeaker - SPEAKER
+  andrewDoughertysHearer - HEARER
+
+  message1 ackMessage1 nullMessage - MESSAGE
+  )
+
+ (:init
+  (and
+   (enabled_a computer)
+   (attached_as computer computersSpeaker)
+   (enabled_s computersSpeaker)
+   (attached_ah computer computersHearer)
+   (enabled_h computersHearer)
+
+   (enabled_a andrewDougherty)
+   (attached_ah andrewDougherty andrewDoughertysHearer)
+   (enabled_h andrewDoughertysHearer)
+   (attached_as andrewDougherty andrewDoughertysSpeaker)
+   (enabled_s andrewDoughertysSpeaker)
+
+   (in_range_of_as andrewDougherty computersSpeaker)
+   (in_range_of_as computer andrewDoughertysSpeaker)
+
+   (has_ack_mm message1 ackMessage1)
+   )
+  )
+ (:goal
+  (and
+   ;; (heard_am andrewDougherty message1)
+   ;; (heard_am computer message1)
+   (acked_aamm computer andrewDougherty message1 ackMessage1)
+   )
+  )
+ )
+

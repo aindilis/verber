@@ -1,0 +1,50 @@
+(define
+
+ (domain gourmet)
+
+ ;; see also /var/lib/myfrdcsas/versions/myfrdcsa-1.0/codebases/releases/verber-0.2/verber-0.2/data/worldmodel/worlds/old/velveeta.d.pddl
+
+ ;; see also /var/lib/myfrdcsas/versions/myfrdcsa-1.0/codebases/releases/verber-0.2/verber-0.2/data/worldmodel/worlds/old/gourmet.d.pddl
+
+ (:timing
+  (units 0000-00-00_01:00:00)
+  )
+ 
+ (:requirements :negative-preconditions :conditional-effects
+  :equality :typing :fluents :durative-actions
+  :derived-predicates)
+
+ (:types 
+  foodItem intelligentAgent - object
+  nutrient - informationBearingThing
+  unit dateTimeStamp - informationBearingThing
+  )
+
+ (:predicates
+  (hasCarbs ?fi - foodItem)
+  (hasNutritionUnits ?fi - foodItem ?n - nutrient ?u - unit)
+  (ate ?ia - intelligentAgent ?dts - dateTimeStamp ?fi - foodItem)
+  )
+
+ (:functions
+  (hasNutritionValue ?fi - foodItem ?n - nutrient)
+
+  )
+
+ (:durative-action eat
+  :parameters (?ia - intelligentAgent ?dts - dateTimeStamp ?fi - foodItem)
+  :duration 0.1 ;; (= ?duration (duration withdrawal))
+  :condition (and
+	      (over all
+	       (> 1 0)
+	       )
+	      )
+  :effect (and
+ 	   (at end
+	    (and
+	     (ate ?ia ?dts ?fi))
+	    )
+	   )
+  )
+
+ )

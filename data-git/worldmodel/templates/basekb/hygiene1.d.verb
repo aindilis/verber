@@ -1,0 +1,84 @@
+(define
+ (domain BASEKB_HYGIENE1)
+ (:requirements
+  :typing :derived-predicates
+
+  )
+ (:includes)
+ (:timing)
+ (:types
+  article-of-clothing - laundry
+  shirt - article-of-clothing
+  pants - article-of-clothing
+  towel - laundry
+  hygiene-tool - tool
+  electric-razor - battery-powered-device
+  )
+ (:predicates
+  (presentable ?p - person)
+  (ship-shape)
+  (shaved ?p - person)
+  (showered ?p - person)
+  (acceptable-to-perform-hygiene-actions ?p - person ?l - location)
+  (wearing ?person - person ?aoc - article-of-clothing)
+  )
+ (:functions)
+ ;; derived predicates
+ (:derived (presentable ?p - person)
+  (and
+   (shaved ?p)
+   (showered ?p)
+   ;; (exists (?s - shirt)
+   ;;  (and
+   ;;   (not (dirty ?s))
+   ;;   (not (wet ?s))
+   ;;   (wearing ?p ?s)
+   ;;   ))
+   ;; (exists (?pa - pants)
+   ;;  (and
+   ;;   (not (dirty ?pa))
+   ;;   (not (wet ?pa))
+   ;;   (wearing ?p ?pa)
+   ;;   ))
+   ))
+ (:derived (ship-shape)
+  (exists (?p - person ?la - laundry ?r - electric-razor ?t - towel ?l - location)
+   (and
+    (presentable ?p)
+    (at-location ?la ?l)
+    (at-location ?r ?l)
+    (at-location ?t ?l))))
+ (:derived (acceptable-to-perform-hygiene-actions ?p - person ?br - bathroom)
+  (has-permission-to-use ?p ?br))
+ ;; durative actions
+ (:durative-action shave
+  :parameters (?r - electric-razor ?p - person ?l - location)
+  :duration (= ?duration 0.25)
+  :condition (and 
+	      (over all (holding ?p ?r))
+	      (over all (acceptable-to-perform-hygiene-actions ?p ?l))
+	      (at start (>= (charge-level ?r) 0.25))
+	      (over all (at-location ?p ?l))
+	      )
+  :effect (and 
+	   (at end (shaved ?p))
+	   (at end (assign (charge-level ?r) (- (charge-level ?r) 0.25)))
+	   (at end (assign (actions) (+ (actions) 1)))
+	   )
+  )
+ (:durative-action shower
+  :parameters (?p - person ?t - towel ?s - shower ?l - location)
+  :duration (= ?duration 1)
+  :condition (and
+	      (at start (at-location ?p ?l))
+	      (over all (at-location ?s ?l))
+	      (at start (use-is-required ?t))
+	      (over all (not (exists (?o - object) (holding ?p ?o))))
+	      )
+  :effect (and 
+	   (at end (showered ?p))
+	   (at end (assign (actions) (+ (actions) 1)))
+	   (at end (not (use-is-required ?t)))
+	   )
+  )
+ )

@@ -1,0 +1,104 @@
+(define (problem pgourmet)
+
+ ;; [2018-03-05,06:50:34] domain very incomplete
+
+
+ ;; 28:0 29:24 30:48 31:72 1:96 2:120 3:144 4:168 5:192
+
+ ;; see also /var/lib/myfrdcsas/versions/myfrdcsa-1.0/codebases/releases/verber-0.2/verber-0.2/data/worldmodel/worlds/old/velveeta.p.pddl
+
+ ;; see also /var/lib/myfrdcsas/versions/myfrdcsa-1.0/codebases/releases/verber-0.2/verber-0.2/data/worldmodel/worlds/old/gourmet.p.pddl
+
+  ;; see also /var/lib/myfrdcsas/versions/myfrdcsa-1.0/codebases/releases/verber-0.2/verber-0.2/data/worldmodel/templates/flp/gourmet.p.verb
+
+ (:domain pgourmet)
+
+ (:includes)
+
+ (:timing
+  (start-date TZID=America/Chicago:20161228T010000)
+  (units 0000-00-00_01:00:00))
+
+ (:objects
+
+  andrewDougherty - person
+
+  59b0f0b2aed9df1277deec33 - nutritionix_id
+
+  calcium_dv calories calories_from_fat cholesterol dietary_fiber
+  iron_dv protein saturated_fat serving_size_qty
+  servings_per_container sodium sugars total_carbohydrate total_fat
+  trans_fatty_acid - info_type
+
+  minimize near maximize - rdv_preference_type
+
+  )
+
+ (:init
+  ;; T-Box
+
+  ;; A-Box
+
+  (= (rdv sodium andrewDougherty) 1500)
+  (rdv_preference sodium andrewDougherty minimize)
+
+  (= (rdv calcium_dv andrewDougherty) 2)
+  (= (rdv calories andrewDougherty) 140)
+  (= (rdv calories_from_fat andrewDougherty) 18)
+  (= (rdv cholesterol andrewDougherty) 20)
+  (= (rdv dietary_fiber andrewDougherty) 2)
+  (= (rdv iron_dv andrewDougherty) 6)
+  (= (rdv protein andrewDougherty) 9)
+  (= (rdv saturated_fat andrewDougherty) 05)
+  (= (rdv serving_size_qty andrewDougherty) 1)
+  (= (rdv servings_per_container andrewDougherty) 2)
+  (= (rdv sugars andrewDougherty) 2)
+  (= (rdv total_carbohydrate andrewDougherty) 22)
+  (= (rdv total_fat andrewDougherty) 2)
+  (= (rdv trans_fatty_acid andrewDougherty) 0)
+
+  (= (nf calcium_dv 59b0f0b2aed9df1277deec33) 2)
+  (= (nf calories 59b0f0b2aed9df1277deec33) 140)
+  (= (nf calories_from_fat 59b0f0b2aed9df1277deec33) 18)
+  (= (nf cholesterol 59b0f0b2aed9df1277deec33) 20)
+  (= (nf dietary_fiber 59b0f0b2aed9df1277deec33) 2)
+  (= (nf iron_dv 59b0f0b2aed9df1277deec33) 6)
+  (= (nf protein 59b0f0b2aed9df1277deec33) 9)
+  (= (nf saturated_fat 59b0f0b2aed9df1277deec33) 05)
+  (= (nf serving_size_qty 59b0f0b2aed9df1277deec33) 1)
+  (= (nf servings_per_container 59b0f0b2aed9df1277deec33) 2)
+  (= (nf sodium 59b0f0b2aed9df1277deec33) 690)
+  (= (nf sugars 59b0f0b2aed9df1277deec33) 2)
+  (= (nf total_carbohydrate 59b0f0b2aed9df1277deec33) 22)
+  (= (nf total_fat 59b0f0b2aed9df1277deec33) 2)
+  (= (nf trans_fatty_acid 59b0f0b2aed9df1277deec33) 0)
+
+  (brand_id 59b0f0b2aed9df1277deec33 '51db37c1176fe9790a89907e')
+  (brand_name 59b0f0b2aed9df1277deec33 'Campbell_SINGLEQUOTE_s')
+  (item_id 59b0f0b2aed9df1277deec33 '59b0f0b2aed9df1277deec33')
+  (item_name 59b0f0b2aed9df1277deec33 'Chunky Soup, Chicken Tortilla with Grilled Chicken')
+  (nf_serving_size_unit 59b0f0b2aed9df1277deec33 cup)
+
+  ;; (not (hasCarbs foodItem2))
+  (updated_at 59b0f0b2aed9df1277deec33 '2017-09-07T07:09:42000Z').
+
+  (has_inventory 59b0f0b2aed9df1277deec33 discovery)
+
+  )
+
+ (:goal
+  (and
+   
+
+  (over all (forall (?account - account (not (overdrafted ?account)))))
+   (forall (?fi - foodItem)
+    (and
+     (not
+      (and
+       (ate andrewDougherty ?dts ?fi)
+       (hasCarbs ?fi)))))))
+
+ (:metric minimize
+  (total-time))
+
+ )

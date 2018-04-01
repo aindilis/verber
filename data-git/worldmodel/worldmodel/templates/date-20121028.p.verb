@@ -1,0 +1,21 @@
+(define (problem date-20121028)
+
+ (:domain integrate)
+ (:objects
+  )
+
+ (:init
+  )
+
+ (:goal 
+  (and
+   )
+  )
+
+ (:metric minimize (+
+		    (+ 
+		     (total-time) 
+		     (actions))
+		    (total-walking-distance)))
+
+ )

@@ -1,0 +1,129 @@
+;; (clip finger nails)
+;; (have regular hair cuts)
+;; (dispose of all clothes that I don't regularly wear, or that are
+;;  worn at all
+;;  (donate some)
+;;  (throw out others))
+;; (buy new clothes)
+;; (buy new socks, underwear)
+;; (buy workout clothes)
+;; (shower every three days)
+;; (regular dental cleaning)
+;; (security cameras)
+
+;; (undo the damage of the new laundry system, or wait some more
+;; answer back from LPG-td folks, fork actually, and then - be sure to
+;; use git repo for all of this)
+
+;; (add planning for the placement of the headset)
+
+;; (add trips to the gym)
+;; (read and process the mail with paperless office)
+;; (go to the grocery)
+;; (take out the trash)
+;; (completed (clean the bathroom))
+;; (completed (clean the computer room))
+;; (get breakfast)
+;; (have enough time to go to the bathroom after breakfast, and not have food coma when starting work)
+;; (do online purchases)
+;; (do offline purchases)
+;; (have social time)
+;; (have AI time)
+;; (work)
+;; (integrate the goals of SPSE2)
+;; (hygiene domain)
+;; (classes)
+;; (cooking)
+
+;; (in the morning when ready for work
+;;  (clean desk)
+;;  (clean den)?
+;;  (exists (pop-1 - pop)
+;;   (and
+;;    (at-location pop-1 refrigerator)
+;;    (chilled pop-1)
+;;    ))
+;;  (clean upstairs-bathroom)
+;;  (full water-machine)
+;;  (exists (glass-1 - glass)
+;;   (and
+;;    (at-location glass-1 desk)
+;;    (clean glass-1)
+;;    ))
+;;  (not (needs-to-use Andrew-Dougherty upstairs-bathroom))
+;;  (not (tired Andrew-Dougherty))
+;;  (not (overheated Andrew-Dougherty))
+;;  (has-clean-clothes-on Andrew-Dougherty)
+;;  (showered Andrew-Dougherty)
+
+;; (planning system
+;;           (add bedtimes)
+;;           (add breakfast
+;;                (eat cereal if nothing else is available))
+;;           (add morning car trips)
+;;           )
+
+;; (add times to read newsfeeds)
+
+;; (make a daily schedule instead of a plan)
+
+;; (clean office every two days)
+
+;; (reduce the amount of driving I do)
+
+;; (use the primitive: (total-time))
+
+;; (contemplate switching from types (i.e. closet - room) to preconditions like (is-closet ?room))
+
+;; (add action to refill meds)
+;; (prepare trash the day before they should be taken out, so it actually gets done)
+;; (go to gym)
+
+;; (pay-day date-20140115)
+
+;; (regular cleaning of the garage, car)
+
+;; (daily planning sessions)
+
+;; (schedule regular review of to.do files and UniLang entries for completion of tasks)
+
+;; (schedule christmas card sending or other religious activity)
+
+;; (update gnucash online accounts)
+
+;; (clean 1 shelf or half shelf in the garage per weekend)
+
+;; (update-frdcsa-git)
+
+
+
+;; (clean the computer room regularly)
+
+;; (run the air filter for a certain number of minutes each day, to
+;; keep the air dust free in the room)
+
+;; (car wash)
+
+;; (paperwork sort/scan/shred)
+;; (receipt scanning)
+;; (schedule a time to review and prep our office supplies)
+
+;; incorporate
+;; /var/lib/myfrdcsa/codebases/internal/manager/scripts/what-to-do
+;; into regular activities here.
+
+;; commit to svn
+
+;; add to the planner to take B vitamin and other vitamins daily
+
+;; write tests for code
+
+;; we want to change the furnace filter every 3 months
+
+;; (walk up and down the stairs a certain amount each day, at a time
+;; that won't be annoying to the neighbors)
+
+;; (a plan preference when going to cook something is to have the
+;; ingredients in the pantry checked.)
+
+;; (spray in spring)

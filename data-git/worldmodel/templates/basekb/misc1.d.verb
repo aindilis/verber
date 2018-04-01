@@ -1,0 +1,36 @@
+(define
+ (domain BASEKB_MISC1)
+ (:requirements
+  :typing :derived-predicates
+
+  )
+ (:includes)
+ (:timing)
+ (:types
+  date - text-string
+  text-string - informational-object
+  informational-object - object
+  set - informational-object
+  collection - object
+  )
+ (:predicates
+  (dirty ?o - object)
+  )
+ (:functions
+  (actions)
+  (total-walking-distance)
+  (speed ?ob - object)
+  )
+ ;; derived predicates
+ ;; durative actions
+ (:durative-action wait
+  :parameters (?p - person ?l - location)
+  :duration (= ?duration 0.25)
+  :condition (and
+	      (over all (at-location ?p ?l))
+	      )
+  :effect (and 
+	   (at end (at-location ?p ?l))
+	   )
+  )
+ )

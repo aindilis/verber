@@ -1,0 +1,337 @@
+// BASEKB_MISC1
+// BASEKB_SPACE1
+// BASEKB_HYGIENE1
+// BASEKB_SECURITY1
+// BASEKB_TOOL1
+// BASEKB_AGENT1
+// BASEKB_WORK1
+// BASEKB_BIOMAINTENANCE1
+// BASEKB_CHORES1
+// BASEKB_DEONTIC1
+// BASEKB_ECONOMIC1
+// BASEKB_FOOD1
+
+
+// BASEKB_MISC1
+
+// BASEKB_SPACE1
+outside:location.
+
+// LIBRARY_HOME1
+den:officeroom.
+den_door:door.
+basement_door:door.
+garage:space.
+garage_door:door.
+crawl_space:space.
+crawl_space_door:door.
+garage_entry_way:entry_way.
+basement_to_entry_stairwell:stairwell.
+townhome:building.
+entry:entry_way.
+coat_closet:closet.
+front_door:perimeter_door.
+entry_to_first_floor_stairwell:stairwell.
+living_room:room.
+guest_bathroom:bathroom.
+dining_room:room.
+dining_room_closet:closet.
+kitchen:room.
+kitchen_closet:closet.
+balcony:space.
+balcony_door:perimeter_door.
+first_floor_to_landing_stairwell:stairwell.
+landing_closet:closet.
+landing_to_second_floor_stairwell:stairwell.
+second_floor_landing:landing.
+utility_room:space.
+bedroom:room.
+bedroom_closet:closet.
+upstairs_bathroom:bathroom.
+upstairs_washer:laundry_washing_machine.
+upstairs_dryer:laundry_dryer_machine.
+
+couch:bed.
+guestbed:bed.
+upstairs_bathroom_outlets:outlet.
+kitchen_outlets:outlet.
+den_outlets:outlet.
+upstairs_shower:shower.
+
+// LIBRARY_PERSONAL
+andrew_dougherty:person.
+
+// LIBRARY_POSSESSIONS
+columcille_computer:laptop.
+dennis_computer:computer.
+laptop_backpack:lockable_container.
+cell_phone:battery_powered_device.
+bluetooth_headset:battery_powered_device.
+finger_clippers:hygiene_tool.
+hair_trimmers:stuff.
+food_cans:stuff.
+shirts:stuff.
+can_opener:stuff.
+hair_brush:stuff.
+padlock:stuff.
+shampoo:stuff.
+wallet:stuff.
+sleeping_bag:stuff.
+camouflage:stuff.
+computer_desk:desk.
+clothing_grey_shirt_1:shirt.
+clothing_grey_shirt_2:shirt.
+clothing_blue_shirt_1:shirt.
+clothing_green_shirt_1:shirt.
+clothing_khaki_shorts_1:pants.
+clothing_khaki_shorts_2:pants.
+electric_razor_0:electric_razor.
+
+// LIBRARY_LOCALE
+walmart_oswego:store.
+starbucks_aurora:store.
+caribou_coffee_batavia:store.
+woodmans:store.
+tigerdirect:store.
+frys:store.
+cvs_indian_trail_and_orchard:store.
+
+// LIBRARY_PANTRY
+meal_velveeta_shells_and_cheese:mealtype.
+meal_palek_paneer:mealtype.
+meal_pindi_chana:mealtype.
+meal_miso_soup:mealtype.
+
+// BASEKB_HYGIENE1
+
+// BASEKB_SECURITY1
+
+// BASEKB_TOOL1
+towel_1:towel.
+towel_2:towel.
+towel_3:towel.
+
+// BASEKB_AGENT1
+
+
+// BASEKB_WORK1
+// BASEKB_BIOMAINTENANCE1
+
+// BASEKB_CHORES1
+laundry_load:laundry_load.
+
+// BASEKB_DEONTIC1
+
+// BASEKB_ECONOMIC1
+
+
+// BASEKB_FOOD1
+
+
+// UTIL_DATE1
+date_20120821:date.
+date_20120822:date.
+date_20120823:date.
+date_20120824:date.
+date_20120825:date.
+date_20120826:date.
+date_20120827:date.
+Monday:day.
+Tuesday:day.
+Wednesday:day.
+Thursday:day.
+Friday:day.
+Saturday:day.
+Sunday:day.
+
+// BASEKB_MISC1
+// BASEKB_SPACE1
+
+// LIBRARY_HOME1
+has_door(garage_door, garage, outside).
+has_door(basement_door, garage, garage_entry_way).
+has_door(crawl_space_door, crawl_space, garage_entry_way).
+has_door(front_door, entry, outside).
+has_door(balcony_door, balcony, dining_room).
+has_door(den_door, den, garage_entry_way).
+at_location(den, townhome).
+at_location(garage, townhome).
+at_location(crawl_space, townhome).
+at_location(garage_entry_way, townhome).
+at_location(basement_to_entry_stairwell, townhome).
+at_location(entry, townhome).
+at_location(coat_closet, townhome).
+at_location(entry_to_first_floor_stairwell, townhome).
+at_location(living_room, townhome).
+at_location(guest_bathroom, townhome).
+at_location(dining_room, townhome).
+at_location(dining_room_closet, townhome).
+at_location(kitchen, townhome).
+at_location(kitchen_closet, townhome).
+at_location(balcony, townhome).
+at_location(first_floor_to_landing_stairwell, townhome).
+at_location(landing, townhome).
+at_location(landing_closet, townhome).
+at_location(landing_to_second_floor_stairwell, townhome).
+at_location(second_floor_landing, townhome).
+at_location(utility_room, townhome).
+at_location(bedroom, townhome).
+at_location(bedroom_closet, townhome).
+at_location(upstairs_bathroom, townhome).
+at_location(upstairs_washer, utility_room).
+at_location(upstairs_dryer, utility_room).
+at_location(guestbed, bedroom).
+at_location(couch, living_room).
+at_location(upstairs_bathroom_outlets, upstairs_bathroom).
+at_location(kitchen_outlets, kitchen).
+at_location(den_outlets, den).
+at_location(upstairs_shower, upstairs_bathroom).
+
+// LIBRARY_PERSONAL
+autonomous(andrew_dougherty).
+set(cash(andrew_dougherty), 49).
+at_location(andrew_dougherty, den).
+exhausted(andrew_dougherty).
+set(speed(andrew_dougherty), 1).
+set(actions, 0).
+set(total_walking_distance, 0).
+
+// LIBRARY_POSSESSIONS
+at_location(columcille_computer, living_room).
+at_location(dennis_computer, den).
+plugged_in(dennis_computer).
+mobile(laptop_backpack).
+mobile(columcille_computer).
+mobile(cell_phone).
+mobile(bluetooth_headset).
+
+// LIBRARY_LOCALE
+// store hours
+at(0, inaccessible(walmart_oswego)).
+at(7, not(inaccessible(walmart_oswego))).
+at(0, isolated(living_room)).
+at(7, not(isolated(living_room))).
+at(23, isolated(living_room)).
+at(31, not(isolated(living_room))).
+
+// LIBRARY_PANTRY
+set(quantity(meal_velveeta_shells_and_cheese, kitchen_closet), 1).
+set(quantity(meal_miso_soup, kitchen_closet), 3).
+set(quantity(meal_palek_paneer, kitchen_closet), 2).
+set(quantity(meal_pindi_chana, kitchen_closet), 2).
+
+// LIBRARY_HYGIENE1
+at_location(electric_razor_0, upstairs_bathroom).
+at_location(laundry_load, bedroom).
+at_location(towel_1, bedroom).
+at_location(towel_2, bedroom).
+at_location(towel_3, bedroom).
+mobile(electric_razor_0).
+mobile(towel_1).
+mobile(towel_2).
+mobile(towel_3).
+mobile(laundry_load).
+mobile(clothing_grey_shirt_1).
+mobile(clothing_grey_shirt_2).
+mobile(clothing_khaki_shorts_1).
+mobile(clothing_khaki_shorts_2).
+mobile(clothing_blue_shirt_1).
+mobile(clothing_green_shirt_1).
+mobile(finger_clippers).
+
+// LIBRARY_SECURITY1
+locked_door(garage_door).
+locked_door(basement_door).
+locked_door(front_door).
+
+// LIBRARY_TOOL1
+at_location(laptop_backpack, den).
+at_location(finger_clippers, den).
+
+set(charge_level(cell_phone), 0.1).
+set(charge_rate(cell_phone), 1).
+set(discharge_rate(cell_phone), 0.07).
+
+set(charge_level(columcille_computer), 1).
+set(charge_rate(columcille_computer), 0.6).
+set(discharge_rate(columcille_computer), 0.3).
+
+set(charge_level(bluetooth_headset), 0.3).
+set(charge_rate(bluetooth_headset), 0.5).
+ // fixme.
+set(discharge_rate(bluetooth_headset), 0.01).
+
+set(charge_level(electric_razor_0), 0.0).
+set(charge_rate(electric_razor_0), 0.5).
+set(discharge_rate(electric_razor_0), 2.5).
+
+
+// BASEKB_AGENT1
+
+// LIBRARY_WORK1
+set(hours_worked_on_date(Andrew_Dougherty, date_20120821), 0).
+set(hours_worked_on_date(Andrew_Dougherty, date_20120822), 0).
+set(hours_worked_on_date(Andrew_Dougherty, date_20120823), 0).
+set(hours_worked_on_date(Andrew_Dougherty, date_20120824), 0).
+
+// LIBRARY_BIOMAINTENANCE1
+// // apparently doesn't work
+// (at 1 (= (hunger_level andrew_dougherty) 0.5))
+// (at 1 (assign (hunger_level andrew_dougherty) 0.5))
+// (at 1 (decrease (hunger_level andrew_dougherty) 0.5))
+set(hunger_level(andrew_dougherty), 1).
+
+// BASEKB_CHORES1
+// BASEKB_DEONTIC1
+
+// LIBRARY_ECONOMIC1
+set(fee_for_use(upstairs_washer), 0).
+set(fee_for_use(upstairs_dryer), 0).
+
+// BASEKB_FOOD1
+
+// UTIL_DATE1
+
+// contingent facts stuff
+
+// (use_is_required finger_clippers)
+
+has_permission_to_use(Andrew_Dougherty, upstairs_bathroom).
+
+at_location(computer_desk, den).
+
+// (dirty computer_desk)
+
+dirty(upstairs_bathroom).
+dirty(den).
+dirty(garage).
+
+dirty(towel_1).
+dirty(towel_2).
+dirty(towel_3).
+
+dirty(clothing_grey_shirt_1).
+dirty(clothing_grey_shirt_2).
+dirty(clothing_khaki_shorts_1).
+dirty(clothing_khaki_shorts_2).
+dirty(clothing_blue_shirt_1).
+dirty(clothing_green_shirt_1).
+
+at_location(clothing_grey_shirt_1, bedroom).
+at_location(clothing_grey_shirt_2, bedroom).
+at_location(clothing_khaki_shorts_1, bedroom).
+at_location(clothing_khaki_shorts_2, bedroom).
+at_location(clothing_blue_shirt_1, bedroom).
+at_location(clothing_green_shirt_1, bedroom).
+
+wearing(Andrew_Dougherty, clothing_grey_shirt_1).
+wearing(Andrew_Dougherty, clothing_khaki_shorts_1).
+
+set(rate_of_eating(Andrew_Dougherty), 5.0).
+set(how_filling(meal_miso_soup, Andrew_Dougherty), 0.7).
+set(how_filling(meal_velveeta_shells_and_cheese, Andrew_Dougherty), 1.0).
+set(how_filling(meal_pindi_chana, Andrew_Dougherty), 0.4).
+set(how_filling(meal_palek_paneer, Andrew_Dougherty), 0.4).
+
+// GOAL
+ready_for_work(Andrew_Dougherty).

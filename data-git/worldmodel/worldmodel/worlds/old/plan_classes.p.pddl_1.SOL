@@ -1,0 +1,14 @@
+
+; Version LPG-td-1.0
+; Seed 112469052
+; Command line: /usr/bin/lpg-td-1.0 -o classes.d.pddl -f classes.p.pddl -speed 
+; Problem classes.p.pddl
+; Actions having STRIPS duration
+; Time 0.00
+; Search time 0.00
+; Parsing time 0.00
+; Mutex time 0.00
+; NrActions 0
+
+
+no solution

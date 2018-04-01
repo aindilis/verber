@@ -1,0 +1,17 @@
+(define
+ (domain BASEKB_DEONTIC1)
+ (:requirements
+  :typing :derived-predicates
+
+  )
+ (:includes)
+ (:timing)
+ (:types
+  )
+ (:predicates
+  (has-permission-to-use ?p - person ?o - object)
+  )
+ (:functions)
+ ;; derived predicates
+ ;; durative actions
+ )

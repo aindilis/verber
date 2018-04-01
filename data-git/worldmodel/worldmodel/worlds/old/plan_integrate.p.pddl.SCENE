@@ -1,0 +1,8 @@
+GeomLabel(0.500,1.500)[output.lWASH_LAUNDRY]
+Rectangle((0.000,0.000),(1.000,0.300))[output.WASHLAUNDRY]
+GeomLabel(1.500,4.000)[output.lDRY_LAUNDRY]
+Rectangle((1.000,2.500),(2.000,2.800))[output.DRYLAUNDRY]
+Attribute(output.nameVisible=false)
+Attribute(lineWidth=4)
+Attribute(pointSize=0)
+Attribute(fillColor=green)

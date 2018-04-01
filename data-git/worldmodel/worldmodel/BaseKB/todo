@@ -1,0 +1,86 @@
+(:REQUIREMENTS
+
+ (add going to the bathroom)
+
+ (#get multiple items move working)
+ (#figure out how to do containers)
+
+ (use numerics to represent 
+      (hair and beard length))
+
+ (add support for keys, etc)
+ (#lockable containers)
+ (plan for people's beliefs, to get other people to do things, etc.)
+ (plan for giving Al updates)
+ (plan for charging the laptop)
+ (plan for having the headphones)
+ (plan for haircuts)
+ (plan for laptop reading times during certain transportation, if
+       discreetness is maintainable (i.e. at night or using bluetooth headset), etc.)
+ (plan for food, and clothing items)
+ (plan for work times in the night)
+ (add support for sundry small items)
+ (#add support for containers (bookbags, lockers, cars, etc))
+ (add conditions for rent, so it fits the initial bill)
+ (add entertainment (for other people when Verber is released))
+
+ (health rules
+	 (Do not drink pop before eating anything in the morning.
+	     Horrible pain like gas or something.)
+	 (Do not eat before going to bed))
+
+ (discreetness:
+  (sleep when no one around)
+  (work when no one around)
+  (shaving times
+	   (shave when there are fewest people around))
+  (no movements during class transitions 
+      (10 minutes before and up to every half hour))
+  (illusion of socialization every now  and then, remind self to spread
+	    "conforming" message.))
+
+ (learning:
+  (Avoid people for movements - have planner plan learn when people are
+	 or are not in a room.))
+
+ (Plan to have certain surivival information on hand.)
+
+ (socially-acceptable 
+  (requires new clothes each day)
+  (brush hair before public movements, maintain shaving levels))
+
+ (features
+  (dialog instructions from planner itself)
+  (get implied effects, like for instance (implies (typeof ?x locker) (secure ?x)))))
+
+
+(travel-requirements
+ ())
+
+
+He moves secretly and quickly.
+He travels light, is highly mobile, knows the terrain intimately and uses it to its best advantage.
+He uses ground, darkness and fog to aid his attacks.
+He may move by night and sleep by day.
+He sticks to back routes, avoids main roads and towns, seldom uses motor transport, gets to his objective by forced marches, changes direction constantly.
+Closely guarded territory he crosses by battle teams (two men).
+His movements will be by bounds and well guarded to front, rear and flanks.
+The detachment will then reassemble at a predetermined point near area of attack.
+The guerrilla must be a master of the manoeuvre.
+In deceiving the enemy as to his methods and intentions the guerrilla will use many ruses.
+He can always cover his tracks by leaving fast-moving snipers and smaller formations scattered over wide areas while the main forces pull out.
+
+CONDITIONS But a guerrilla movement can only operate if two conditions exist.
+They are: (1) That there are guerrilla formations everywhere (centres of resistance) and that they are everywhere in action.
+Thus when the enemy concentrates on one point another blazes up.
+Without this he could snuff out the guerrillas in no time.
+(2) That the guerrilla detachments are SELF-CONTAINED in everything needed for their operations including arms, supplies, intelligence and propaganda among the people.
+Co-operation of the people is also vital to the guerrillas.
+Because it has to be stressed that support for the aims of the guerrillas must come from the population.
+Cut loose from the people, a guerrilla formation can neither develop nor survive.
+And every guerrilla formation is an educator of the people, it exposes the lies of the enemy, shows the reasons for his occupation.
+LARGE-SCALE Guerrilla operations generally begin on a small level and constantly grow.
+By the time centres of resistance have been built and tied together large guerrilla formations may carry out combined operations.
+Here the use of radio communication is invaluable.
+Certain formations, with a high degree of mobility, will be used to intervene at decisive points.
+In such cases the guerrilla

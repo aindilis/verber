@@ -1,0 +1,14 @@
+(define (domain dnd1)
+ (:types ROLL DICE NUMBER)
+ (:predicates
+  (hasRoll ?roll - ROLL ?dice - DICE ?number - NUMBER)
+  (true)
+  )
+ 
+ (:action senseRollT
+  :parameters (?roll - ROLL ?dice - DICE ?number - NUMBER)
+  :precondition (not (hasRoll r2 d6 ?number))
+  :effect (and
+	   (hasRoll r2 d6 ?number)
+	   (true)))
+ )

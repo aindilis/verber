@@ -1,0 +1,3 @@
+
+requirement-test-fluents.d.pddl: syntax error in line 3, ':FLUENTS':
+requirement %s not supported by this IPP version :FLUENTS

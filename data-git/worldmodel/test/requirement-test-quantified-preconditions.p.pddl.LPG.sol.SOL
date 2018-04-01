@@ -1,0 +1,13 @@
+
+; Version LPG-td-1.0
+; Seed 20999431
+; Command line: /var/lib/myfrdcsa/codebases/internal/verber/data/planner-library/lpg-td-1.0 -o requirement-test-quantified-preconditions.d.pddl -f requirement-test-quantified-preconditions.p.pddl -out /var/lib/myfrdcsa/codebases/internal/verber/data/worldmodel/test/requirement-test-quantified-preconditions.p.pddl.LPG.sol -speed 
+; Problem requirement-test-quantified-preconditions.p.pddl
+; Actions having STRIPS duration
+; Time 0.02
+; Search time 0.01
+; Parsing time 0.01
+; Mutex time 0.00
+; NrActions 1
+
+0:   (ACTION1 OBJ1 OBJ2) [1]

@@ -1,0 +1,15 @@
+
+; Version LPG-td-1.0
+; Seed 24132109
+; Command line: /usr/bin/lpg-td-1.0 -o cycle.d.pddl -f cycle.p.pddl -speed 
+; Problem cycle.p.pddl
+; Time 0.05
+; Search time 0.05
+; Parsing time 0.00
+; Mutex time 0.00
+; MetricValue 2.00
+
+0.0003:   (COMPLETE-TASK PLAN-CYCLE) [1.0000]
+0.0005:   (COMPLETE-TASK CHORES) [1.0000]
+
+

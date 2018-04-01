@@ -1,0 +1,49 @@
+;; <problem-file>
+
+(define (problem )
+
+ (:domain )
+
+ (:includes)
+
+ (:timing
+  (start-date TZID=America/Chicago:20161228T010000)
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:objects
+  
+  )
+
+ (:init
+  
+  )
+
+ (:goal
+  ;; as a family unit need an eating program that satisfices
+  ;; everyone's constraints, but right now we have three very
+  ;; disparate people who are all trying to get their food needs met,
+  ;; but are frustrated because of economic constraints.  ideal 
+
+  ;; buy cheap yet health food, and use all of it, with no waste, and
+  ;; everybody eats healthy, and we don't spend any money outside of
+  ;; our foodstamps on food.
+
+  ;; reality is, we eat unhealthy convenience foods all the time, we
+  ;; eat unhealthy foods that we enjoy the taste of all the time, we
+  ;; spend money beyond foodstamps on food, at the grocery store,
+  ;; there isn't always time or desire to make the healthy meal, there
+  ;; isn't always money to make a healthy meal.  sometimes we run out.
+  ;; the truth is that we waste a lot of food that takes more time to
+  ;; prepare when there is something right there.  really missing out
+  ;; on a lot of nutrients of our food.  need to work with the reality
+  ;; of what it is and not some pure perfect people who are always
+  ;; cooking cause we are obviously not.
+  ()
+  )
+ 
+ (:metric)
+ 
+ )
+
+;; </problem-file>

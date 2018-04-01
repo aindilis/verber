@@ -1,0 +1,14 @@
+
+(define (problem conformant_sort_pb)
+        (:domain conformant_sort)
+        (:typedef 
+            element_no        - (range 1 5))
+	(:init 
+           (forall (?e - element_no)
+             (unknown (element_value ?e))))
+        (:conformantgoal
+           (forall (?e1 - element_no)
+             (forall (?e2 - element_no)
+               (imply (> ?e1 ?e2) 
+                      (>= (element_value ?e1) (element_value ?e2)))))))
+

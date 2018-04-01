@@ -1,0 +1,3 @@
+
+requirement-test-durative-actions.d.pddl: syntax error in line 3, ':DURATIVE-ACTIONS':
+requirement %s not supported by this IPP version :DURATIVE-ACTIONS

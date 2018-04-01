@@ -1,0 +1,166 @@
+;; <domain-file>
+
+(define (domain flpCausal2)
+
+ (:timing
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:requirements
+  :negative-preconditions :conditional-effects :equality :typing
+  :fluents :durative-actions :derived-predicates
+  :disjunctive-preconditions :timed-initial-literals
+  :universal-preconditions
+  )
+
+ (:types event condition - object)
+ 
+ (:predicates
+  (reachable ?e - event)
+  (directlyCauses ?e1 ?e2 - event)
+  (indirectlyCauses ?e1 ?e2 - event)
+  (staticCausalLaw ?e1 ?e2 - event ?c - condition)
+  (happened ?e - event)
+  (aboutToHappen ?e - event)
+  )
+
+ (:functions
+  (actions)
+  )
+
+ ;; DERIVED
+ (:derived (aboutToHappen ?e2 - event)
+  (exists (?e1 - event) 
+   (and
+    (happened ?e1)
+    (directlyCauses ?e1 ?e2)
+    (not (happened ?e2)))))
+
+ (:derived (indirectlyCauses ?e1 ?e3 - event)
+  (exists (?e2 - event) 
+   (and
+    (or
+     (directlyCauses ?e1 ?e2)
+     (indirectlyCauses ?e1 ?e2))
+    (or
+     (directlyCauses ?e2 ?e3)
+     (indirectlyCauses ?e2 ?e3)))))
+
+ (:derived (reachable ?e2 - event)
+  (exists (?e1 - event) 
+   (and
+    (happened ?e1)
+    (or
+     (directlyCauses ?e1 ?e2)
+     (indirectlyCauses ?e1 ?e2)))))
+
+ ;; DURATIVE ACTIONS
+ (:durative-action cause
+  :parameters (?e1 ?e2 - event)
+  :duration (= ?duration 1.0)
+  :condition (and
+ 	      (at start (directlyCauses ?e1 ?e2))
+ 	      (at start (happened ?e1))
+ 	      (at start (not (happened ?e2)))
+ 	      )
+  :effect (and 
+ 	   (at end (happened ?e2))
+ 	   (at end (assign (actions) (+ (actions) 1)))
+ 	   )
+  )
+
+ )
+
+;; </domain-file>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;; ;; <domain-file>
+
+;; (define (domain flpCausal)
+
+;;  (:timing
+;;   (units 0000-00-00_01:00:00)
+;;   )
+
+;;  (:requirements
+;;   :negative-preconditions :conditional-effects :equality :typing
+;;   :fluents :durative-actions :derived-predicates
+;;   :disjunctive-preconditions :timed-initial-literals
+;;   )
+
+;;  (:types event condition - object)
+ 
+;;  (:predicates
+;;   (directlyCauses ?e1 ?e2 - event)
+;;   (indirectlyCauses ?e1 ?e2 - event)
+;;   (staticCausalLaw ?e1 ?e2 - event ?c - condition)
+;;   (happened ?e - event)
+;;   (aboutToHappen ?e - event)
+;;   )
+
+;;  (:functions
+;;   (actions)
+;;   )
+
+;;  ;; DERIVED
+;;  (:derived (aboutToHappen ?e2 - event)
+;;   (exists (?e1 - event) 
+;;    (and
+;;     (happened ?e1)
+;;     (directlyCauses ?e1 ?e2)
+;;     (not (happened ?e2)))))
+
+;;  (:derived (indirectlyCauses ?e1 ?e3 - event)
+;;   (exists (?e2 - event) 
+;;    (and
+;;     (or
+;;      (directlyCauses ?e1 ?e2)
+;;      (indirectlyCauses ?e1 ?e2))
+;;     (or
+;;      (directlyCauses ?e2 ?e3)
+;;      (indirectlyCauses ?e2 ?e3)))))
+
+;;  (:derived (reachable ?e2 - event)
+;;   (exists (?e1 - event) 
+;;    (and
+;;     (happened ?e1)
+;;     (or
+;;      (directlyCauses ?e1 ?e2)
+;;      (indirectlyCauses ?e1 ?e2)))))
+
+;;  ;; DURATIVE ACTIONS
+;;  (:durative-action cause
+;;   :parameters (?e1 ?e2 - event)
+;;   :duration (= ?duration 1.0)
+;;   :condition (and
+;;  	      (at start (directlyCauses ?e1 ?e2))
+;;  	      (at start (happened ?e1))
+;;  	      (at start (not (happened ?e2)))
+;;  	      )
+;;   :effect (and 
+;;  	   (at end (happened ?e2))
+;;  	   (at end (assign (actions) (+ (actions) 1)))
+;;  	   )
+;;   )
+
+;;  )
+
+;; ;; </domain-file>

@@ -1,0 +1,38 @@
+;; <problem-file>
+
+(define (problem fffopc1)
+
+ (:domain fffopc1)
+
+ (:includes)
+
+ (:timing
+  (start-date TZID=America/Chicago:20171024T010000)
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:objects
+  v1v1 v1v2 v1v3 v2v1 v2v2 v2v3 - self
+  andrewDougherty - agent
+  townhome - location
+  )
+
+ (:init
+  ;; (not (knows andrewDougherty (atLocation andrewDougherty townhome)))
+  (neg v1v1 v1v2)
+  (knows v1v2 andrewDougherty v1v3)
+  (atLocation v1v3 andrewDougherty townhome)
+  )
+
+ (:goal
+  (and
+   (knows v2v1 andrewDougherty v1v3)
+   (exists (?l - location) (atLocation v1v3 andrewDougherty ?l))
+   )
+  )
+ 
+ (:metric minimize (total-time))
+ 
+ )
+
+;; </problem-file>

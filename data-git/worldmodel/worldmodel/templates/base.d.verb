@@ -1,0 +1,16 @@
+(define
+ (domain BASE)
+ (:requirements :typing :derived-predicates
+  )
+ (:includes)
+ (:timing)
+ (:types
+  )
+ (:predicates
+  )
+ (:functions
+  )
+ ;; derived predicates
+ (:durative-actions
+  )
+ )

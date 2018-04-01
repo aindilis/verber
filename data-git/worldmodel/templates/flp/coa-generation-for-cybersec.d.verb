@@ -1,0 +1,185 @@
+;; <domain-file>
+
+(define (domain )
+
+ (:timing
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:requirements)
+
+ (:types)
+ 
+ (:predicates
+  (insider ?p - person)
+  (in_room ?p - person ?l - location)
+  (can_unlock ?k - key ?l - lock)
+  (has_uid ?p - person ?u - uid)
+  (knows ?pe - person ?pa - password)
+  ;; (file_contents_program s_iexplore iexplorer)
+  ;; (accessible s_iexplore sherpa)
+  ;; (user_read s_iexplore greg_uid)
+  (can_read_eamil ?p - program)
+  (trusts_instructions_by ?p1 ?p2 - person)
+  )
+
+ (:functions)
+
+ ;; DERIVED
+ ;; (:derived)
+
+ ;; DURATIVE ACTIONS
+ (:durative-action sits_down_at
+  :parameters (?p - person ?c - computer)
+  :duration (= ?duration (duration action))
+  :condition (and
+	      )
+  :effect (and
+	   )
+  )
+
+ (:durative-action enters_as_user_name_for_login_on_host
+  :parameters (?p - person ?u - uid ?c - computer)
+  :duration (= ?duration (duration action))
+  :condition (and
+	      )
+  :effect (and
+	   )
+  )
+
+ (:durative-action enters_password_for_login_on_host
+  :parameters (?pe - person ?pa - password ?c - computer)
+  :duration (= ?duration (duration action))
+  :condition (and
+	      )
+  :effect (and
+	   )
+  )
+
+  ;; ;; 0 : ADAM sits down at BIGFOOT
+  ;; ;; 1 : ADAM enters ADAM_UID as user name for login on host BIGFOOT
+  ;; ;; 2 : ADAM enters password ADAM_PWD for login at host BIGFOOT
+  ;; 3 : Shell B_WEXPLORE is launched on host BIGFOOT for user ADAM_UID
+  ;; 4 : Program WEXPLORER on host BIGFOOT forks a child process
+  ;; 5 : Contents of file B_IEXPLORE begin executing as uid ADAM_UID on host BIGFOOT
+  ;; 6 : BOB sits down at YETI
+  ;; 7 : BOB enters BOB_UID as user name for login on host YETI
+  ;; 8 : BOB enters password BOB_PWD for login at host YETI
+  ;; 9 : Shell Y_WEXPLORE is launched on host YETI for user BOB_UID
+  ;; 10 : Program WEXPLORER on host YETI forks a child process
+  ;; 11 : Contents of file Y_ETHEREAL begin executing as uid BOB_UID on host YETI
+  ;; 12 : ETHEREAL starts sniffing the networks on YETI
+  ;; 13 : ADAM logs onto dms admin server EVEREST from BIGFOOT
+  ;; 14 : BOB reads the sniffer thus learning NES_ADMIN_PASS
+  ;; 15 : Program WEXPLORER on host YETI forks a child process
+  ;; 16 : Contents of file Y_IEXPLORE begin executing as uid BOB_UID on host YETI
+  ;; 17 : BOB logs onto dms admin server EVEREST from YETI
+  ;; 18 : DMS session DMSS1 has begun
+  ;; 19 : BOB begins a DMS session on YETI
+  ;; 20 : Connect DMS session DMSS1 to server NES on EVEREST
+  ;; 21 : A route from YETI to DMS server EVEREST exists
+  ;; 22 : BOB enters password BOB_DMS_PWD for the DMS session.
+  ;; 23 : Authenticate BOB_UID in dms session DMSS1 with EVEREST using BOB_DMS_PWD
+  ;; 24 : BOB adds an acl to allow read access of E_SECRET_DOC to the EAST_GID group
+  ;; 25 : BOB begins a DMS request at YETI in session DMSS1
+  ;; 26 : Document E_SECRET_DOC is requested in session DMSS1
+  ;; 27 : Document E_SECRET_DOC is sent and displayed on YETI in session DMSS1
+  ;; 28 : BOB reads E_SECRET_DOC and learns SECRET_INFO
+
+  (:durative-action pay
+  :parameters ()
+  :duration (= ?duration (duration action))
+  :condition (and
+	      )
+  :effect (and
+	   )
+  )
+
+ (:durative-action pay
+  :parameters ()
+  :duration (= ?duration (duration action))
+  :condition (and
+	      )
+  :effect (and
+	   )
+  )
+
+  (:durative-action pay
+  :parameters ()
+  :duration (= ?duration (duration action))
+  :condition (and
+	      )
+  :effect (and
+	   )
+  )
+
+ (:durative-action pay
+  :parameters ()
+  :duration (= ?duration (duration action))
+  :condition (and
+	      )
+  :effect (and
+	   )
+  )
+ )
+
+(:action DMS_ADD_GROUP_ALLOW
+ :parameters ( ?admin - c_human
+	      ?chost - c_host
+	      ?shost - c_host
+	      ?doc - c_file
+	      ?gid - c_gid )
+ :precondition
+ (and (pmode free)
+  (nes_admin_connected ?chost ?shost)
+  (at_host ?admin ?chost)
+  (insider ?admin))
+ :effect
+ (and
+  (dmsacl_read ?doc ?gid)))
+
+;; (insider bob)
+;; (in_room bob bobs_office)
+;; (can_unlock key_1 lock_1)
+;; (has_uid bob bob_uid)
+;; (knows bob bob_pwd)
+;; (file_contents_program s_iexplore iexplorer)
+;; (accessible s_iexplore sherpa)
+;; (user_read s_iexplore greg_uid)
+;; (can_read_email ms_outlook)
+;; (trusts_instructions_by greg adam)
+
+(defaction relay_viewed_doc
+ :parameters (?doc - c_file
+	      ?human - c_human
+	      ?src_host - c_host
+	      ?s_proc - c_process
+	      ?src_proc - c_process
+	      ?malware - c_program
+	      ?dst_host - c_host
+	      ?dst_proc - c_process
+	      ?master - c_program)
+ :precondition
+ (and
+  (at_host ?human ?dst_host)
+  (viewing_doc ?src_host ?s_proc ?doc)
+  (running_prog ?src_host ?src_proc ?malware)
+  (can_transmit_documents ?malware)
+  (running_prog ?dst_host ?dst_proc ?master)
+  (can_receive_documents ?master)
+  (net-connected ?src_host ?dst_host)
+  )
+ :effect
+ (and (viewing_doc ?dst_host ?dst_proc ?doc)))
+
+;; </domain-file>
+
+;; automatically generated PDDL action
+(:action grab_key_bob_key1_room2
+ :precondition
+ (and (in_room bob room2)
+  (in_room key1 room2))
+ :effect
+ (and
+  (carrying bob key1)
+  (not (in_room key1 room2))))

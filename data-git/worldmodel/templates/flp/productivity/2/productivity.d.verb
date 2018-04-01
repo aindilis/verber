@@ -1,0 +1,364 @@
+;; <domain-file>
+(define (domain flpproductivity)
+
+ ;; add stuff about having support of others
+
+ (:timing
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:requirements :negative-preconditions :conditional-effects :equality
+  :typing :fluents :durative-actions :derived-predicates
+  :disjunctive-preconditions :timed-initial-literals )
+
+ ;; see /var/lib/myfrdcsa/codebases/minor/resource-manager/productivity_requirements.pl
+
+ (:types
+  service date account - type
+
+  shelter workEnvironment - environment
+
+  environment - location
+
+  person product pain location item type device - object
+
+  action service distraction crisis capability crisis interruption task event - abstraction
+
+  ;; headphones phone funds imakSmartGloves
+  
+  batteryPoweredDevice - electricityDevice
+  electricityDevice - device
+  )
+
+ ;; under pressure
+
+ (:predicates
+  (unableToBeProductive ?person - person)
+
+  (today ?date - date)
+  (hasTimeToBuildConcentration ?person - person)
+  (hasServiceUntil ?environment - environment ?service - service ?date - date)
+  ;; (possesses ?person - person ?object - object)
+  ;; (isCharged ?batteryPoweredDevice - batteryPoweredDevice)
+  (dependsCapabilityOnService ?object - object ?service - service)
+  (isCurrent ?object - object)
+  (lastReplaced ?object - object ?date - date)
+  (desiresToWorkOn ?person - person ?task - task)
+  ;; (hasClearConceptionOfWhatNeedsToBeWorkedOn ?person - person)
+  ;; (notExistsAnymore ?object - object)
+  (hasProperty ?object - object ?property - property)
+  (wasThrownOut ?object - object)
+  (hasDistraction ?person - person ?distraction - distraction)
+  (hasDistractions ?person - person)
+  ;; (isInPain ?person - person)
+  ;; (lacksProvisions ?object - object)
+  ;; (hasCrisisHangingOverHead ?person - person)
+  (hasCrisis ?person - person ?crisis - crisis)
+  ;; (isDreading ?person - person ?abstraction - abstraction)
+  (hasStressor ?person - person ?stressor - stressor)
+  ;; (hasStressors ?person - person)
+  (wantsToRecreateNow ?person - person)
+  ;; (unableToSleep ?person - person)
+  (hasInterruption ?person - person ?interruption - interruption)
+  ;; (hasInterruptions ?person - person)
+  ;; (hasOtherCommitments ?person - person)
+  ;; (recentlyMissedTakingMedications ?person - person)
+  (hasSomethingForPersonToDo ?person1 ?person2 - person)
+  ;; (hasPain ?person - person ?pain - pain)
+  ;; (hasToothache ?person - person)
+  ;; (hasBiologicalIssues ?person - person)
+  ;; (unableToPayUpcomingBills ?person - person)
+  (hasSocialAnxiety ?person - person)
+  (hasUpcomingSocialEvent ?person - person ?event - event)
+  ;; (lackingSomeUtilties ?environment - environment)
+  ;; (hasService ?environment - environment ?service - service)
+  ;; ;; FIXME: look into encoding temporal semantics into PDDL per example paper
+  ;; (lackingSomeUtilities ?environment - environment)
+  ;; (hasConvienetAccessToAStore ?environment - environment)
+  ;; (disorderedEnvironment ?person - person ?environment - environment)
+  ;; (isInMaterialWant ?person - person)
+  ;; (supplyChainIsSecure ?person - person)
+  ;; (isInEnvironment ?person - person ?environment - environment)
+  ;; ;; (hasItemOfType ?person - person ?item - item ?type - type)
+  ;; (furnanceFilterInstalled ?environment - environment)
+  ;; (airFilterFiltersInstalled ?environment - environment)
+  ;; (isEssentialPartOfEnvironment ?object - object ?environment - environment)
+  (broken ?object - object)
+  ;; (lacksProperWorkEnvironment ?person - person ?workEnvironment - workEnvironment)
+  ;; (lacksAmenities ?environment - environment)
+  ;; ;; (workSetupAvailable)
+  ;; ;; need something for peripherals/tools
+  (hasCapability ?object - object ?capability - capability)
+  ;; (operational ?device - device)
+  ;; (onCharger ?batteryPoweredDevice - batteryPoweredDevice)
+  ;; ;; (computersAreWorking)
+  ;; (lacksProperShelter ?person - person)
+  ;; (hasShelter ?person - person ?shelter - shelter)
+  ;; (isPhysicallyUnfitToWork ?person - person)
+  ;; (sick ?person - person)
+  (tired ?person - person)
+  ;; (disturbedSleepSchedule ?person - person)
+  ;; (isHealthy ?person - person)
+  ;; (isEmotionallyUnfitToWork ?person - person)
+  ;; (lacksFortitude ?person - person)
+  ;; (isMentallyUnfitToWork ?person - person)
+  ;; (hasClearConceptionOfWhatNeedsToBeDone ?person - person)
+  ;; (avolition ?person - person)
+  (languishing ?person - person)
+  ;; (hasGeist ?person - person)
+  ;; (hasMotivation ?person - person)
+  ;; (lost ?object - object)
+  )
+
+ (:functions
+  (hasInventory ?location - location ?object - object)
+  (consumeOnAveragePerDay ?person - person ?object - object)
+  (numberOfDaysWhereReplete ?date - date)
+  (numberOfDaysOfServiceRemaining ?service - service)
+  (numberOfMonthsOfServiceRemaining ?service - service)
+  (hasBalance ?person - person ?account - account)
+  (hasBillAmount ?service - service ?startdate ?enddate - date)
+  (lastBillAmount ?service - service ?startdate ?enddate - date)
+  (hasReliability ?service - service)
+  (duration ?action - action ?object - object)
+  (costs ?action - action ?object - object)
+  )
+
+ ;; ;; DERIVED
+ ;; (:derived
+ ;;  (hasCapability ?item - Item)
+ ;;  (not (broken ?item))
+ ;;  )
+
+ (:derived (unableToBeProductive ?person - person)
+  (hasDistractions ?person))
+
+ (:derived
+  (hasDistractions ?person - person)
+  (or
+   (hasSocialAnxiety ?person)
+   ;; (isInPain ?person)
+   ;; (lacksProvisions ?person)
+   ;; (hasCrisisHangingOverHead ?person)
+   ;; (exists (?abstraction - abstraction) (isDreading ?person ?abstraction))
+   ;; (hasStressors ?person)
+   ;; (unableToSleep ?person)
+   ;; (hasInterruptions ?person)
+   ;; (hasOtherCommitments ?person)
+   ;; (recentlyMissedTakingMedications ?person)
+   ))
+
+ ;; (:derived
+ ;;  (hasOtherCommitments ?person1 - person)
+ ;;  (exists (?person2 - person) (hasSomethingForMeToDo ?person2 ?person1))
+ ;;  )
+
+ ;; (:derived
+ ;;  (isInPain ?person - person)
+ ;;  (exists (?pain - pain)
+ ;;   (hasPain ?person ?pain))
+ ;;  )
+
+ ;; (:derived
+ ;;  (hasCrisisHangingOverHead ?person - person)
+ ;;  (unableToPayUpcomingBills ?person)
+ ;;  )
+
+ ;; discouraged
+
+ (:derived
+  (hasSocialAnxiety ?person1 - person)
+  (or
+   (exists (?event - event) (hasUpcomingSocialEvent ?person1 ?event))
+   ))
+
+ ;; (:derived
+ ;;  (lackingSomeUtilties ?environment - environment)
+ ;;  (not
+ ;;   (and
+ ;;    (hasService ?environment internet)
+ ;;    (hasService ?environment water)
+ ;;    ;; (hasAmenity ?environment restroom)
+ ;;    (hasService ?environment electricity)
+ ;;    )))
+
+ ;; (:derived
+ ;;  (lacksAmenities ?environment - environment)
+ ;;  (or
+ ;;   (lackingSomeUtilities ?environment)
+ ;;   (lacksProvisions ?environment)
+ ;;   (not (hasService ?environment drinkingWater))
+ ;;   (not (hasConvienetAccessToAStore ?environment))
+ ;;   (disorderedEnvironment ?person ?environment)
+ ;;   ))
+ 
+ ;; (:derived
+ ;;  (isInMaterialWant ?person - person)
+ ;;  (or
+ ;;   (not (supplyChainIsSecure ?person))
+ ;;   (and
+ ;;    (isInEnvironment ?person ?environment)
+ ;;    (lacksProvisions ?environment)
+ ;;    )))
+
+ ;; ;; (:derived
+ ;; ;;  (lacksProvisions ?environment - environment)
+ ;; ;;  (not
+ ;; ;;   (and
+ ;; ;;    (hasItemOfType ?environment ?item water)
+ ;; ;;    (hasItemOfType ?environment ?item water)
+ ;; ;;    )))
+
+ ;; (:derived
+ ;;  (disorderedEnvironment ?person - person ?environment - environment)
+ ;;  (not
+ ;;   (and
+ ;;    (furnanceFilterInstalled ?environment)
+ ;;    (airFilterFiltersInstalled ?environment)
+ ;;    (supplyChainIsSecure ?person)
+ ;;    (not
+ ;;     (exists
+ ;;      (?object - object)
+ ;;      (and
+ ;;       (isEssentialPartOfEnvironment ?object ?environment)
+ ;;       (broken ?object)
+ ;;       ))))))
+
+ ;; ;; (:derived
+ ;; ;;  (lacksProperWorkEnvironment ?person - person ?workEnvironment - workEnvironment)
+ ;; ;;  (not
+ ;; ;;   (and
+ ;; ;;    (not (hasItemOfType ?person ?item funds))
+ ;; ;;    (not (lacksAmenities ?workEnvironment))
+ ;; ;;    (workSetupAvailable)
+
+ ;; ;;    ;; need something for peripherals/tools
+ ;; ;;    (hasCapability ?person imakSmartGloves)
+ ;; ;;    (exists (?headphones - item)
+ ;; ;;     (and
+ ;; ;;      (hasItemOfType ?person ?headphones headphones)
+ ;; ;;      (operational ?headphones)
+ ;; ;;      )
+ ;; ;;    ;; (exists (?phone - phone) (canUse ?person ?phone) (isCharged ?phone))
+ ;; ;;    (and
+ ;; ;;     (exists (?phone - item)
+ ;; ;;      (and
+ ;; ;;       (hasItemOfType ?person ?phone phone)
+ ;; ;;       (operational ?phone)
+ ;; ;;       (onCharger ?phone)
+ ;; ;;       )))
+    
+ ;; ;;    (computersAreWorking)
+ ;; ;;    ;; fix as a neg (forall
+ ;; ;;    ;; computer, computer is
+ ;; ;;    ;; working)
+ ;; ;;    ))))
+
+ ;; (:derived
+ ;;  (lacksProperShelter ?person - person)
+ ;;  (and
+ ;;   (not
+ ;;    (exists
+ ;;     (?shelter - shelter)
+ ;;     (and
+ ;;      (hasShelter ?person ?shelter)
+ ;;      (not (lacksAmenities ?shelter))
+ ;;      )))))
+ 
+ ;; (:derived
+ ;;  (isPhysicallyUnfitToWork ?person - person)
+ ;;  (or
+ ;;   (sick ?person)
+ ;;   (tired ?person)
+ ;;   (disturbedSleepSchedule ?person)
+ ;;   (not
+ ;;    (isHealthy ?person))
+ ;;   ))
+
+ ;; (:derived
+ ;;  (isEmotionallyUnfitToWork ?person - person)
+ ;;  (or
+ ;;   (avolition ?person)
+ ;;   (languishing ?person)
+ ;;   (lacksFortitude ?person)
+ ;;   ))
+
+ ;; (:derived
+ ;;  (isMentallyUnfitToWork ?person - person)
+ ;;  (or
+ ;;   (not (hasClearConceptionOfWhatNeedsToBeDone ?person))
+ ;;   (avolition ?person)
+ ;;   (languishing ?person)
+ ;;   (not (and
+ ;; 	 (hasGeist ?person)
+ ;; 	 (hasMotivation ?person)
+ ;; 	 ))
+ ;;   ))
+ 
+ ;; ;; temperature is not too high
+ ;; ;; quiet
+ ;; ;; lighting bright enough but not too harsh
+
+
+
+ ;; ;; (:derived (location-is-clean ?location - location)
+ ;; ;;  (forall (?o - object) 
+ ;; ;;   (imply
+ ;; ;;    (at-location ?o ?location)
+ ;; ;;     (not (dirty ?o)))))
+
+ ;; DURATIVE ACTIONS
+ ;; (:durative-action dry-laundry-load
+ ;;  :parameters (?p - person ?ll - laundry-load ?d - laundry-dryer-machine ?l - location)
+ ;;  :duration (= ?duration 1.25)
+ ;;  :condition (and
+ ;; 	      (at start (at-location ?p ?l))
+ ;; 	      (at start (at-location ?ll ?l))
+ ;; 	      (at start (at-location ?d ?l))
+ ;; 	      (at start (forall (?la - laundry)
+ ;; 			 (imply
+ ;; 			  (is-contained-by ?la ?ll)
+ ;; 			  (wet ?la))))
+ ;; 	      (at start (imply (has-fee-for-use ?d) (>= (cash ?p) (fee-for-use ?d))))
+ ;; 	      (over all (is-contained-by ?ll ?d))
+ ;; 	      )
+ ;;  :effect (and 
+ ;; 	   ;; (at end (forall (?la - laundry) 
+ ;; 	   ;; 	    (when (is-contained-by ?la ?ll)
+ ;; 	   ;; 	     (not (dirty ?la)))))
+ ;; 	   ;; (at end (when (has-fee-for-use ?d)
+ ;; 	   ;; 	    (decrease (cash ?p) (fee-for-use ?d))))
+ ;; 	   (at end (assign (actions) (+ (actions) 1)))
+ ;; 	   )
+ ;;  )
+
+ (:durative-action fix
+  :parameters (?person - person ?object - object ?account - account)
+  :duration (= ?duration 1) ;; (duration fix ?object)
+  :condition (and
+	      (at start (> (hasBalance ?person ?account) (costs fix ?object)))
+ 	      (at start (broken ?object))
+ 	      )
+  :effect (and 
+ 	   (at end (assign (hasBalance ?person ?account) (- (hasBalance ?person ?account) (costs fix ?object))))
+	   (at end (not (broken ?object)))
+ 	   )
+  )
+
+  (:durative-action replace
+  :parameters (?person - person ?object - object ?account - account)
+  :duration (= ?duration 1) ;; (duration fix ?object)
+  :condition (and
+	      (at start (> (hasBalance ?person ?account) (costs replace ?object)))
+ 	      (at start (broken ?object))
+ 	      )
+  :effect (and 
+ 	   (at end (assign (hasBalance ?person ?account) (- (hasBalance ?person ?account) (costs replace ?object))))
+	   ;; (at end (bought ?object))
+	   (at end (not (broken ?object)))
+ 	   )
+  )
+
+ )
+
+;; </domain-file>

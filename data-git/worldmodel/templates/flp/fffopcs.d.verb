@@ -1,0 +1,57 @@
+;; <domain-file>
+
+(define (domain fffopcs)
+
+ (:timing
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:requirements :negative-preconditions :conditional-effects :equality
+  :typing :fluents :durative-actions :derived-predicates
+  :disjunctive-preconditions :timed-initial-literals)
+
+ (:types
+  pred idOrObject - object
+  myObject id - idOrObject
+  agent location - myObject
+  )
+ 
+ (:predicates
+  (triple ?s - id ?p - pred ?arg1 ?arg2 - idOrObject)
+  )
+
+ (:functions)
+
+ ;; DERIVED
+ ;; (:derived (location-is-clean ?location - location)
+ ;;  (forall (?o - object) 
+ ;;   (imply
+ ;;    (at-location ?o ?location)
+ ;;     (not (dirty ?o)))))
+
+ ;; DURATIVE ACTIONS
+ (:durative-action learn
+  :parameters (?a - agent ?v1v1 ?v1v2 ?v1v3 ?v2v1 - id)
+  :duration (= ?duration 1.0)
+  :condition (and
+ 	      (at start (and
+			 (triple ?v1v1 neg ?v1v2 null)
+			 (triple ?v1v2 knows ?a ?v1v3)
+			 )
+	       )
+ 	      )
+  :effect (and 
+ 	   (at end (and
+		    (not (triple ?v1v1 neg ?v1v2 null))
+		    (not (triple ?v1v2 knows ?a ?v1v3))
+		    )
+	    )
+ 	   (at end (and
+		    (triple ?v2v1 knows ?a ?v1v3))
+		    )
+ 	   )
+  )
+
+ )
+
+;; </domain-file>

@@ -1,0 +1,35 @@
+;; <problem-file>
+
+(define (problem flpInventory1)
+
+ (:domain flpInventory)
+
+ (:includes)
+
+ (:timing
+  (start-date TZID=America/Chicago:20161228T010000)
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:objects
+  meredithMcGhan andrewDougherty - agent
+  downstairsComputerRoom meredithsRoom - location
+  venomEnergyDrinks - type
+  )
+
+ (:init
+  (has-location andrewDougherty meredithsRoom)
+  (= (has-inventory venomEnergyDrinks meredithsRoom) 2)
+  )
+
+ (:goal
+  (and
+   (out-of-type venomEnergyDrinks meredithsRoom)
+   )
+  )
+ 
+ (:metric minimize (has-inventory venomEnergyDrinks meredithsRoom)) 
+  
+ )
+
+;; </problem-file>

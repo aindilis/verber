@@ -1,0 +1,11 @@
+(define
+ (domain TEST_TEST2)
+ (:requirements :typing)
+ (:types day-of-week date - string string - object)
+ (:predicates
+  (day-of-week ?date - date ?dow - day-of-week)
+  (pay-day ?date - date)
+  )
+ (:functions)
+ (:durative-actions)
+ )

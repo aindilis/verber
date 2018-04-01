@@ -1,0 +1,72 @@
+
+;;           s1  l12  s2
+;;       /----*-------*-----\
+;;       |                  |     sw
+;; cb    |   s3       s4    \--- \
+;;  *----+----*-------*---------  X--*
+;;       |                  /---
+;;       |   s5  l56  s6    |
+;;       \----*-------*-----/
+
+
+(define (domain supplyrestoration)
+  (:types device line)
+  (:constants 
+      cb s1 s2 s3 s4 s5 s6 - device
+      l12 l56 - line)
+  (:predicates 
+       (closed ?d - device)
+       (faulty ?l - line))
+  (:functions
+       (switch_position) - (range 1 3))
+  
+  (:action open_device
+   :parameters (?d - device)
+   :precondition (closed ?d)
+   :effect       (not (closed ?d)))
+
+  (:action set_switch 
+   :parameters (?pos - (range 1 3))
+   :precondition  (not (= ?pos (switch_position)))
+   :effect        (assign (switch_position) ?pos))
+
+  (:action close_device
+   :parameters (?d - device)
+   :precondition (not (closed ?d))
+   :effect (and
+             (when (and
+                     (not (= ?d cb))
+                     (not (= ?d s3)))
+                   (closed ?d))
+             (when (and
+                     (= ?d cb)
+                     (not (and (closed s1) (faulty l12)))
+                     (not (and (closed s5) (faulty l56))))
+                   (closed ?d))
+             (when (= ?d s3)
+                   (unknown (closed ?d)))
+             (when (and
+                     (closed cb)
+                     (or 
+                       (and (= ?d s1) (faulty l12))
+                       (and (= ?d s5) (faulty l56))))
+                   (not (closed cb)))))
+
+  (:observation power_reaches_switch - boolean
+     :parameters ()
+     (iff (= power_reaches_switch 1)      
+                (or
+                  (and (closed cb) 
+                       (closed s1)
+                       (closed s2))
+                  (and (closed cb) 
+                       (closed s3)
+                       (closed s4))
+                  (and (closed cb) 
+                       (closed s5)
+                       (closed s6))))
+  )
+)
+            
+                   
+             

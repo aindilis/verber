@@ -1,0 +1,9 @@
+This directory has domain descriptions for two blocks
+world demos.  "blocks.pddl" is the standard blocks world
+in hierarchical task network form (what AP does best).
+"multi-agent.pddl" is a variation demonstrating AP's ability
+to coordinate multiple agents.
+
+PDDL documentation can be found here:
+ftp://ftp.cs.yale.edu/pub/mcdermott/software/pddl.tar.gz
+

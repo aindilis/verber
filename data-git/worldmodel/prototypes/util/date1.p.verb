@@ -1,0 +1,10 @@
+
+
+(define
+ (problem UTIL_DATE1)
+ (:domain UTIL_DATE1)
+ (:includes)
+ (:objects)
+ (:init)
+ (:goal
+  (and)))

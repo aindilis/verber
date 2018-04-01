@@ -1,0 +1,23 @@
+(define (problem GROCERIES)
+ (:domain GROCERIES)
+ (:includes busroute)
+ (:objects	
+  ;; groceries - object
+  andrew-dougherty - person
+  )
+
+ (:init
+  ;; (at groceries store)
+  (at-location andrew-dougherty Wilkins-and-Worth)
+  (has-store Forbes-And-Murray)
+  )
+
+ (:goal 
+  (and
+   ;; (at groceries home)
+   (at-location andrew-dougherty Wilkins-and-Worth)
+   (has-groceries andrew-dougherty)
+   )
+  )
+ )
+

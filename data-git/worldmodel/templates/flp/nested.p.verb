@@ -1,0 +1,29 @@
+(define (problem nested)
+
+ (:domain nested)
+
+ (:includes)
+
+ (:timing
+  (start-date TZID=America/Chicago:20161228T010000)
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:objects
+  andrewdougherty - agent
+  rent - billtype
+  )
+
+ (:init
+  (paybill andrewdougherty rent)
+  )
+
+ (:goal
+  (and
+   (stillalive andrewdougherty)
+   )
+  )
+ 
+ (:metric minimize (total-time)) 
+ 
+ )

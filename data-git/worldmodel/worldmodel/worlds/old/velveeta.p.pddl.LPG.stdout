@@ -1,0 +1,45 @@
+
+Parsing domain file:  domain 'VELVEETA' defined ... done.
+Parsing problem file:  problem 'VELVEETA' defined ... done.
+
+
+
+Modality: Fast Planner
+
+Number of actions             :       2
+Number of conditional actions :       0
+Number of facts               :       7
+
+
+Analyzing Planning Problem:
+	Temporal Planning Problem: NO
+	Numeric Planning Problem: YES
+	Problem with Timed Initial Litearals: NO
+	Problem with Derived Predicates: NO
+
+Evaluation function weights:
+     Action duration 0.00; Action cost 1.00
+
+
+Computing mutex... done
+
+Preprocessing total time: 0.00 seconds
+
+Searching ('.' = every 50 search steps):
+ solution found: 
+
+Plan computed:
+   Time: (ACTION) [action Duration; action Cost]
+ 0.0000: (HEAT VELVEETA) [D:11.0000; C:1.0000]
+ 11.0000: (COOK VELVEETA) [D:11.0000; C:1.0000]
+
+
+Solution found:
+Total time:      0.01
+Search time:     0.01
+Actions:         2
+Execution cost:  2.00
+Duration:        22.000
+Plan quality:    2.000
+     Plan file:       /var/lib/myfrdcsa/codebases/internal/verber/data/worldmodel/worlds/velveeta.p.pddl.LPG.sol_1.SOL
+

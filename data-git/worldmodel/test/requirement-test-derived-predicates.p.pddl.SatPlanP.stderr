@@ -1,0 +1,5 @@
+
+/var/lib/myfrdcsa/codebases/internal/verber/data/worldmodel/test/requirement-test-derived-predicates.d.pddl: syntax error in line 3, ':DERIVED-PREDICATES':
+requirement %s not supported by this IPP version :DERIVED-PREDICATES
+
+Memory limit exceeded: bb system call, OR Time limit exceeded: bb system call, OR bb internal error

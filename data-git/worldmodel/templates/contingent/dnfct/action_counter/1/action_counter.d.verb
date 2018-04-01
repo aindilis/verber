@@ -1,0 +1,102 @@
+(define (domain action_counter)
+
+ (:requirements
+  :typing
+  ;; :verb-contingent
+  )
+
+ (:types COUNT COUNTERTYPE)
+
+ ;; (:includes)
+ ;;
+ ;; (:timing
+ ;;  (units 0000-00-00_24:00:00)
+ ;;  )
+
+ (:predicates
+  (finished)
+
+  (action_pending)
+
+  (succ ?count1 ?count2 - COUNT)
+
+  (counter ?countertype - COUNTERTYPE ?count - COUNT)
+  (cap ?countertype - COUNTERTYPE ?count - COUNT)
+
+  ;; (success)
+  ;; (failure)
+  )
+
+ ;; (:functions)
+
+ (:action SAY_HAIL_MARY
+  :parameters
+  ()
+  :precondition
+  (and
+   (action_pending)
+   )
+  :effect
+  (and
+   (not (action_pending))
+   )
+  )
+
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;;               Action Counter Subsystem               ;;
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+ (:action INCREMENT_COUNTER
+  :parameters
+  (?countertype - COUNTERTYPE ?count1 ?count2 - COUNT)
+  :precondition
+  (and
+   (not (action_pending))
+
+   (counter ?countertype ?count1)
+   (succ ?count1 ?count2)
+   )
+  :effect
+  (and
+   (action_pending)
+
+   (not (counter ?countertype ?count1))
+   (counter ?countertype ?count2)
+   )
+  )
+
+ (:action FINISH_SUCCESS
+  :parameters
+  (?cap - COUNT)
+  :precondition
+  (and
+   ;; (action_pending)
+
+   (counter actions ?cap)
+   (cap actions ?cap)
+   )
+  :effect
+  (and
+   (finished)
+   ;; (success)
+   )
+  )
+
+ ;; (:action finish_failure
+ ;;  :parameters
+ ;;  (?countertype - COUNTERTYPE ?count - COUNT)
+ ;;  :precondition
+ ;;  (and
+ ;;   (action_pending)
+
+ ;;   (counter ?countertype ?count)
+ ;;   (cap ?countertype ?count)
+ ;;   (not (success))
+ ;;   )
+ ;;  :effect
+ ;;  (and
+ ;;   (finished)
+ ;;   (failure)
+ ;;   )
+ ;;  )
+ )

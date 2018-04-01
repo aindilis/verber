@@ -1,0 +1,6 @@
+;;; only has transmissions from/to our employee Wally and ebay.com
+(transmitted wally ebay.com http listingform)
+(transmitted wally ebay.com http auctionpgreq)
+(transmitted ebay.com wally http auctionpg)
+(transmitted ebay.com wally smtp itemsold)
+(transmitted ebay.com wally eft saleprice)

@@ -1,0 +1,3 @@
+
+requirement-test-derived-predicates.d.pddl: syntax error in line 3, ':DERIVED-PREDICATES':
+requirement %s not supported by this IPP version :DERIVED-PREDICATES

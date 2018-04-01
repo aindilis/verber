@@ -1,0 +1,50 @@
+
+safe havens
+
+goal:  no nuke, deney access to SNM
+
+
+Measure:  PEMISSI
+
+actions:
+-sanctions (finance, etc. PEMISII)
+-tready
+-monitor trade
+-cyber attack
+
+resources:  ?  allocation problem
+
+probability x PEMISII
+
+resources vs. each country (vector in DIMEFIL space-time)
+
+
+diplomatic:  preconditions, duration, goals
+how to define goal  (decrease ...)
+minimize/maximize some state
+
+
+need list of actions:  embargo, sanctions, ...
+restrict imports, 
+what do they consume or make unavailable for other action?
+
+sanctions negative on diplomatic on other countries
+
+
+Isollate
+Divert
+Intercept
+Secure
+Seize
+
+No Acqusiton
+No Diversion
+No Loss of Control
+
+for each actor,
+-Beliefs
+-Motivation
+-Intention
+-Capability   [smarts, materials, etc.]
+-Capcity      [how much]
+-Opportunity

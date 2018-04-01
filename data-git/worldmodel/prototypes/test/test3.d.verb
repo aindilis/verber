@@ -1,0 +1,15 @@
+;; $VAR1 = {
+;;           'Units' => undef,
+;;           'Includes' => {
+;;                           'TEST_TEST3' => {
+;;                                             'UTIL_DATE1' => 1,
+;;                                             '' => 1
+;;                                           }
+;;                         }
+;;         };
+
+(define
+ (domain TEST_TEST3)
+ (:requirements)
+ (:includes UTIL_DATE1 )
+ (:types))

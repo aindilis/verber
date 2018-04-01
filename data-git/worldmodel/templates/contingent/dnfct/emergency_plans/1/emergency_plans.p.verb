@@ -1,0 +1,33 @@
+(define (problem emergency_plans) 
+
+ (:domain emergency_plans)
+
+ ;; (:includes)
+
+ ;; (:timing
+ ;;  (start-date TZID=America/Chicago:20170801T000000)
+ ;;  (units 0000-00-00_24:00:00)
+ ;;  )
+
+ (:objects
+  posiGit1 posiGit2 - DATA
+  hitachi3TBRoot hitachi3TBBackup noDrive - DRIVE
+  posiFrdcsaOrg  - SYSTEM
+  )
+ 
+ (:init
+  (and
+   (on posiGit1 hitachi3TBBackup)
+   (on posiGit2 noDrive)
+   (in hitachi3TBBackup posiFrdcsaOrg)
+   )
+  )
+
+ (:goal
+  (and
+   (finished)
+   )
+  )
+ )
+
+

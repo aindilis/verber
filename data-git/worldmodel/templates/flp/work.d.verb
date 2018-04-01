@@ -1,0 +1,25 @@
+;; <domain-file>
+
+(define (domain work)
+
+ (:timing
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:requirements)
+
+ (:types)
+ 
+ (:predicates)
+
+ (:functions)
+
+ ;; DERIVED
+ ;; (:derived)
+
+ ;; DURATIVE ACTIONS
+ ;; (:durative-action)
+
+ )
+
+;; </domain-file>

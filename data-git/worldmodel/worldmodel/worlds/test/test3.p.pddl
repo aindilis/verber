@@ -1,0 +1,33 @@
+
+
+(define
+ (problem TEST_TEST3)
+ (:domain TEST_TEST3)
+ (:objects Wednesday Tuesday Thursday Sunday Saturday Monday Friday - day-of-week date-20120828 date-20120827 date-20120826 date-20120825 date-20120824 date-20120823 date-20120822 date-20120821 - date)
+ (:init
+  (at 0 (today date-20120821))
+  (at 120 (not (today date-20120825)))
+  (at 120 (today date-20120826))
+  (at 144 (not (today date-20120826)))
+  (at 144 (today date-20120827))
+  (at 168 (not (today date-20120827)))
+  (at 168 (today date-20120828))
+  (at 192 (not (today date-20120828)))
+  (at 24 (not (today date-20120821)))
+  (at 24 (today date-20120822))
+  (at 48 (not (today date-20120822)))
+  (at 48 (today date-20120823))
+  (at 72 (not (today date-20120823)))
+  (at 72 (today date-20120824))
+  (at 96 (not (today date-20120824)))
+  (at 96 (today date-20120825))
+  (day-of-week date-20120821 Tuesday)
+  (day-of-week date-20120822 Wednesday)
+  (day-of-week date-20120823 Thursday)
+  (day-of-week date-20120824 Friday)
+  (day-of-week date-20120825 Saturday)
+  (day-of-week date-20120826 Sunday)
+  (day-of-week date-20120827 Monday)
+  (day-of-week date-20120828 Tuesday))
+ (:goal
+  (and)))

@@ -1,0 +1,163 @@
+;; <domain-file>
+
+(define (domain )
+
+ (:timing
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:requirements)
+
+ (:types
+  implement - thing
+  knives stirring dish container mixer mixing-bowl spatula - implement
+  )
+ 
+ (:predicates
+  (has-insomnia ?p - person)
+  (has-inhibiting-anxiety ?p - person)
+  (has-avolition ?p - person)
+  (location-is-clean ?o - location)
+  (is-uncluttered ?c - counter)
+  (is-clean ?i - implement)
+  (have-all-ingredients-for-recipe ?r - recipe ?p - pantry)
+  (recipe-has-ingredient ?r - recipe ?i - ingredient)
+  (pantry-has-ingredient ?p - pantry ?i - ingredient)
+  (has-spare-room ?pantry)
+  )
+
+ (:functions)
+
+ ;; DERIVED
+ ;; (:derived)
+
+ (:derived (have-all-ingredients-for-recipe ?r - recipe ?p - pantry)
+  (forall ?i - ingredient
+   (imply
+    (recipe-has-ingredient ?r ?i)
+    (pantry-has-ingredient ?p ?i))))
+
+ ;; DURATIVE ACTIONS
+ ;; (:durative-action)
+
+ )
+
+
+;; FIXME; 
+
+(:durative-action retrieve-ingredient-from-more-distant-pantry
+ :parameters (?p - person ?r - recipe ?k - kitchen ?local-pantry ?remote-pantry - pantry ?c - counter)
+ :duration (= ?duration 0.5)
+ :condition (and
+	     (at start (not (pantry-has-ingredient ?lp - pantry ?i - ingredient)))
+	     (at start (pantry-has-ingredient ?rp - pantry ?i - ingredient))
+	     )
+ :effect (and 
+	  ;; frustrated, this is so much harder than it should be, why
+	  ;; are we so disorganized, why do we have so much clutter
+	  (at end (when (equals ?p meredith-mcghan) (frustrated ?p)))
+	  (at end (on-surface ?i - ingredient ?c - counter))	  
+	  (at end (assign (actions) (+ (actions) 1)))	   
+	  )
+ )
+
+;; Preferable to have food in pantry, but takes longer if not in
+;; pantry.  has to go down to basement.  that's a deterrent to cooking
+;; at all.
+
+(:durative-action cook-recipe
+ :parameters (?p - person ?r - recipe ?k - kitchen ?p - pantry)
+ :duration (= ?duration 0.5)
+ :condition (and
+	     (at start (have-all-ingredients-for-recipe ?r ?p))
+	     (at start (location-is-clean ?o))
+	     (at start (forall (?c - counter)
+			(imply
+			 (located-in ?c ?k)
+			 (is-uncluttered ?c))))
+	     (at start (forall (?i - implement)
+			(imply
+			 (located-in ?i ?k)
+			 (is-clean ?i))))
+	     (at end (location-is-clean ?o))
+	     (at end (forall (?c - counter)
+		      (imply
+		       (located-in ?c ?k)
+		       (is-uncluttered ?c))))
+	     (at end (forall (?i - implement)
+		      (imply
+		       (located-in ?i ?k)
+		       (is-clean ?i)))
+	      )
+	     )
+ :effect (and 
+	  
+	  (at end (assign (actions) (+ (actions) 1)))	   
+	  )
+ )
+
+(:durative-action clean-pantry
+ :parameters ()
+ :duration (= ?duration 0.5)
+ :condition (and
+	     )
+ :effect (and 
+	  (at end (has-spare-room ?pantry))	  
+	  )
+ )
+
+(:durative-action stock-pantry
+ :parameters ()
+ :duration (= ?duration 0.5)
+ :condition (and
+	     )
+ :effect (and 
+	  (at end (has-spare-room ?pantry))	  
+	  )
+ )
+
+(:durative-action sleep
+ :parameters (?p - person)
+ :duration (= ?duration 0.5)
+ :condition (and
+	     (at start (not (has-insomnia ?p)))
+	     )
+ :effect (and 
+	  (at end (assign (actions) (+ (actions) 1)))	   
+	  )
+ )
+ 
+
+
+
+;; </domain-file>
+
+
+;; (more chaotic something is, the more energy she has to expend on
+;;  making it not chaotic.  a lot of mental effort for me to
+;;  organize and process things because of ADD.  another thing now
+;;  that is a huge energy suck, is trying to fucking hear.
+;;  exhausted trying to hear when things are soft spoken.  even if I
+;;  don't want to hear it and don't care, her ears want to (Y:
+;;  possible solution is earmuffs))
+
+;; (core issue of how Mereidth's executive function issues driven by
+;;  ADD affect this whole thing
+;;  (could be aspie issues also)
+;;  (M has limited amount of motivation, gets avolitional very
+;;   easily, if she doesn't do something when she feels like it, she
+;;   may not get it done and then it has a domino effect)
+;;  (has limited supply of motivation, if she doesn't pace herself,
+;;   she will get easily depleted of motivation and get bored, omg
+;;   it's so tedious to go from store to store, by the time she's
+;;   done.
+;;   )
+;;  (so doing recreation thing with and for Y will make her not get
+;;   anything done)
+;;  (get's bored very easily things get tedious for her if she's not
+;;   passionate about them.  She's not willing to let things go.
+;;   she forces herself to do them.  forces themself with the energy
+;;   to build motivation.  psych herself up to do things.  even
+;;   tooth brushing)
+
+;;  )

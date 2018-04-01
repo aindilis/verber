@@ -1,0 +1,107 @@
+Quando entro? (SatPlan.cpp)
+E qui? (SatPlan.cpp)
+satSolver_ optsat1.0
+Check1? (SatPlan.cpp)
+Check2? (SatPlan.cpp)
+Right before sysCall (CNFEncoding.h)
+
+SatPlan04 release 1.1 10 Feb 2006
+
+
+bb: parsing domain file
+domain 'REQUIREMENT-TEST-STRIPS' defined
+ ... done.
+bb: parsing problem file
+problem 'REQUIREMENT-TEST-STRIPS' defined
+ ... done.
+
+Create: 0
+
+
+creating action-based encoding...
+building rplan graph layers --> up to layer 1...
+goal constraints...
+building exclusion constraints --> up to layer 1...
+
+DECISION LAYER 1, WRITING ACTION-BASED ENCODING WITH 1 VARS, 1 CLAUSES.
+1 G clauses, 0 A clauses, 0 E clauses.c ACTION 1
+c 
+
+time spent:    0.00 seconds instantiating 4 action templates
+               0.00 seconds reachability analysis, yielding 2 facts and 4 actions
+               0.00 seconds collecting 1 relevant facts
+               0.00 seconds building connectivity graph
+               0.00 seconds building (std) graph
+               0.00 seconds CNF output time
+               0.00 seconds total planner time (solving not included)
+
+Right after sysCall (CNFEncoding.h)
+Check2b? (SatPlan.cpp)
+
+***Solving***
+
+argc: 2The output file can not be opened
+EncodingType: 5
+Solver: MiniSAT
+File input: ./optsat1.0
+File output: CNF_cbejc
+Minimality: cardinality
+Start Encoding Warners optimized ... End Encoding
+Original number of variables: 1
+Original number of clauses: 1
+Total number of variables: 2
+Total number of clauses: 1
+
+s SATISFIABLE
+RESULT: 1
+
+solved: 1
+Here 
+Here1 
+Right before sysCall (CNFEncoding.h)
+
+SatPlan04 release 1.1 10 Feb 2006
+
+
+bb: parsing domain file
+domain 'REQUIREMENT-TEST-STRIPS' defined
+ ... done.
+bb: parsing problem file
+problem 'REQUIREMENT-TEST-STRIPS' defined
+ ... done.
+
+Create: 1
+
+
+creating action-based encoding...
+building rplan graph layers --> up to layer 1...
+goal constraints...
+building exclusion constraints --> up to layer 1...
+
+DECISION LAYER 1, WRITING ACTION-BASED ENCODING WITH 1 VARS, 1 CLAUSES.
+1 G clauses, 0 A clauses, 0 E clauses.
+
+time spent:    0.00 seconds instantiating 4 action templates
+               0.00 seconds reachability analysis, yielding 2 facts and 4 actions
+               0.00 seconds collecting 1 relevant facts
+               0.00 seconds building connectivity graph
+               0.00 seconds building (std) graph
+               0.00 seconds CNF output time
+               0.00 seconds total planner time (solving not included)
+
+Entro in create_solution
+Entro in get_solution
+Right after sysCall (CNFEncoding.h)
+Errore qui???
+Check3? (SatPlan.cpp)
+***SAT!***
+
+Solved in 1 layers
+
+Real Time: = 0.11
+User Time: = 0.02
+Syst Time: = 0
+
+Entro in MoveSolution
+findSolutionFile original.21492
+newNameExt requirement-test-strips.p.pddl.SatPlanP.sol

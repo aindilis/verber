@@ -1,0 +1,21 @@
+(define (problem supply_pb)
+        (:domain supply_restoration)
+	(:init  (= (switch_position) 1) 
+                (oneof (faulty l12) (faulty l56)))
+        (:postronggoal 
+                (or
+                  (and (closed cb) 
+                       (closed s1)
+                       (not (faulty l12))
+                       (closed s2)
+                       (= (switch_position) 1))
+                  (and (closed cb) 
+                       (closed s3)
+                       (closed s4)
+                       (= (switch_position) 2))
+                  (and (closed cb) 
+                       (closed s5)
+                       (not (faulty l56))
+                       (closed s6)
+                       (= (switch_position) 3)))))
+

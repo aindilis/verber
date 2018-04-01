@@ -1,0 +1,154 @@
+Here's the first, very rough crack at a more detailed demonstration
+scenario.  Also attached is a concept for the animation.  Upper left
+will be different JPEGs depicting different satellite states.  Lower
+right will be JPEGs of images taken. Upper right will allow
+introduction of threats.  Lower left will show resource utilization.
+The RTS will drive this and receive threat messages.  This is all
+conceptual.
+
+My next step is to turn the scenario into both ANML and a storyboard.
+
+Comments are always welcome.
+
+-Dave
+--------------
+Demonstration scenario
+
+NOTE: Time units are just guesses.  We'll want to adjust them to make
+the demo both doable and interesting as we model the domain.
+
+NOTE: I'll turn the actions into ANML soon.
+
+User selects five images they want obtained.  All images must be
+obtained during a 20 time unit window (i.e., when the satellite is
+over the target area) and all images must be downloaded during a 100
+time unit window (i.e., when the satellite is over a comms relay) that
+will overlap some with the image window.
+
+Each image requires a different slew of the satellite.  Each degree of
+slew costs 1 fuel unit and takes 1 time unit.
+
+Shutter must be open to take images and it takes 1 time unit to open.
+Shutter can remain open for all the images.
+
+Camera must be on to take images.  Starting camera takes 10 time
+units.
+
+Closing shutter takes 1 time unit.
+
+Turning off camera takes 1 time unit.
+
+Downloading image takes 5 time units.  Only one image can be
+downloaded at a time.
+
+Only 3 images can be stored on-board at a time.
+
+Threats:
+
+High Intensity (HI) laser: Cannot take images when this laser is on
+and must close shutter within 1 time unit.  Laser will only last for
+10 time units and then will stop and cannot return for 10 more time
+units.
+
+Low Intensity (LI) laser: Can continue to take pictures while on, but
+camera will overheat in 3 time units unless shutter is closed.  If
+camera overheats it must stay off for 10 time units and then be
+restarted.
+
+Demo: Schedule the 5 images to minimize slew.  React to threats
+entered by users and still maintain plan integrity.
+
+AP plans the nominal schedule for both image taking and download.
+CIRCA takes this and makes rules to accomplish tasks while also adding
+rules for dealing with threats.  RTS executes against a very simple
+simulation/animation (see attached).
+
+Additional possibilities if the above is too simple:
+
+Add a communication task that interferes with image download and
+schedule that communication task.
+
+Add constraint that camera overheats after some number of time units
+and must be turned off for a period of time.
+
+
+-------------------------------
+Images to choose from (I have JPEGS of all)
+
+
+Roman Coliseum
+
+Longitude 12¬∞ 29' 30"
+Latitude 41¬∞ 53' 24"
+
+Slew of +10
+
+St. Peters
+
+12¬∞ 27' 18"
+41¬∞ 54' 7"
+
+Slew of +10
+
+Acropolis
+
+23¬∞ 43' 33"
+37¬∞ 58' 16"
+
+Slew of -5
+
+Giza
+
+31¬∞ 7' 52"
+29¬∞ 58' 35"
+
+Slew of -10
+
+Great wall
+
+117¬∞ 5' 26"
+40¬∞ 46' 6"
+
+Slew of 0
+
+Potala Palace
+
+91¬∞ 7' 3
+29¬∞ 39' 26"
+
+Slew of 0
+
+Copacabana
+
+-43¬∞ 10' 44"
+-22¬∞ 58' 28"
+
+Slew of -10
+
+Bay of Capri
+
+14¬∞ 1' 26"
+40¬∞ 45' 39"
+
+Slew of -5
+
+Saddam palace
+
+44¬∞ 24' 32"
+33¬∞ 18' 15"
+
+Slew of +10
+
+Baghdad Airport
+
+44¬∞ 13' 50"
+33¬∞ 16' 2"
+
+Slew of +5
+
+Mosque
+
+44¬∞ 20' 59"
+33¬∞ 18' 41"
+
+Slew of 0

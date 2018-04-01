@@ -1,0 +1,40 @@
+MaxPlanII beta.
+
+bb: parsing domain file
+domain 'REQUIREMENT-TEST-STRIPS' defined
+ ... done.
+bb: parsing problem file
+problem 'REQUIREMENT-TEST-STRIPS' defined
+ ... done.
+
+
+******  Solve with 1 layers Start******
+
+creating action-based encoding:
+        building rplan graph layers, up to layer [1];
+        goal constraints;
+        building exclusion constraints --> up to layer 1...
+
+DECISION LAYER 1, WRITING ACTION-BASED ENCODING WITH 1 VARS, 1 CLAUSES.
+1 G clauses, 0 A clauses, 0 E clauses.c CNF file planning task -p , -o requirement-test-strips.d.pddl, -f requirement-test-strips.p.pddl, bound 1, action based encoding
+In building up solver: p cnf 1 1
+==================================[ MINISAT ]===================================
+| Conflicts |     ORIGINAL     |              LEARNT              | Progress |
+|           | Clauses Literals |   Limit Clauses Literals  Lit/Cl |          |
+==============================================================================
+|         0 |       0        0 |       0       0        0     0.0 |  0.000 % |
+==============================================================================
+Totoal time used by londex constraint checking is [B0.000000][L0.000000],apply counts 1, apply_generated 0
+restarts          :            1
+conflicts         :            0           (      nan / sec      )
+decisions         :            1           (      inf / sec      )
+propagations      :            1           (      inf / sec      )
+inspects          :            0           (      nan / sec      )
+conflict literals :            0           (      nan % deleted  )
+CPU time          :         0.00 sec
+SATISFIABLE
+
+Info:      0.00 seconds total solving time
+           0.00 MB memory used
+        solution found at layer 1
+

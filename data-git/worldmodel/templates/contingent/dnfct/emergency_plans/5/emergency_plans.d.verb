@@ -1,0 +1,160 @@
+(define (domain emergency_plans)
+
+ (:requirements
+  :typing
+  ;; :verb-contingent
+  )
+
+ (:types
+  COUNT COUNTERTYPE
+  ;; DATA DRIVE SYSTEM
+  )
+
+ ;; (:includes)
+ ;;
+ ;; (:timing
+ ;;  (units 0000-00-00_24:00:00)
+ ;;  )
+
+ (:predicates
+  ;; ACTION COUNTER
+  (finished)
+  (success)
+  (failure)
+  (action_pending)
+  (succ ?count1 ?count2 - COUNT)
+  (counter ?countertype - COUNTERTYPE ?count - COUNT)
+  (cap ?countertype - COUNTERTYPE ?count - COUNT)
+
+  ;; ;; EMERGENCY PLANS
+  ;; (not_exists ?data - DATA)
+  ;; (on ?data - DATA ?drive - DRIVE)
+  ;; (in ?drive - DRIVE ?system - SYSTEM)
+  ;; ;; (copy_of ?data1 ?data2 - DATA)
+  ;; ;; (accessed ?drive - DRIVE)
+  ;; (failed ?drive - DRIVE)
+  )
+
+ ;; (:functions)
+
+ ;; (
+ ;;  :action sense_check_drive_t
+ ;;  :parameters (?drive - DRIVE ?system - SYSTEM)
+ ;;  :precondition (in ?drive ?system)
+ ;;  :effect (and (failed ?drive) (true))
+ ;;  )
+
+ ;; (:action backup
+ ;;  :parameters
+ ;;  (
+ ;;   ?data1 ?data2 - DATA
+ ;;   ?driveX ?driveY - DRIVE
+ ;;   )
+ ;;  :precondition
+ ;;  (and
+ ;;   (action_pending)
+
+ ;;   (on ?data1 ?driveX)
+ ;;   (not_exists ?data2)
+ ;;   (not (failed ?driveX))
+ ;;   (not (failed ?driveY))
+ ;;   )
+ ;;  :effect
+ ;;  (and
+ ;;   (not (action_pending))
+
+ ;;   (not (not_exists ?data2))
+ ;;   (on ?data2 ?driveY)
+ ;;   )
+ ;;  )
+
+ ;; (:action recover
+ ;;  :parameters
+ ;;  (?drive - DRIVE)
+ ;;  :precondition
+ ;;  (and
+ ;;   (action_pending)
+
+ ;;   (failed ?drive)
+ ;;   )
+ ;;  :effect
+ ;;  (and
+ ;;   (not (action_pending))
+
+ ;;   (not (failed ?drive))
+ ;;   )
+ ;;  )
+
+ (:action SAY_HAIL_MARY
+  :parameters
+  ()
+  :precondition
+  (and
+   (action_pending)
+   )
+  :effect
+  (and
+   (not (action_pending))
+   )
+  )
+
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;;               Action Counter Subsystem               ;;
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+ (:action INCREMENT_COUNTER
+  :parameters
+  (?countertype - COUNTERTYPE ?count1 ?count2 - COUNT)
+  :precondition
+  (and
+   (not (action_pending))
+
+   (counter ?countertype ?count1)
+   (succ ?count1 ?count2)
+   )
+  :effect
+  (and
+   (action_pending)
+
+   (not (counter ?countertype ?count1))
+   (counter ?countertype ?count2)
+   )
+  )
+ 
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ ;;               /Action Counter Subsystem              ;;
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+ ;; (:action FINISH_SUCCESS
+ ;;  :parameters
+ ;;  (?data - DATA ?drive - DRIVE)
+ ;;  :precondition
+ ;;  (and
+ ;;   ;; (copy_of posiGit1 posiGit2)
+ ;;   (on posiGit2 hitachi3TBRoot)
+ ;;   (not (failed hitachi3TBBackup))
+ ;;   )
+ ;;  :effect
+ ;;  (and
+ ;;   (finished)
+ ;;   (success)
+ ;;   )
+ ;;  )
+ 
+ (:action FINISH_FAILURE
+  :parameters
+  (?countertype - COUNTERTYPE ?count - COUNT)
+  :precondition
+  (and
+   ;; (action_pending)
+   (cap ?countertype ?count)
+   (counter ?countertype ?count)
+   )
+  :effect
+  (and
+   (finished)
+   (failure)
+   )
+  )
+ )
+

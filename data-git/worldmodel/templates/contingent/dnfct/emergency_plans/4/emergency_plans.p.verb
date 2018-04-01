@@ -1,0 +1,72 @@
+(define (problem emergency_plans) 
+
+ (:domain emergency_plans)
+
+ ;; (:includes)
+
+ ;; (:timing
+ ;;  (start-date TZID=America/Chicago:20170801T000000)
+ ;;  (units 0000-00-00_24:00:00)
+ ;;  )
+
+ (:objects
+
+  ;; ACTION COUNTER
+  n0 n1 n2 n3 n4 n5 n6 n7 - COUNT
+  actions - COUNTERTYPE
+
+  ;; EMERGENCY PLANS
+  posiGit1 posiGit2 - DATA
+  hitachi3TBRoot hitachi3TBBackup noDrive - DRIVE
+  posiFrdcsaOrg  - SYSTEM
+
+  )
+ 
+ (:init
+  (and
+   
+   ;; ACTION COUNTER
+   (succ n0 n1)
+   (succ n1 n2)
+   (succ n2 n3)
+   (succ n3 n4)
+   (succ n4 n5)
+   (succ n5 n6)
+   (succ n6 n7)
+
+   (not (finished))
+
+   (action_pending)
+
+   (counter actions n0)
+
+   (cap actions n7)
+
+   ;; EMERGENCY PLANS
+   (on posiGit1 hitachi3TBBackup)
+   (not_exists posiGit2)
+   (in hitachi3TBBackup posiFrdcsaOrg)
+   (unknown (failed hitachi3TBBackup))
+
+
+   ;; ;; NOT WORKING
+
+   ;; (oneof
+   ;;  (failed hitachi3TBBackup)
+   ;;  (not (failed hitachi3TBBackup))
+   ;;  )
+
+   ;; (not (failed hitachi3TBRoot))
+
+   ;; (not (failed noDrive))
+   ;; (unknown (failed hitachi3TBRoot))
+   ;; (not (failed hitachi3TBBackup))
+   )
+  )
+
+ (:goal
+  (and
+   (finished)
+   )
+  )
+ )

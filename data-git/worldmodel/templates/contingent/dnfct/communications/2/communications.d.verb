@@ -1,0 +1,65 @@
+(define (domain communications)
+
+ (:requirements
+  :typing
+  ;; :verb-contingent
+  )
+
+ (:types AGENT SPEAKER HEARER MESSAGE)
+ 
+ (:predicates
+  (enabled_a ?agent - AGENT)
+  (enabled_s ?speaker - SPEAKER)
+  (enabled_h ?hearer - HEARER)
+
+  (attached_as ?agent - AGENT ?speaker - SPEAKER)
+  (in_range_of_as ?agent - AGENT ?speaker - SPEAKER)
+
+  (attached_ah ?agent - AGENT ?hearer - HEARER)
+  (in_range_of_ah ?agent - AGENT ?hearer - HEARER)
+
+  (heard_am ?agent - AGENT ?message - MESSAGE)
+
+  (acked_aamm ?agent1 ?agent2 - AGENT ?message ?ackMessage - MESSAGE)
+  (has_ack_mm ?message ?ackMessage - MESSAGE)
+  )
+
+ (:action AGENT1_SPEAKS_TO_AGENT2
+  :parameters (?agent1 ?agent2 - AGENT ?speaker - SPEAKER ?hearer - HEARER ?message ?ackMessage - MESSAGE)
+  :precondition (and
+		 (enabled_a ?agent1)
+		 (attached_as ?agent1 ?speaker)
+		 (enabled_s ?speaker)
+
+		 (enabled_a ?agent2)
+		 (attached_ah ?agent2 ?hearer)
+		 (enabled_h ?hearer)
+		 
+		 (in_range_of_as ?agent2 ?speaker)
+
+		 (not (= ?message ?ackMessage))
+
+		 (or
+		  (not (has_ack_mm ?message ?ackMessage))
+		  (and
+		   (not (acked_aamm ?agent1 ?agent2 ?message ?ackMessage)))
+		  )
+
+		 )
+  :effect (and 
+	   (heard_am ?agent2 ?message)
+ 	   )
+  )
+
+ (:action ACKED
+  :parameters (?agent1 ?agent2 - AGENT ?message ?ackMessage - MESSAGE)
+  :precondition (and
+ 		 (heard_am ?agent2 ?message)
+		 (has_ack_mm ?message ?ackMessage)
+ 		 (heard_am ?agent1 ?ackMessage)
+ 		 )
+  :effect (and 
+ 	   (acked_aamm ?agent1 ?agent2 ?message ?ackMessage)
+ 	   )
+  )
+ )

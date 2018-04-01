@@ -1,0 +1,258 @@
+;; <domain-file>
+
+(define (domain )
+
+ (:timing
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:requirements)
+
+ (:types
+  aie - code
+  integer character-code - aie
+  )
+ 
+ (:predicates
+  (s ?w - integer ?p - integer ?c - character_code)
+  )
+
+ (:functions)
+
+ ;; DERIVED
+ ;; (:derived)
+
+ ;; DURATIVE ACTIONS
+ ;; (:durative-action)
+
+ (:durative-action concat
+  :parameters (?w1 ?ii ?ij ?w2 ?ji ?jj - integer)
+  :duration (= ?duration (duration cd))
+  :condition (and
+	      (at start
+	       (forall (?i - integer)
+		(implies (and (>= ?i ?ii) (<= ?i ?ij)))
+
+		(- ?ij ?ii)
+
+		(- ?jj ?ji)
+
+		(s ?w1 ?i1 ?c1)
+		(s ?w2 ?i2 ?c2)
+		)
+	       )
+	      (at end
+	       (not (exists (?w3 - integer) (s ?w3 ))))
+	      (forall (?i - integer)
+	       (implies (and (>= ?i ?ii) (<= ?i ?ij))
+		(+ ?i)
+		(s ?w3 ?i ?c)))
+	      )
+  :effect (and
+ 	   (at end
+	    (not (cwd ?cwd))
+	    (cwd ?destination)
+	    )
+	   )
+  )
+
+;; </domain-file>
+
+;; ls
+;; cd
+;; pushd
+;; screen
+;; find
+;; mv
+;; tr
+;; grep
+;; sudo
+;; locate
+;; mkdir
+;; cp
+;; rm
+;; git
+;; swipl
+;; ssh
+;; ln
+;; wget
+;; ps
+;; du
+;; emacs
+;; pdftotext
+;; df
+;; cat
+;; boss
+;; e
+;; which
+;; date
+;; chmod
+;; packager
+;; history
+;; ping
+;; chase
+;; cal
+;; scp
+;; s
+;; pwd
+;; vagrant
+;; mplayer
+;; popd
+;; rmdir
+;; fg
+;; radar
+;; tar
+;; for
+;; top
+;; mount
+;; kill
+;; chess
+;; killall
+;; dlocate
+;; catwhich
+;; sbt
+;; apg
+;; l
+;; dpkg
+;; rsync
+;; mvn
+;; file
+;; export
+;; touch
+;; perl
+;; diff
+;; spse2
+;; head
+;; elog
+;; echo
+;; yes
+;; p
+;; unzip
+;; rte
+;; gsettings
+;; function
+;; fin
+;; sshfs
+;; man
+;; shopt
+;; alias
+;; w3m
+;; vlc
+;; sl
+;; make
+;; wn
+;; xvpviewer
+;; mencoder
+;; java
+;; y
+;; tail
+;; digi
+;; Welcome
+;; VBoxManage
+;; Please
+;; For
+;; debuild
+;; cpm
+;; Copyright
+;; and
+;; scr
+;; pvnp
+;; lcd
+;; gradle
+;; dzil
+;; swilgt
+;; python
+;; objdump
+;; kbs2
+;; javac
+;; d
+;; todoist
+;; svn
+;; pip
+;; openssl
+;; mkvinfo
+;; gcc
+;; g
+;; fig
+;; complete
+;; clear
+;; bard
+;; whois
+;; timestamp
+;; n
+;; mkvextract
+;; lls
+;; k
+;; iostat
+;; gksudo
+;; convert
+;; cla
+;; uniplayer
+;; sort
+;; scd
+;; python3
+;; play
+;; perlbrew
+;; pdftoppm
+;; ld
+;; hg
+;; gunzip
+;; firefox
+;; c
+;; b
+;; 4
+;; xview
+;; wmctrl
+;; wc
+;; virtualbox
+;; pdfunite
+;; lsof
+;; gpg
+;; free
+;; findabs
+;; emac
+;; corpus
+;; clisp
+;; at
+;; ant
+;; zip
+;; xdotool
+;; VirtualBox
+;; startx
+;; sls
+;; she
+;; r2
+;; pvpn
+;; mongorestore
+;; lua
+;; es
+;; dmesg
+;; dig
+;; cpanm
+;; cmake
+;; certbot
+;; audacity
+;; xpdf
+;; Use
+;; unrar
+;; umount
+;; tcd
+;; ret
+;; podp
+;; nslookup
+;; ncftp
+;; mdr
+;; md5sum
+;; lsb_release
+;; lpushd
+;; kbfs
+;; isd
+;; iotop
+;; hostname
+;; gimp
+;; gedit
+;; fidn
+;; eclipse
+;; dos2unix
+;; dirs
+;; datestamp

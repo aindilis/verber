@@ -1,0 +1,18 @@
+(define (domain date-20121028)
+ (:includes calendar)
+ (:requirements :negative-preconditions :conditional-effects
+  :equality :typing :fluents :durative-actions :derived-predicates)
+
+ (:types 
+
+  )
+
+ (:predicates
+
+  )
+
+ (:functions
+
+  )
+
+ )

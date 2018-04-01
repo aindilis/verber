@@ -1,0 +1,100 @@
+;; <domain-file>
+
+(define (domain auto)
+
+ (:timing
+  (units 0000-00-00_01:00:00)
+  )
+
+ (:requirements
+  :negative-preconditions :conditional-effects :equality :typing
+  :fluents :durative-actions :derived-predicates
+  :disjunctive-preconditions :timed-initial-literals
+  )
+
+ (:types
+  physicalObject - object
+  document car person - physicalObject
+  state date physicalLocation formField - partiallyTangibleThing
+  )
+ 
+ (:predicates
+  (hasPhysicalLocation ?o - physicalObject ?l - physicalLocation)
+  (hasSigned ?d - document ?f - formField ?p - person)
+  (hasDated ?d - document ?f - formField ?d - date)
+  (documentHasFormField ?d - document ?f - formField)
+  (hasDriversLicenseInState ?p - person ?s - state)  
+  )
+
+ (:functions)
+
+ ;; DURATIVE ACTIONS
+
+ (:durative-action sign-document
+  :parameters (?document - document ?formField - formField ?signatory - person ?physicalLocation - physicalLocation)
+  :duration (= ?duration 0)
+  :condition (and
+	      (over all (documentHasFormField ?document ?formField))
+ 	      (over all (hasPhysicalLocation ?signatory ?physicalLocation))
+ 	      (over all (hasPhysicalLocation ?document ?physicalLocation))
+ 	      (at start (not (hasSigned ?document ?formField ?signatory)))
+ 	      )
+  :effect (and 
+	   (at end (hasSigned ?document ?formField ?signatory))
+ 	   )
+  )
+
+ (:durative-action date-document-signature
+  :parameters (?document - document ?formField - formField ?signatory - person ?physicalLocation - physicalLocation ?date - date)
+  :duration (= ?duration 0)
+  :condition (and
+	      (over all (documentHasFormField ?document ?formField))
+ 	      (over all (hasPhysicalLocation ?signatory ?physicalLocation))
+ 	      (over all (hasPhysicalLocation ?document ?physicalLocation))
+ 	      (at start (not (hasDated ?document ?formField ?date)))
+ 	      )
+  :effect (and 
+	   (at end (hasDated ?document ?formField ?date))
+ 	   )
+  )
+
+ ;; (:durative-action transfer
+ ;;  :parameters (?i - item ?r - referent ?s0 - state ?s1 - state)
+ ;;  :duration (= ?duration 0)
+ ;;  :condition (and
+ ;; 	      (at start (hasLocation ?i ?r ?so))
+ ;; 	      )
+ ;;  :effect (and 
+ ;; 	   (at end (hasLocation ?i ?r ?s1))
+ ;; 	   )
+ ;;  )
+
+ ;; (:durative-action transfer
+ ;;  :parameters (?title - title ?car - car ?previousOwner - person ?previousState - state ?newOwner - person ?newState - state)
+ ;;  :duration (= ?duration 0)
+ ;;  :condition (and
+ ;; 	      (at start (hasTitle ?car ?title))
+ ;; 	      (at start (signed ?previousOwner ?title))
+
+
+ ;; 	      (completed (sign-off-on ?previousOwner ?title))
+ ;; 	      (at start (hasLocation ?i ?r ?so))
+ ;; 	      )
+ ;;  :effect (and 
+ ;; 	   (at end (hasLocation ?i ?r ?s1))
+ ;; 	   )
+ ;;  )
+
+ )
+
+;; </domain-file>
+
+
+
+
+;; DERIVED
+;; (:derived (location-is-clean ?location - location)
+;;  (forall (?o - object) 
+;;   (imply
+;;    (at-location ?o ?location)
+;;     (not (dirty ?o)))))

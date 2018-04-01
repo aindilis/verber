@@ -1,0 +1,81 @@
+;; Object templates/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "templates/"
+  :tables (list 
+   (semanticdb-table "classes.p.pddl"
+    :major-mode 'lisp-mode
+    :tags '(("define" code nil nil [114 392]))
+    :file "classes.p.pddl"
+    :pointmax 393
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "classes.d.pddl"
+    :major-mode 'lisp-mode
+    :tags '(("define" code nil nil [114 1082]))
+    :file "classes.d.pddl"
+    :pointmax 1106
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "busroute.d.pddl"
+    :major-mode 'lisp-mode
+    :tags '(("define" code nil nil [114 794]))
+    :file "busroute.d.pddl"
+    :pointmax 818
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "takebus.p.pddl"
+    :major-mode 'lisp-mode
+    :tags '(("define" code nil nil [114 488]))
+    :file "takebus.p.pddl"
+    :pointmax 489
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "busroute.p.pddl"
+    :major-mode 'lisp-mode
+    :tags '(("define" code nil nil [114 265]))
+    :file "busroute.p.pddl"
+    :pointmax 266
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "integrate.d.pddl"
+    :major-mode 'lisp-mode
+    :tags 'nil
+    :file "integrate.d.pddl"
+    )
+   (semanticdb-table "integrate.p.pddl"
+    :major-mode 'lisp-mode
+    :tags 'nil
+    :file "integrate.p.pddl"
+    )
+   (semanticdb-table "laundry.d.pddl"
+    :major-mode 'lisp-mode
+    :tags '(("define" code nil nil [114 808]))
+    :file "laundry.d.pddl"
+    :pointmax 830
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "groceries.d.pddl"
+    :major-mode 'lisp-mode
+    :tags '(("define" code nil nil [24 502]))
+    :file "groceries.d.pddl"
+    :pointmax 503
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "groceries.p.pddl"
+    :major-mode 'lisp-mode
+    :tags '(("define" code nil nil [24 354]))
+    :file "groceries.p.pddl"
+    :pointmax 356
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "clean-laundry.p.pddl"
+    :major-mode 'lisp-mode
+    :tags '(("define" code nil nil [114 295]))
+    :file "clean-laundry.p.pddl"
+    :pointmax 297
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0beta3"
+  :semanticdb-version "2.0beta3"
+  )

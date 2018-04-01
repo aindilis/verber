@@ -1,0 +1,33 @@
+;; <problem-file>
+
+(define (problem flptest)
+
+ (:domain flptest)
+
+ ;; (:includes)
+
+ ;; (:timing
+ ;;  (start-date TZID=America/Chicago:20161228T010000)
+ ;;  (units 0000-00-00_01:00:00)
+ ;;  )
+
+ (:objects
+  task1 task2 - task
+  )
+
+ (:init
+  (completed task2)
+  )
+
+ (:goal
+  (and
+   (< (time) 1)
+   (completed task1)
+   )
+  )
+ 
+ (:metric minimize (total-time))
+
+ )
+
+;; </problem-file>

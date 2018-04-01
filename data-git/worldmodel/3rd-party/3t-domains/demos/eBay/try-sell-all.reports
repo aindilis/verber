@@ -1,0 +1,12 @@
+;;this includes communications from/to ebay.com and the buyer
+(transmitted wally ebay.com https selleracctform)
+(transmitted wally ebay.com http listingform)
+(transmitted wally ebay.com http auctionpgreq)
+(transmitted ebay.com wally http auctionpg)
+(transmitted ebay.com person_unknown http saleprice)
+(transmitted person_unknown ebay.com http bidform)
+(transmitted ebay.com person_unknown smtp bidack)
+(transmitted ebay.com wally smtp itemsold)
+(transmitted ebay.com person_unknown smtp itemsold)
+(transmitted person_unknown ebay.com eft saleprice)
+(transmitted ebay.com wally eft saleprice)

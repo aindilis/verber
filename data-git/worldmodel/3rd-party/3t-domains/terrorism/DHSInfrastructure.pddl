@@ -1,0 +1,1054 @@
+(in-package :ap)
+
+;; created 2014-02-14
+
+(define (domain DHSInfrastructure)
+    (:extends event)
+  (:prefix "DHSInfrastructure.owl")
+  (:uri "http://www.fsf.org/DHSInfrastructure.owl#")
+  (:types   ;;Infrastructure - object
+   Manufacturing - Infrastructure
+   FurnitureAndRelatedProductManufacturing - Manufacturing
+   OtherFurnitureAndRelatedProductManufacturing HouseholdAndInstitutionalFurnitureAndKitchenCabinetManufacturing OfficeFurnitureManufacturingIncludesFixtures - FurnitureAndRelatedProductManufacturing
+   PaperManufacturing BeverageManufacturing - Manufacturing
+   ConvertedPaperProductManufacturing PulpPaperOrPaperboardMill - PaperManufacturing
+   CriticalManufacturing - Manufacturing
+   TransportationEquipmentManufacturing - CriticalManufacturing
+   RailroadRollingStockManufacturing MotorVehicleManufacturing OtherTransportationEquipmentManufacturing
+   MotorVehicleBodyAndTrailerManufacturing ShipAndBoatBuilding AerospaceProductAndPartsManufacturing
+   MotorVehiclePartsManufacturing - TransportationEquipmentManufacturing
+   ElectricalEquipmentApplianceComponentManufacturing - CriticalManufacturing
+   HouseholdApplianceManufacturing ElectricLightingEquipmentManufacturing ElectricalEquipmentManufacturing
+   OtherElectricalEquipmentAndComponentManufacturing - ElectricalEquipmentApplianceComponentManufacturing
+   PrimaryMetalManufacturing - CriticalManufacturing
+   Foundry SteelProductManufacturingFromPurchasedSteel NonFerrousMetalProductionAndProcessingExceptAluminum
+   IronAndSteelMillsAndFerroalloyManufacturing AluminaAndAluminumProductionAndProcessing - PrimaryMetalManufacturing
+   MachineryManufacturing - CriticalManufacturing
+   MiningAndOilAndGasFieldMachineryManufacturing CommercialAndServiceIndustryMachineryManufacturing VentilationHeatingAirConditioningAndCommercialRefrigeration
+   EngineTurbineAndPowerTransmissionEquipment MetalworkingMachineryManufacturing AgricultureConstructionAndMiningMachineryManufacturing
+   OilAndGasFieldMachineryAndEquipmentManufacturing IndustrialMachineryManufacturing - MachineryManufacturing
+   WoodProductManufacturing - Manufacturing
+   WoodPreservation VeneerPlywoodAndEngineeredWoodProductManufacturing WoodContainerAndPalletManufacturing
+   Millwork Sawmill OtherWoodProductManufacturing - WoodProductManufacturing
+   PrintingAndRelatedSupport - Manufacturing
+   Printing PrintingSupportFacility - PrintingAndRelatedSupport
+   FabricatedMetalProductManufacturing - Manufacturing
+   ForgingAndStamping CutleryAndHandToolManufacturing CoatingEngravingHeatTreatingAndAlliedActivities
+   SpringAndWireProductManufacturing OtherFabricatedMetalProductManufacturing ArchitecturalAndStructuralMetalsManufacturing
+   HardwareManufacturing MachineShopTurnedProductAndScrewNutAndBoltManufacturing BoilerTankAndShippingContainerManufacturing - FabricatedMetalProductManufacturing
+   NonMetallicMineralProductsManufacturing - Manufacturing
+   CementAndConcreteProductManufacturing LimeAndGypsumProductManufacturing GlassAndGlassProductManufacturing
+   ClayProductAndRefractoryManufacturing OtherNonMetallicMineralProductManufacturing - NonMetallicMineralProductsManufacturing
+   MiningQuarryingOrOilAndGasExtraction - Manufacturing
+   MetalOreMining MiningExceptOilAndGas OilAndNaturalGasExtraction
+   NonMetallicMineralMiningAndQuarrying - MiningQuarryingOrOilAndGasExtraction
+   ComputerAndElectronicProductManufacturing - Manufacturing
+   AudioAndVideoEquipmentManufacturing NavigationalMeasuringElectromedicalAndControlInstrumentsManufacturing ManufacturingAndReproducingMagneticAndOpticalMedia
+   SemiconductorAndOtherElectronicComponentManufacturing CommunicationsEquipmentManufacturing ComputerAndPeripheralEquipmentManufacturing - ComputerAndElectronicProductManufacturing
+   PetroleumAndCoalProductsManufacturing - Manufacturing
+   OtherPetroleumAndCoalProductsManufacturing AsphaltPavingRoofingAndSaturatedMaterialsManufacturing - PetroleumAndCoalProductsManufacturing
+   OtherManufacturing - Manufacturing
+   OtherMiscellaneousManufacturing MedicalEquipmentAndSuppliesManufacturing - OtherManufacturing
+   FoodManufacturing - Manufacturing
+   OtherFoodManufacturing BakeryProductManufacturing AnimalSlaughteringAndProcessing
+   DairyProductManufacturing FruitVegetablePreservingSpecialtyFoodManufacturing SeafoodProductProcessing - FoodManufacturing
+   TextileTextileProductApparelLeatherManufacturing - Manufacturing
+   CutAndSewApparelManufacturing FiberYarnOrThreadMill OtherTextileProductMill
+   TextileAndFabricFinishingOrFabricCoatingMill ApparelManufacturing TextileFurnishingsMill
+   ApparelAccessoriesAndOtherApparelManufacturing ApparelKnittingMill LeatherAndAlliedProductManufacturing
+   FabricMill - TextileTextileProductApparelLeatherManufacturing
+   PlasticsAndRubberProductsManufacturing ChemicalManufacturing - Manufacturing
+   PlasticsProductsManufacturing RubberProductManufacturing - PlasticsAndRubberProductsManufacturing
+   InformationTechnology - Infrastructure
+   HardwareProduction - InformationTechnology
+   OtherHardwareProductionFacility - (and HardwareProduction InformationTechnology)
+   IdentityManagementAndTrustService ITQualityAssuranceService ITManagementService
+   OtherOperationalSupportServiceFacility - OtherHardwareProductionFacility
+   ControlSystemsHardwareProduction - HardwareProduction
+   FieldDevicesProduction - ControlSystemsHardwareProduction
+   NetworkDevelopment StorageHardwareProduction DomainNameSystemApplianceProduction
+   IdentityManagementTechnologyProduction SemiconductorProduction - HardwareProduction
+   InternetBasedContentInformationAndCommunicationsServices OtherInformationTechnologyFacility - InformationTechnology
+   InternetSupportService OtherInternetSupportOrProductionServiceFacility InternetRoutingAccessAndConnectionFacility - InternetBasedContentInformationAndCommunicationsServices
+   FundamentalInternetService LocalInternetService - InternetSupportService
+   InternetLicensingService - InternetBasedContentInformationAndCommunicationsServices
+   HealthcareAndPublicHealth - Infrastructure
+   DirectPatientHealthcare - HealthcareAndPublicHealth
+   Hospital - DirectPatientHealthcare
+   GeneralMedicalAndSurgicalHospital SpecialtyHospital - Hospital
+   PrivateOrPrivateNotForProfitGeneralMedicalAndSurgicalHospital FederalGeneralMedicalAndSurgicalHospital StateLocalOrTribalGeneralMedicalAndSurgicalHospital - GeneralMedicalAndSurgicalHospital
+   PsychiatricOrSubstanceAbuseHospital ChildrenSHospital EmergencyDepartment - Hospital
+   StateLocalOrTribalPsychiatricOrSubstanceAbuseHospital PrivateOrNotForProfitPsychiatricOrSubstanceAbuseHospital FederalPsychiatricOrSubstanceAbuseHospital - PsychiatricOrSubstanceAbuseHospital
+   CriticalAccessHospital - Hospital
+   AmbulatoryHealthcareFacility - DirectPatientHealthcare
+   BirthingCenter CommunityHealthcareCenter FreestandingSurgicalCareCenter
+   RehabilitationFacility OutpatientMentalHealthOrSubstanceAbuseCenter UrgentCareCenter
+   KidneyDialysisCenter OccupationalHealthClinic FamilyPlanningCenter
+   HealthMaintenanceOrganizationHMOMedicalCenter ProstheticLimbCenter - AmbulatoryHealthcareFacility
+   ExtendedCareFacility - DirectPatientHealthcare
+   NursingCareFacility ResidentialCareFacility Hospice - ExtendedCareFacility
+   HealthPractitionerOfficeOrClinic HomeHealthcare - DirectPatientHealthcare
+   PhysiciansOffice DentalOffice MentalHealthPractitionerOffice - HealthPractitionerOfficeOrClinic
+   PublicHealthAgency - HealthcareAndPublicHealth
+   ClinicalAgencyDepartment NonClinicalAgencyDepartment - PublicHealthAgency
+   LocalAgency - (and ClinicalAgencyDepartment NonClinicalAgencyDepartment)
+   TribalAgency - (and ClinicalAgencyDepartment NonClinicalAgencyDepartment)
+   RegionalAgency - (and ClinicalAgencyDepartment NonClinicalAgencyDepartment)
+   FatalityMortuaryFacility - HealthcareAndPublicHealth
+   Morgue Cemetery FuneralHomeOrCrematorium - FatalityMortuaryFacility
+   HealthcareEducationalFacility - HealthcareAndPublicHealth
+   MedicalSchool NursingSchool DentalSchool
+   PharmacySchool AlliedHealthSchool - HealthcareEducationalFacility
+   HealthSupportingFacility OtherHealthcareAndPublicHealthEntity - HealthcareAndPublicHealth
+   PharmaceuticalsBiopharmaceuticalProduction - HealthSupportingFacility
+   PharmaceuticalBiopharmaceuticalStorageOrStockpile MailOrderPharmacy Pharmacy
+   PharmaceuticalBiopharmaceuticalManufacturingFacility PharmaceuticalBiopharmaceuticalDistributionCenter TribalPharmacy - PharmaceuticalsBiopharmaceuticalProduction
+   FederalAgencyStockpile CommercialPharmaceuticalStorageForWholesaleDistribution - PharmaceuticalBiopharmaceuticalStorageOrStockpile
+   MedicalResearchFacility - HealthSupportingFacility
+   AcademicMedicalResearchFacility IndustrialMedicalResearchFacility GovernmentMedicalResearchFacility - MedicalResearchFacility
+   MedicalPractitionerRegistryOrReferralCenter - HealthSupportingFacility
+   PhysicianReferralCenter NursingRegistry - MedicalPractitionerRegistryOrReferralCenter
+   MedicalAndDiagnosticLaboratory - HealthSupportingFacility
+   StandAloneMedicalAndDiagnosticLaboratory InHospitalClinicLaboratory PublicHealthLaboratory - MedicalAndDiagnosticLaboratory
+   Private - (and StandAloneMedicalAndDiagnosticLaboratory PublicHealthLaboratory)
+   AgencyOperatedLaboratory - (and StandAloneMedicalAndDiagnosticLaboratory PublicHealthLaboratory)
+   OtherMedicalAndDiagnosticLaboratory - MedicalAndDiagnosticLaboratory
+   BSLGovernment - (and OtherMedicalAndDiagnosticLaboratory StandAloneMedicalAndDiagnosticLaboratory PublicHealthLaboratory)
+   AgencyOperated PrivatelyOperated - OtherMedicalAndDiagnosticLaboratory
+   HealthInsuranceFacility - HealthSupportingFacility
+   PrivateHealthInsuranceCompany GovernmentHealthInsuranceAgencyIncludesTribalAgencies - HealthInsuranceFacility
+   HealthcarePublicHealthOrVitalRecordsInformationNetwork - HealthSupportingFacility
+   VitalRecordsCenter PublicHealthDataCenter OtherHealthcareInformationNetwork
+   PoisonControlCenter - HealthcarePublicHealthOrVitalRecordsInformationNetwork
+   MedicalSuppliesDevicesOrEquipment - HealthSupportingFacility
+   MedicalSuppliesDevicesOrEquipmentStorageOrStockpile MedicalSuppliesDevicesOrEquipmentManufacturingFacility - MedicalSuppliesDevicesOrEquipment
+   HospitalStockpile - (and PharmaceuticalBiopharmaceuticalStorageOrStockpile MedicalSuppliesDevicesOrEquipmentStorageOrStockpile)
+   FederalStockpile - MedicalSuppliesDevicesOrEquipmentStorageOrStockpile
+   MilitaryStockpile - (and PharmaceuticalBiopharmaceuticalStorageOrStockpile MedicalSuppliesDevicesOrEquipmentStorageOrStockpile)
+   CommercialMedicalSuppliesDevicesAndEquipmentStorageForWholesaleDistributors - MedicalSuppliesDevicesOrEquipmentStorageOrStockpile
+   StateOrLocalStockpile - (and PharmaceuticalBiopharmaceuticalStorageOrStockpile MedicalSuppliesDevicesOrEquipmentStorageOrStockpile)
+   StrategicNationalStockpile - (and PharmaceuticalBiopharmaceuticalStorageOrStockpile MedicalSuppliesDevicesOrEquipmentStorageOrStockpile)
+   BloodOrganOrTissueFacility - HealthSupportingFacility
+   OrganTissueOrBoneMarrowCenter BloodBloodComponentBank - BloodOrganOrTissueFacility
+   Transportation - Infrastructure
+   Road - Transportation
+   Trucking - Road
+   TruckTerminal TruckConveyance TruckOperationsCenter
+   TruckDispatchCenter TruckRentalFacility - Trucking
+   TruckTerminalNonHazardousMaterialsFacility TruckTerminalHazardousMaterialsFacility - TruckTerminal
+   RoadwayOrSupportingFacility - Road
+   Roadway RoadTunnel - RoadwayOrSupportingFacility
+   OtherRoad MultiLaneNonLimitedAccessHighway SpecialPurposeRoad
+   TwoLaneNumberedHighway LimitedAccessHighway - Roadway
+   RoadTransportationSupportFacility - RoadwayOrSupportingFacility
+   RoadInternationalBorderFacility OperationsOrTrafficManagementCenter SignalizationOrRelatedFacility - RoadTransportationSupportFacility
+   HighwayRestOrServiceArea - RoadwayOrSupportingFacility
+   VehicleWeighStation HighwayRestStop HighwayServiceArea - HighwayRestOrServiceArea
+   RoadBridge - RoadwayOrSupportingFacility
+   StaticBridge - RoadBridge
+   OverTheRoadMotorcoachSystem - Road
+   OverTheRoadMotorcoachFacility MotorcoachConveyance OverTheRoadMotorcoachPassengerTerminal
+   OverTheRoadMotorcoachDispatchCenter OverTheRoadMotorcoachOperationsCenter - OverTheRoadMotorcoachSystem
+   MaintenanceFacility StorageFacility - OverTheRoadMotorcoachFacility
+   SchoolBusSystem - Road
+   SchoolBusDispatchCenter SchoolBusMaintenanceFacility SchoolBusConveyance
+   SchoolBusRoute SchoolBusStop SchoolBusCommunicationCenter - SchoolBusSystem
+   OtherRoadFacility - Road
+   Aviation - Transportation
+   AirTrafficControlOrNavigationFacility OtherAviationFacility AviationConveyance - Aviation
+   AirportTrafficControlTower AirRouteTrafficControlFacility FlightServiceStation
+   OtherAirTrafficControlOrNavigationFacility - AirTrafficControlOrNavigationFacility
+   Airport - Aviation
+   CertificatedAirport - Airport
+   CategoryIVAirport CategoryIAirport CategoryIIAirport
+   CategoryIIIAirport CategoryXAirport - CertificatedAirport
+   MilitaryAirfield - Airport
+   AirForceAirfield ArmyAirfield CoastGuardAirfield
+   MarineCorpsAirfield NavyAirfield - MilitaryAirfield
+   NonCertificatedAirport ForeignAirport - Airport
+   PublicAirport HeliportHelipad PrivateAirport - NonCertificatedAirport
+   SpaceTransportationFacility AviationSectorCommandControlCommunicationCoordinationFacility - Aviation
+   CommercialFacility - SpaceTransportationFacility
+   MassTransit - Transportation
+   BusMassTransit OtherMassTransitSystems - MassTransit
+   TransitBusTerminal TransitBusDispatchOrOperationsControlCenter TransitBusVehicle
+   TransitBusStop TransitBusCommunicationCenter TransitBusRoute
+   TransitBusGarage - BusMassTransit
+   RailMassTransit - MassTransit
+   RailTransitCar - RailMassTransit
+   OtherRailTransit CommuterRail HeavyRailTransit
+   AerialTramway LightRailTransit - RailTransitCar
+   RailTransitRightOfWay RailTransitSignalingFacilityOrEquipment - RailMassTransit
+   RailTransitTunnel EmergencyAccess RailTransitBridge
+   RailTransitTrack - RailTransitRightOfWay
+   RailTransitDispatchOrOperationsControlCenter RailTransitCommunicationsCenter RailTransitYard
+   RailTransitPassengerStation - RailMassTransit
+   Maritime - Transportation
+   MilitaryOrStrategicSeaport - Maritime
+   MilitaryOrStrategicDeepDraftPort - MilitaryOrStrategicSeaport
+   MilitaryCargoTerminal MilitaryCombatantVesselTerminal StrategicCommercialAndMilitaryTerminal
+   MilitaryAmmunitionTerminal - MilitaryOrStrategicDeepDraftPort
+   Vessel - Maritime
+   DeepDraftVessel - Vessel
+   TankShip MilitaryCombatantVessel MilitarySupportVessel
+   GasCarrierShip MediumVehiclePassengerFerry OtherDeepDraftVessel
+   ContainerShip GeneralCargoShip DryBulkCargoShip
+   RollOnRollOffOrPureCarCarrier LargeVehiclePassengerFerry CruiseShip - DeepDraftVessel
+   ShallowDraftVessel - Vessel
+   BargeHopper BargeGas ExcursionTourBoat
+   SupplyWorkBoat RecreationalVessel RiverFerry
+   BargeTank TugOrTowboat SmallVehiclePassengerFerry - ShallowDraftVessel
+   MaritimeSupportingFacility - Maritime
+   NavigationFacility - MaritimeSupportingFacility
+   ElectronicNavigationFacility Buoy LighthouseOrBeacon - NavigationFacility
+   EmergencySearchAndRescueFacility - MaritimeSupportingFacility
+   StateOrLocalMarineEmergencyResponseFacility USCoastGuardMarineEmergencyResponseFacility - EmergencySearchAndRescueFacility
+   Port - Maritime
+   DeepDraftPort - Port
+   DeepDraftLiquidBulkCargoTerminalChemical OffShoreTerminalOrPlatform OuterContinentalShelfCrudeOilPlatform
+   DeepDraftDryBulkCargoTerminal CruiseShipPassengerTerminal DeepDraftLiquidBulkCargoTerminalCrudeProduct
+   OuterContinentalShelfNaturalGasPlatform DeepDraftGeneralCargoTerminal DeepDraftBulkGasCargoTerminal
+   FerryTerminal DeepDraftContainerizedCargoTerminal DeepDraftIndustrialCargoTerminal - DeepDraftPort
+   ShallowDraftPort - Port
+   ShallowDraftPassengerTerminal ShallowDraftDryBulkCargoTerminal ShallowDraftGeneralCargoTerminal
+   ShallowDraftBargeFleetingArea ShallowDraftLiquidBulkCargoTerminal - ShallowDraftPort
+   PublicAccessArea PortPublicAccessArea - Port
+   Waterway OtherMaritimeFacility - Maritime
+   IntracoastalWaterway InlandWaterway Dam - Waterway
+   Railroad - Transportation
+   RailroadStation - Railroad
+   RailroadPassengerStation - RailroadStation
+   OtherRailroadFacility - Railroad
+   InterlockingCrossoverTower - OtherRailroadFacility
+   RailroadRightOfWay - Railroad
+   RailroadBridge RailroadTunnel - RailroadRightOfWay
+   OperableBridge - (and RoadBridge RailroadBridge)
+   RailroadTrack - RailroadRightOfWay
+   OtherTrack StrategicRailCorridorNetworkSTRACNETTrack - RailroadTrack
+   RailroadYard - Railroad
+   RailYardClassification RailYardIntermodal RailYardLocal
+   RailYardHazardousMaterials - RailroadYard
+   RailroadConveyance - Railroad
+   PassengerConveyance - RailroadConveyance
+   PassengerTrainCommuter PassengerTrainLongDistanceIntercity - PassengerConveyance
+   FreightConveyance - RailroadConveyance
+   RailroadOperationsCenter - Railroad
+   RailroadSignalingFacilityOrEquipment OtherStaffedFacility RailroadDispatchOrOperationsControlCenter
+   RailroadCommunicationsCenter - RailroadOperationsCenter
+   Communications - Infrastructure
+   SatelliteCommunication - Communications
+   UserTerminal VerySmallApertureTerminal SatelliteControlStation
+   SatelliteCommunicationsGroundStation CommunicationSatellite SatelliteTelecommunicationServiceProviderFacility
+   SatelliteTelecommunicationGroundLink BroadbandGlobalAreaNetwork SatellitePhone - SatelliteCommunication
+   TelecommHotel - Communications
+   Wireless Wired - TelecommHotel
+   WirelessCommunication - Communications
+   PagerFacility - WirelessCommunication
+   PagerTower PagerOperationsCenter - PagerFacility
+   CellularTelephoneFacility WirelessTelecommunicationServiceProviderFacility - WirelessCommunication
+   MobileSwitchingOffice CellPhoneTower CellPhoneSwitchingCenter
+   CellularPhoneNetworkOperationsCenter - CellularTelephoneFacility
+   WiredCommunication NextGenerationNetwork - Communications
+   AccessInfrastructure WirelineCommunicationsCustomerHostingCenterFacility WiredTelecommunicationServiceProviderFacility - WiredCommunication
+   InternetServiceProviderPointOfPresence EndOffice AccessTandem
+   LocalLoopOrMetroRing - AccessInfrastructure
+   SwitchingFacility - WiredCommunication
+   LocalAndAccessTandemSwitchingFacility LocalExchangeFacility InterExchangeSwitchingFacility - SwitchingFacility
+   OperationsManagement - (and WiredCommunication WirelessCommunication SatelliteCommunication)
+   BillingCenter CallCenterCustomerServiceCenter EmergencyOperationsCenter
+   NetworkOperationsCenter CallCenter DataCenter
+   SatelliteOperationsCenter - OperationsManagement
+   Cable - WiredCommunication
+   DistributionHub Headend FiberNode
+   BusinessOperationsOffice - Cable
+   SignalingNetworkFacility - WiredCommunication
+   SignalingSystemSS7Center SignalingLink - SignalingNetworkFacility
+   TransportFacility - WiredCommunication
+   TrunkLineLink CustomerLine SubmarineCable - TransportFacility
+   Internet OtherCommunicationFacility - Communications
+   DomainNameServer NetworkAccessPoint InternetServiceProvider
+   PointOfPresence PeeringPoint InternetBackboneLink
+   WebSearchPortal - Internet
+   InformationServices - Communications
+   Broadcasting - InformationServices
+   RadioBroadcasting - Broadcasting
+   RadioNetworkHeadquarters - RadioBroadcasting
+   CableAndOtherSubscriptionProgramming TelevisionBroadcasting - Broadcasting
+   NetworkHeadquarters - (and CableAndOtherSubscriptionProgramming TelevisionBroadcasting)
+   NewsVehicle - (and CableAndOtherSubscriptionProgramming TelevisionBroadcasting)
+   NationalNewsOrSportsTransponder - (and CableAndOtherSubscriptionProgramming TelevisionBroadcasting)
+   LocalBroadcastStation - (and CableAndOtherSubscriptionProgramming TelevisionBroadcasting)
+   CommercialFacilities - Infrastructure
+   LodgingFacility - CommercialFacilities
+   ResortNotGambling OtherLodgingFacility BedAndBreakfastInn
+   HotelOrMotel - LodgingFacility
+   RetailFacility OtherCommercialFacility - CommercialFacilities
+   StoreRetailer - RetailFacility
+   StandAloneStore ShoppingCenterMallOrShoppingDistrict - StoreRetailer
+   PublicAssembly - CommercialFacilities
+   CommunitySpecialGatheringVenues CommunityParkFairgroundPavilion MotorRacetrack
+   PerformingArtsCenterOrAuditorium SportsRecreationalFacility GolfCourseOrCountryClub
+   ConventionCenter EntertainmentDistrict ZooAquariumOrBotanicalGarden
+   CommunityOrganizationFacility MovieTheater RecreationalVehicleParkOrRecreationalCamp
+   Marina OtherPublicAssemblyFacility Stadium
+   MuseumOrPlanetarium Arena Amphitheater - PublicAssembly
+   SpecialEventVenue ParadeRoute - CommunitySpecialGatheringVenues
+   MountainFacility CommunityWaterFacility AmusementThemeOrWaterPark
+   HorseOrDogTrack - PublicAssembly
+   EntertainmentOrMediaFacility - CommercialFacilities
+   TelevisionProductionFacility MotionPictureOrSoundRecordingFacility - EntertainmentOrMediaFacility
+   PrintMedia - (and InformationServices EntertainmentOrMediaFacility)
+   NewspaperAndPeriodicalPublishing OtherPrintPublishing - PrintMedia
+   InternetPublishing - EntertainmentOrMediaFacility
+   RealEstateFacility - CommercialFacilities
+   ResidentialUnit - RealEstateFacility
+   SingleFamilyResidence MultiFamilyResidence - ResidentialUnit
+   OfficeBuilding - RealEstateFacility
+   OfficeDistrict OfficeBuildingStandAlone OfficePark - OfficeBuilding
+   SelfStorageFacility MixedUseProperty - RealEstateFacility
+   GamingFacilityCasino - CommercialFacilities
+   GamingComplex StandAloneCasino OtherGamingEstablishments
+   PermanentlyMooredCasino - GamingFacilityCasino
+   PostalAndShipping - Infrastructure
+   Courier OtherPostalAndShippingFacility - PostalAndShipping
+   CourierProcessingCenter CourierInformationSystemCenter - Courier
+   CourierInternationalNationalHub CourierAirGateway CourierPickupDeliveryStation
+   CourierRegionalHub - CourierProcessingCenter
+   CourierAircraftMaintenanceFacility CourierAdministrativeOffice CourierRetailFacility - Courier
+   UnitedStatesPostalService - PostalAndShipping
+   UnitedStatesPostalServiceMailCenter UnitedStatesPostalServiceAdministrativeOffice UnitedStatesPostalServiceDeliveryUnit - UnitedStatesPostalService
+   UnitedStatesPostalServiceAirportMailCenter UnitedStatesPostalServiceProcessingAndDistributionCenter UnitedStatesPostalServiceNetworkDistributionCenter
+   UnitedStatesPostalServiceInternationalExchangeOffice OtherUnitedStatesPostalServiceMailCenter - UnitedStatesPostalServiceMailCenter
+   UnitedStatesPostalServiceVehicleMaintenanceFacility UnitedStatesPostalServiceRetailCenter UnitedStatesPostalServiceInformationSystemCenter - UnitedStatesPostalService
+   Dams - Infrastructure
+   DamProject - Dams
+   OperationAndControlFacility - DamProject
+   ControlCenter RemoteOperationFacility - OperationAndControlFacility
+   NavigationStructure - DamProject
+   NavigationLock - (and Waterway NavigationStructure)
+   HydropowerPlant Reservoir - DamProject
+   ConventionalPlant PumpedStoragePlant RunOfTheRiverPlant - HydropowerPlant
+   WaterRetentionStructure PublicAccessFacility - DamProject
+   EmbankmentDam ConcreteDam - WaterRetentionStructure
+   HurricaneOrStormSurgeProtectionSystem - Dams
+   HurricaneProtectionSystem - HurricaneOrStormSurgeProtectionSystem
+   HurricaneBarrier - HurricaneProtectionSystem
+   NonStructuralMitigationMeasure - HurricaneOrStormSurgeProtectionSystem
+   Wetland - NonStructuralMitigationMeasure
+   FloodDamageReductionSystem - Dams
+   FloodProtectionStructure - FloodDamageReductionSystem
+   Dike - (and HurricaneProtectionSystem FloodProtectionStructure)
+   Levee - (and HurricaneProtectionSystem FloodProtectionStructure)
+   FloodWall - (and HurricaneProtectionSystem FloodProtectionStructure)
+   WaterConveyanceStructure - (and FloodDamageReductionSystem HurricaneOrStormSurgeProtectionSystem DamProject)
+   Penstock Conduit - WaterConveyanceStructure
+   Canal - (and Waterway WaterConveyanceStructure)
+   WaterControlStructure - (and FloodDamageReductionSystem HurricaneOrStormSurgeProtectionSystem DamProject)
+   PumpingStation RiverControlStructure Spillway
+   OutletWorks - WaterControlStructure
+   MineTailingsAndIndustrialWasteImpoundment - Dams
+   Impoundment - MineTailingsAndIndustrialWasteImpoundment
+   TailingsMineWasteImpoundment IndustrialWasteImpoundment - Impoundment
+   ImpoundmentControlStructure ImpoundmentRetentionStructure - MineTailingsAndIndustrialWasteImpoundment
+   AgricultureAndFood - Infrastructure
+   AgriculturalAndFoodProductDistribution - AgricultureAndFood
+   GeneralMerchandiseStore - AgriculturalAndFoodProductDistribution
+   OtherGeneralMerchandiseStore - GeneralMerchandiseStore
+   AllOtherGeneralMerchandiseStore WarehouseClubAndSupercenter - OtherGeneralMerchandiseStore
+   DepartmentStore - GeneralMerchandiseStore
+   FoodAndBeverageStore - AgriculturalAndFoodProductDistribution
+   GroceryStore BeerWineAndLiquorStore - FoodAndBeverageStore
+   SupermarketAndOtherGroceryStoreExceptConvenience ConvenienceStore - GroceryStore
+   SpecialtyFoodStore - FoodAndBeverageStore
+   FruitAndVegetableMarket OtherSpecialtyFoodStore FishAndSeafoodMarket
+   MeatMarket BakedGoodsStore ConfectioneryAndNutStore - SpecialtyFoodStore
+   GroceryAndRelatedProductWholesaler - AgriculturalAndFoodProductDistribution
+   FishAndSeafoodMerchantWholesaler ConfectioneryMerchantWholesaler PackagedFrozenFoodMerchantWholesaler
+   DairyProductMerchantWholesalerExceptDriedOrCanned PoultryAndPoultryProductMerchantWholesaler OtherGroceryAndRelatedProductsMerchantWholesaler
+   FreshFruitAndVegetableMerchantWholesaler MeatAndMeatProductMerchantWholesaler GeneralLineGroceryMerchantWholesaler - GroceryAndRelatedProductWholesaler
+   FoodServicesAndDrinkingPlace - AgriculturalAndFoodProductDistribution
+   SpecialFoodServices - FoodServicesAndDrinkingPlace
+   Caterer FoodServiceContractor MobileFoodService - SpecialFoodServices
+   LimitedServiceEatingPlace DrinkingPlaceAlcoholicBeverages - FoodServicesAndDrinkingPlace
+   SchoolKitchen IndependentFoodService CommissaryOperations
+   LimitedServiceRestaurant FoodExhibitionFair SnackAndNonAlcoholicBeverageBar
+   Institutional FastFood HospitalKitchen
+   Cafeteria AnimalExhibitionFair - LimitedServiceEatingPlace
+   FullServiceRestaurant - FoodServicesAndDrinkingPlace
+   NonStoreRetailer - (and RetailFacility AgriculturalAndFoodProductDistribution)
+   DirectSellingEstablishment VendingMachineOperator ElectronicShoppingAndMailOrderHouse - NonStoreRetailer
+   FarmProductWholesaler - AgriculturalAndFoodProductDistribution
+   OtherFarmProductWholesaler - FarmProductWholesaler
+   DistributionWarehouseCotton DistributionWarehouseEggs - OtherFarmProductWholesaler
+   LivestockMarket - FarmProductWholesaler
+   SaleBarnBeef SaleBarnSwine SaleBarnLambGoat - LivestockMarket
+   GrainAndFieldBeanWholesaler - FarmProductWholesaler
+   DistributionWarehouseGrain DistributionWarehouseCorn DistributionWarehouseSoybeans - GrainAndFieldBeanWholesaler
+   ProcessingPackagingAndProduction - AgricultureAndFood
+   SeafoodProductPreparationAndPackaging - ProcessingPackagingAndProduction
+   SeafoodCanning - SeafoodProductPreparationAndPackaging
+   CodLiverOilExtractionCrudeProducedInACannery SeaweedProcessing CanneryFish
+   CanneryShellfish CanningFishCrustaceaAndMollusks DryingOrCuringFishOrSeafood
+   FloatingFactoryShipsSeafoodProcessing OtherSeafoodCanning - SeafoodCanning
+   FreshAndFrozenSeafoodProcessing - SeafoodProductPreparationAndPackaging
+   ShellfishProductsFrozenManufacturing ShellfishProductsFreshPreparedManufacturing SeafoodProductsFrozenManufacturing
+   CodLiverOilExtractionCrudeProducedInAFreshAndFrozenSeafoodPlant SeafoodProductsFreshPreparedManufacturing - FreshAndFrozenSeafoodProcessing
+   IceCreamAndFrozenDessertManufacturing - ProcessingPackagingAndProduction
+   DairyBasedFrozenDessertManufacturing - IceCreamAndFrozenDessertManufacturing
+   SherbetManufacturing IceCreamSpecialtiesManufacturing FrozenCustardManufacturing
+   IceMilkManufacturing - DairyBasedFrozenDessertManufacturing
+   NonDairyBasedFrozenDessertManufacturing - IceCreamAndFrozenDessertManufacturing
+   FruitFlavoredIces TofuFrozenDessertsManufacturing - NonDairyBasedFrozenDessertManufacturing
+   IceCreamManufacturing - (and NonDairyBasedFrozenDessertManufacturing DairyBasedFrozenDessertManufacturing)
+   FruitPopsFrozenManufacturing - NonDairyBasedFrozenDessertManufacturing
+   GrainAndOilseedMilling - (and FoodManufacturing ProcessingPackagingAndProduction)
+   FlourMillingAndMaltManufacturing - GrainAndOilseedMilling
+   MaltManufacturing FlourMilling RiceMilling - FlourMillingAndMaltManufacturing
+   StarchVegetableFatAndOilManufacturing - GrainAndOilseedMilling
+   OtherOilseedProcessing SoybeanProcessing WetCornMilling
+   FatsAndOilsRefiningAndBlending - StarchVegetableFatAndOilManufacturing
+   BreakfastCerealManufacturing - GrainAndOilseedMilling
+   InstantHotCerealManufacturing InfantCerealDryManufacturing CornFarinaAndGrainBreakfastCerealManufacturing
+   GrainMillsBreakfastCereal CerealAndGrainBar - BreakfastCerealManufacturing
+   BeverageAndIceManufacturing - ProcessingPackagingAndProduction
+   AlcoholicBeverageManufacturing - BeverageAndIceManufacturing
+   Winery Distillery Brewery - AlcoholicBeverageManufacturing
+   SoftDrinkManufacturing - BeverageAndIceManufacturing
+   BeveragesFruitAndVegetableDrinksCocktailsAndAdesManufacturing IcedCoffeeAndTeaManufacturing SpringWaterPurifyingAndBottling
+   WaterNaturallyCarbonatedPurifyingAndBottling BottledWaterManufacturing CarbonatedDrinksManufacturing
+   FruitJuiceManufacturingExceptDrinks WaterArtificiallyCarbonatedManufacturing FlavoredWaterManufacturing - SoftDrinkManufacturing
+   IceManufacturing - BeverageAndIceManufacturing
+   IceManufacturingExceptDryIce BlockIceManufacturing - IceManufacturing
+   SnacksCondimentsSpicesSeasoningAndOtherFoodManufacturing - ProcessingPackagingAndProduction
+   SeasoningAndDressingManufacturing - SnacksCondimentsSpicesSeasoningAndOtherFoodManufacturing
+   SpiceAndExtractManufacturing MayonnaiseDressingAndOtherPreparedSauceManufacturing - SeasoningAndDressingManufacturing
+   FlavoringSyrupAndConcentrateManufacturing PerishablePreparedFoodManufacturing - SnacksCondimentsSpicesSeasoningAndOtherFoodManufacturing
+   FlavoringPastesPowdersAndSyrupsForSoftDrinkManufacturing ConcentratesFlavoringManufacturingExceptCoffeeBased SyrupFlavoringManufacturingExceptCoffeeBased
+   ConcentratesDrinkManufacturingExceptFrozenFruitJuice - FlavoringSyrupAndConcentrateManufacturing
+   SnackFoodManufacturing OtherFoodProductManufacturing - SnacksCondimentsSpicesSeasoningAndOtherFoodManufacturing
+   RoastedNutsAndPeanutButterManufacturing ChipsAndOtherSnackFoodManufacturing - SnackFoodManufacturing
+   CoffeeAndTeaManufacturing - SnacksCondimentsSpicesSeasoningAndOtherFoodManufacturing
+   CoffeeManufacturing TeaManufacturing - CoffeeAndTeaManufacturing
+   AnimalFoodManufacturing - (and FoodManufacturing ProcessingPackagingAndProduction)
+   FarmAnimalFeedManufacturing - AnimalFoodManufacturing
+   OffFarmSiteFeedManufacturing OnFarmSiteFeedManufacturing - FarmAnimalFeedManufacturing
+   PetFoodManufacturing - AnimalFoodManufacturing
+   AnimalFeedsManufacturingExceptDogAndCat DogAndCatFoodManufacturing - PetFoodManufacturing
+   AnimalSlaughteringAndProcessingFacility - ProcessingPackagingAndProduction
+   MeatProcessingPackingExceptPoultry - AnimalSlaughteringAndProcessingFacility
+   LambGoatMeatProcessedFromCarcasses VealMeatProcessedFromCarcasses RenderingAndMeatByProductFacility
+   PorkMeatProcessedFromCarcasses BeefMeatProcessedFromCarcasses - MeatProcessingPackingExceptPoultry
+   PoultryProcessingFacility - AnimalSlaughteringAndProcessingFacility
+   ChickenProcessingPackingFacility TurkeySlaughteringFacility DuckGeeseSlaughteringFacility
+   ChickenSlaughteringFacility DuckGeeseProcessingPackingFacility WildGameProcessingPackingFacility
+   TurkeyProcessingPackingFacility PoultryProcessingCannedCookedFreshFrozen RabbitProcessingPackingFacility
+   WildGameSlaughteringFacility RabbitSlaughteringFacility - PoultryProcessingFacility
+   AnimalSlaughteringExceptPoultry - AnimalSlaughteringAndProcessingFacility
+   CustomSlaughteringFacility VealSlaughteringFacility BeefSlaughteringFacility
+   PorkSlaughteringFacility HorsemeatSlaughteringFacility LambGoatSlaughteringFacility - AnimalSlaughteringExceptPoultry
+   TobaccoProductManufacturing - (and ProcessingPackagingAndProduction Manufacturing)
+   StemmingAndRedryingOfTobacco - TobaccoProductManufacturing
+   DryingOfTobacco StemmingOfTobacco - StemmingAndRedryingOfTobacco
+   ManufacturingOfTobaccoProduct - TobaccoProductManufacturing
+   OtherTobaccoProductManufacturingNotCigaretteCigarOrPipeTobacco ManufacturingOfCigaretteProduct ManufacturingOfCigarProduct
+   ManufacturingOfPipeTobaccoProduct - ManufacturingOfTobaccoProduct
+   FruitVegetablePreservingSpecialtyFoodManufacturingFacility - ProcessingPackagingAndProduction
+   FruitAndVegetableCanningPicklingDrying - FruitVegetablePreservingSpecialtyFoodManufacturingFacility
+   SpecialtyCanning FruitAndVegetableCanning DriedAndDehydratedFoodManufacturing - FruitAndVegetableCanningPicklingDrying
+   FrozenFoodManufacturingFacility - FruitVegetablePreservingSpecialtyFoodManufacturingFacility
+   FrozenSpecialtyFoodManufacturing FrozenFruitJuiceAndVegetableManufacturing - FrozenFoodManufacturingFacility
+   SugarAndConfectionaryProductManufacturing - (and FoodManufacturing ProcessingPackagingAndProduction)
+   ConfectionaryManufacturing - SugarAndConfectionaryProductManufacturing
+   ConfectionaryManufacturingFromPurchasedChocolate NonChocolateConfectionaryManufacturing ChocolateAndConfectionaryManufacturingFromCacaoBeans - ConfectionaryManufacturing
+   SugarManufacturing - SugarAndConfectionaryProductManufacturing
+   SugarcaneRefining BeetSugarManufacturing SugarcaneMill - SugarManufacturing
+   BakeryAndTortillaManufacturing - ProcessingPackagingAndProduction
+   OtherBakeryManufacturing - BakeryAndTortillaManufacturing
+   RiceBasedOtherBakeryManufacturing TortillaAndOtherCornBasedBakeryManufacturing WheatBasedBreadingAndOtherBakeryManufacturing - OtherBakeryManufacturing
+   CookieCrackerAndPastaManufacturing - BakeryAndTortillaManufacturing
+   DryPastaManufacturing CookieAndCrackerManufacturing FlourMixesAndDoughManufacturingFromPurchasedFlour - CookieCrackerAndPastaManufacturing
+   BreadAndBakeryProductManufacturing - BakeryAndTortillaManufacturing
+   RetailBakery CommercialBakery FrozenCakesPiesAndOtherPastriesManufacturing - BreadAndBakeryProductManufacturing
+   DairyProductManufacturingExceptFrozen - ProcessingPackagingAndProduction
+   DryCondensedAndEvaporatedDairyProductManufacturing - DairyProductManufacturingExceptFrozen
+   BabyFormulaManufacturingFreshProcessedAndBottled DietaryDrinkManufacturingDairyAndNonDairyBased - DryCondensedAndEvaporatedDairyProductManufacturing
+   FluidMilkManufacturing - DairyProductManufacturingExceptFrozen
+   MilkBasedBeverageManufacturingExceptDietary OtherFluidMilkManufacturing AcidophilusMilkManufacturing - FluidMilkManufacturing
+   CreameryButterManufacturing - DairyProductManufacturingExceptFrozen
+   WheyButterManufacturing AnhydrousButterfatManufacturing ButterManufacturing - CreameryButterManufacturing
+   CheeseManufacturing - DairyProductManufacturingExceptFrozen
+   CurdsAndCheeseMadeInACheesePlantManufacturing CheeseManufacturingExceptCottageCheese CheeseProductsManufacturingImitationOrSubstitute
+   WheyManufacturingRawOrLiquid DipsSpreadsCheeseBasedManufacturing ProcessedCheeseManufacturing - CheeseManufacturing
+   AgricultureAndFoodSupportingFacility - AgricultureAndFood
+   FarmSupplyWholesaler - AgricultureAndFoodSupportingFacility
+   GeneticsSupply - FarmSupplyWholesaler
+   AgriculturalTestingLaboratory AgriculturalChemicalManufacturing - AgricultureAndFoodSupportingFacility
+   PlantAndCropTestingLaboratory AnimalTestingLaboratory - AgriculturalTestingLaboratory
+   GovernmentLaboratory - (and PlantAndCropTestingLaboratory AnimalTestingLaboratory)
+   CommercialLaboratory - (and PlantAndCropTestingLaboratory AnimalTestingLaboratory)
+   Dairy - PlantAndCropTestingLaboratory
+   AcademicInstitutionLaboratory - (and PlantAndCropTestingLaboratory AnimalTestingLaboratory)
+   VeterinaryPharmaceuticalManufacturing - AgricultureAndFoodSupportingFacility
+   AntibioticDrug Nutrients - VeterinaryPharmaceuticalManufacturing
+   ProductManufacturing - (and AntibioticDrug Nutrients)
+   FarmSupplyRetailer - AgricultureAndFoodSupportingFacility
+   FarmAnimalFeedDistribution - (and FarmSupplyRetailer FarmSupplyWholesaler)
+   DistributionWarehousePoultryFeed DistributionWarehouseFeed DistributionWarehouseFeedAdditives - FarmAnimalFeedDistribution
+   AgriculturalAndFoodResearch - AgricultureAndFoodSupportingFacility
+   PlantAndCropResearchFacility AnimalResearchFacility - AgriculturalAndFoodResearch
+   GovernmentResearch - (and PlantAndCropResearchFacility AnimalResearchFacility)
+   CommercialResearch - (and PlantAndCropResearchFacility AnimalResearchFacility)
+   AcademicResearch - (and PlantAndCropResearchFacility AnimalResearchFacility)
+   FarmProductionSupportFacility - AgricultureAndFoodSupportingFacility
+   CropProductionSupportFacility - FarmProductionSupportFacility
+   CropHarvestingPrimarilyByMachine CottonGinning PostharvestCropActivitiesExceptCottonGinning - CropProductionSupportFacility
+   AnimalProductionSupportFacilities - FarmProductionSupportFacility
+   VeterinaryService - (and AnimalProductionSupportFacilities AgricultureAndFoodSupportingFacility)
+   VeterinaryDrugDistribution - VeterinaryService
+   DistributionWarehouseVeterinaryDrugs - VeterinaryDrugDistribution
+   FarmSeedStockDistribution - VeterinaryService
+   SeedStockOperations DistributionWarehouse - FarmSeedStockDistribution
+   HoofCareFerrierService InsectAndPestControl - AnimalProductionSupportFacilities
+   GeneticsReproduction - (and AnimalProductionSupportFacilities CropProductionSupportFacility)
+   RecordServicesAnimalIdentification ShowingAndTraining AnimalCareIncludesGroomingAndBoarding - AnimalProductionSupportFacilities
+   AgriculturalAndFoodProductTransportation - AgricultureAndFood
+   RoadTransportOfDomesticAndImportedAgriculturalProductsFoodProductsAndAnimals - AgriculturalAndFoodProductTransportation
+   RoadTransportSystemForImportedAgriculturalProductsFoodProductsAndAnimals - RoadTransportOfDomesticAndImportedAgriculturalProductsFoodProductsAndAnimals
+   USBorderTruckStop RoadTransportOfRefrigeratedImportedFoodProducts USBorderTruckWeighStation
+   USBorderAgriculturalInspectionStation RoadTransportOfNonRefrigeratedImportedFoodProducts RoadTransportOfImportedAnimals - RoadTransportSystemForImportedAgriculturalProductsFoodProductsAndAnimals
+   RoadTransportSystemForDomesticAgriculturalProductsFoodProductsAndAnimals - RoadTransportOfDomesticAndImportedAgriculturalProductsFoodProductsAndAnimals
+   TruckStop - (and HighwayRestOrServiceArea RoadTransportSystemForDomesticAgriculturalProductsFoodProductsAndAnimals)
+   RoadTransportOfRefrigeratedDomesticFoodProducts RoadTransportOfNonRefrigeratedDomesticFoodProducts RoadTransportOfDomesticAnimals
+   TruckWeighStation HighwayAgriculturalInspectionStation - RoadTransportSystemForDomesticAgriculturalProductsFoodProductsAndAnimals
+   AirTransportOfDomesticAndImportedAgriculturalProductsFoodProductsAndAnimals - AgriculturalAndFoodProductTransportation
+   AirTransportSystemForDomesticAgriculturalProductsFoodProductsAndAnimals - AirTransportOfDomesticAndImportedAgriculturalProductsFoodProductsAndAnimals
+   AirTransportOfDomesticAnimals DomesticAirport AirTransportOfRefrigeratedDomesticAgriculturalAndFoodProducts
+   AirTransportOfNonRefrigeratedDomesticAgriculturalAndFoodProducts - AirTransportSystemForDomesticAgriculturalProductsFoodProductsAndAnimals
+   InternationalAirTransportSystemForImportedAgriculturalProductsFoodProductsAndAnimals - AirTransportOfDomesticAndImportedAgriculturalProductsFoodProductsAndAnimals
+   AirTransportOfImportedAnimals AirTransportOfRefrigeratedImportedAgriculturalAndFoodProducts AirTransportOfNonRefrigeratedImportedAgriculturalAndFoodProducts
+   InternationalAirport - InternationalAirTransportSystemForImportedAgriculturalProductsFoodProductsAndAnimals
+   MaritimeTransportOfDomesticAndImportedAgriculturalProductsFoodProductsAndAnimals - AgriculturalAndFoodProductTransportation
+   MaritimeTransportSystemForDomesticAgriculturalProductsFoodProductsAndAnimals - MaritimeTransportOfDomesticAndImportedAgriculturalProductsFoodProductsAndAnimals
+   MaritimeTransportOfDomesticAnimals DomesticPort MaritimeTransportOfNonRefrigeratedDomesticAgriculturalAndFoodProducts
+   MaritimeTransportOfRefrigeratedDomesticAgriculturalAndFoodProducts - MaritimeTransportSystemForDomesticAgriculturalProductsFoodProductsAndAnimals
+   MaritimeTransportSystemForImportedAgriculturalProductsFoodProductsAndAnimals - MaritimeTransportOfDomesticAndImportedAgriculturalProductsFoodProductsAndAnimals
+   InternationalPort MaritimeTransportOfNonRefrigeratedImportedAgriculturalAndFoodProducts MaritimeTransportOfImportedAnimals
+   MaritimeTransportOfRefrigeratedImportedAgriculturalAndFoodProducts - MaritimeTransportSystemForImportedAgriculturalProductsFoodProductsAndAnimals
+   RailTransportOfDomesticAndImportedAgriculturalProductsFoodProductsAndAnimals - AgriculturalAndFoodProductTransportation
+   RailTransportSystemForDomesticAgriculturalProductsFoodProductsAndAnimals - RailTransportOfDomesticAndImportedAgriculturalProductsFoodProductsAndAnimals
+   DomesticRailroadStation RailTransportOfRefrigeratedDomesticFoodProducts RailTransportOfNonRefrigeratedDomesticFoodProducts
+   RailTransportOfDomesticAnimals - RailTransportSystemForDomesticAgriculturalProductsFoodProductsAndAnimals
+   RailTransportSystemForImportedAgriculturalProductsFoodProductsAndAnimals - RailTransportOfDomesticAndImportedAgriculturalProductsFoodProductsAndAnimals
+   RailTransportOfNonRefrigeratedImportedAgriculturalAndFoodProducts InternationalRailStation RailTransportOfImportedAnimals
+   RailTransportOfRefrigeratedImportedAgriculturalAndFoodProducts - RailTransportSystemForImportedAgriculturalProductsFoodProductsAndAnimals
+   Supply OtherAgricultureAndFood - AgricultureAndFood
+   AnimalProduction - Supply
+   AnimalAquacultureFacility - AnimalProduction
+   FinfishFarmAndFishHatchery AnimalAquacultureFacilityExceptFinfishShellfish ShellfishFarmAndShellfishHatchery - AnimalAquacultureFacility
+   HogAndPigFarm - AnimalProduction
+   HogFeedlotOperationsExceptStockyardsForTransportation FeederPigFarmOperations FarrowOperations
+   NurseryOperations GrowerOperations WeaningPigOperations
+   PigBreedStock PigFarm FinishingOperations - HogAndPigFarm
+   SheepAndGoatFarm - AnimalProduction
+   SheepFarm GoatFarm - SheepAndGoatFarm
+   CattleRanchAndFarm - AnimalProduction
+   LivestockBackgrounder CattleFeedlot LivestockOrderBuyer
+   BeefCattleRanch DualPurposeCattleRanchAndFarm DairyCattleFarm - CattleRanchAndFarm
+   OtherAnimalProduction - AnimalProduction
+   HorsesAndOtherEquineProduction OtherAnimalProductionExceptApicultureEquineOrFurBearing Apiculture
+   FurBearingAnimalAndRabbitProduction - OtherAnimalProduction
+   PoultryOrEggProductionFarm - AnimalProduction
+   BroilerBreedStock TurkeyEggProduction BroilersAndOtherMeatTypeChickenProduction
+   OtherPoultryProduction TurkeyBreedStock TurkeyForMeat
+   ChickenEggProduction PoultryHatchery - PoultryOrEggProductionFarm
+   CropProduction - Supply
+   OilseedAndGrainFarm - CropProduction
+   RiceFarm SoybeanFarm CornFarm
+   OtherGrainFarmExceptWheatCornAndRice DryPeaAndBeanFarm OilseedFarmExceptSoybean
+   WheatFarm - OilseedAndGrainFarm
+   GreenhouseNurseryOrFloricultureFacility - CropProduction
+   NurseryAndTreeProductionFacility MushroomProductionFacility FloricultureProductionFacility
+   OtherFoodCropsGrownUnderCover - GreenhouseNurseryOrFloricultureFacility
+   VegetableAndMelonFarm - (and FarmProductionSupportFacility CropProduction)
+   GeneticsCorn PotatoFarm GeneticsVegetableAndMelon
+   VegetableAndMelonFarmExceptPotato GeneticsSoybean - VegetableAndMelonFarm
+   FruitAndTreeNutFarm - CropProduction
+   StrawberryFarm OrangeGrove CitrusGroveExceptOrange
+   AppleOrchard GrapeVineyard NonCitrusTreeAndNutFarm
+   BerryFarmExceptStrawberry OtherNonCitrusFruitFarm FruitAndNutTreeCombination
+   TreeNutFarm - FruitAndTreeNutFarm
+   TobaccoPeanutAndOtherCropFarm - CropProduction
+   Cotton OtherCropFarmProduction Sugarcane
+   MapleSyrup SugarBeet Hay
+   Tobacco Peanut MapleSap - TobaccoPeanutAndOtherCropFarm
+   FishingHuntingAndTrapping - Supply
+   FishingOperations - FishingHuntingAndTrapping
+   ShellfishFishing OtherMarineFishing FinfishFishing - FishingOperations
+   HuntingAndTrappingOperations - FishingHuntingAndTrapping
+   GameRetreat FishingPreserve TrappingPreserve
+   HuntingPreserve GamePropagation - HuntingAndTrappingOperations
+   ForestryAndLogging - Supply
+   Forestry - ForestryAndLogging
+   TimberTractOperation ForestNurseryAndGatheringOfForestProducts - Forestry
+   Logging - ForestryAndLogging
+   TreeStumpAndWoodChipping PulpwoodLoggingCamp RailsAndRoughWoodManufacturing
+   TimberPilingAndPoleCutting CuttingAndTransportingTimber - Logging
+   AgricultureAndFoodProductStorageAndDistributionWarehouse - AgricultureAndFood
+   ImportedBulkFoodStorageAndDistributionWarehouse - AgricultureAndFoodProductStorageAndDistributionWarehouse
+   ImportedRefrigeratedBulkFoodStorageAndDistributionWarehouse - ImportedBulkFoodStorageAndDistributionWarehouse
+   OtherImportedRefrigeratedBulkFoodStorageAndDistributionWarehouse - ImportedRefrigeratedBulkFoodStorageAndDistributionWarehouse
+   ImportedNonRefrigeratedBulkFoodStorageAndDistributionWarehouse - ImportedBulkFoodStorageAndDistributionWarehouse
+   OtherImportedNonRefrigeratedFarmCropStorageAndDistributionWarehouse - ImportedNonRefrigeratedBulkFoodStorageAndDistributionWarehouse
+   ImportedProcessedFoodStorageAndDistributionWarehouse - AgricultureAndFoodProductStorageAndDistributionWarehouse
+   ImportedNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse - ImportedProcessedFoodStorageAndDistributionWarehouse
+   DryPickledAndCannedF466FruitAndVegetableF472 CannedSeafood - ImportedNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse
+   ImportedRefrigeratedProcessedFoodStorageAndDistributionWarehouse - ImportedProcessedFoodStorageAndDistributionWarehouse
+   DairyProductsExceptDryCondensedAndEvaporated OtherImportedRefrigeratedProcessedFood - ImportedRefrigeratedProcessedFoodStorageAndDistributionWarehouse
+   DomesticBulkFoodStorageAndDistributionWarehouse - AgricultureAndFoodProductStorageAndDistributionWarehouse
+   DomesticNonRefrigeratedBulkFoodStorageAndDistributionWarehouse - DomesticBulkFoodStorageAndDistributionWarehouse
+   OtherDomesticNonRefrigeratedFarmCropStorageAndDistributionWarehouse - DomesticNonRefrigeratedBulkFoodStorageAndDistributionWarehouse
+   GrainElevator - (and ImportedNonRefrigeratedBulkFoodStorageAndDistributionWarehouse DomesticNonRefrigeratedBulkFoodStorageAndDistributionWarehouse)
+   DomesticRefrigeratedBulkFoodStorageAndDistributionWarehouse - DomesticBulkFoodStorageAndDistributionWarehouse
+   OtherDomesticRefrigeratedBulkFoodStorageAndDistributionWarehouse - DomesticRefrigeratedBulkFoodStorageAndDistributionWarehouse
+   FreshFruitAndVegetable - (and DomesticRefrigeratedBulkFoodStorageAndDistributionWarehouse ImportedRefrigeratedBulkFoodStorageAndDistributionWarehouse DomesticNonRefrigeratedBulkFoodStorageAndDistributionWarehouse)
+   FreshAndFrozenSeafood - (and DomesticRefrigeratedBulkFoodStorageAndDistributionWarehouse ImportedRefrigeratedBulkFoodStorageAndDistributionWarehouse)
+   Eggs - (and DomesticRefrigeratedBulkFoodStorageAndDistributionWarehouse ImportedRefrigeratedBulkFoodStorageAndDistributionWarehouse)
+   FrozenFruitAndVegetable - (and DomesticRefrigeratedBulkFoodStorageAndDistributionWarehouse ImportedRefrigeratedBulkFoodStorageAndDistributionWarehouse)
+   DomesticProcessedFoodStorageAndDistributionWarehouse - AgricultureAndFoodProductStorageAndDistributionWarehouse
+   DomesticNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse - DomesticProcessedFoodStorageAndDistributionWarehouse
+   Beverage - (and ImportedNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse DomesticNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse)
+   PetFood - (and ImportedNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse DomesticNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse)
+   Confectionary - (and ImportedNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse DomesticNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse)
+   BottledWater - (and ImportedNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse DomesticNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse)
+   BreakfastCereal - (and ImportedNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse DomesticNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse)
+   CoffeeAndTea - (and ImportedNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse DomesticNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse)
+   FlourRiceAndMalt - (and ImportedNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse DomesticNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse)
+   CannedMeatExceptPoultry - (and ImportedNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse DomesticNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse)
+   OtherNonRefrigeratedDomesticProcessedFood DryPickledAndCannedFruitAndVegetable - DomesticNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse
+   Sugar - (and ImportedNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse DomesticNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse)
+   DriedAndDehydratedFood - (and ImportedNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse DomesticNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse)
+   CannedPoultry - (and ImportedNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse DomesticNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse)
+   CannedFishAndSeafood - DomesticNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse
+   BabyFood - (and ImportedNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse DomesticNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse)
+   StarchVegetableFatAndOil - (and ImportedNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse DomesticNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse)
+   FarmAnimalFood - (and ImportedNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse DomesticNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse)
+   DryCondensedAndEvaporatedDairyProduct - (and ImportedNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse DomesticNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse)
+   BakedGood - (and ImportedNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse DomesticNonRefrigeratedProcessedFoodStorageAndDistributionWarehouse)
+   DomesticRefrigeratedProcessedFoodStorageAndDistributionWarehouse - DomesticProcessedFoodStorageAndDistributionWarehouse
+   OtherRefrigeratedDomesticProcessedFood - DomesticRefrigeratedProcessedFoodStorageAndDistributionWarehouse
+   FrozenProcessedFruitAndVegetable - (and ImportedRefrigeratedProcessedFoodStorageAndDistributionWarehouse DomesticRefrigeratedProcessedFoodStorageAndDistributionWarehouse)
+   FrozenSpecialtyFood - (and ImportedRefrigeratedProcessedFoodStorageAndDistributionWarehouse DomesticRefrigeratedProcessedFoodStorageAndDistributionWarehouse)
+   ProcessedMeatExceptPoultry - (and ImportedRefrigeratedProcessedFoodStorageAndDistributionWarehouse DomesticRefrigeratedProcessedFoodStorageAndDistributionWarehouse)
+   PerishablePreparedFood - (and ImportedRefrigeratedProcessedFoodStorageAndDistributionWarehouse DomesticRefrigeratedProcessedFoodStorageAndDistributionWarehouse)
+   Ice - DomesticRefrigeratedProcessedFoodStorageAndDistributionWarehouse
+   FrozenProcessedFishAndSeafood - (and ImportedRefrigeratedProcessedFoodStorageAndDistributionWarehouse DomesticRefrigeratedProcessedFoodStorageAndDistributionWarehouse)
+   DairyProductExceptDryCondensedAndEvaporated - DomesticRefrigeratedProcessedFoodStorageAndDistributionWarehouse
+   ProcessedPoultry - (and ImportedRefrigeratedProcessedFoodStorageAndDistributionWarehouse DomesticRefrigeratedProcessedFoodStorageAndDistributionWarehouse)
+   NonDairyBasedFrozenDessert - (and ImportedRefrigeratedProcessedFoodStorageAndDistributionWarehouse DomesticRefrigeratedProcessedFoodStorageAndDistributionWarehouse)
+   NuclearReactorsMaterialsAndWaste - Infrastructure
+   NuclearWaste OtherNuclearFacility - NuclearReactorsMaterialsAndWaste
+   SpentNuclearFuelProcessingOrStorageFacility MixedWasteProcessing LowLevelRadioactiveWasteProcessingOrStorageFacility
+   HighLevelRadioactiveWasteStorageOrDisposalFacility SiteManagingAccumulationsOfNaturallyOccurringRadioactiveMaterialsNORM TransuranicWasteProcessingOrStorageFacility - NuclearWaste
+   SpentNuclearFuelDryStorageFacility SpentNuclearFuelWetStorageFacility - SpentNuclearFuelProcessingOrStorageFacility
+   NuclearMaterial - NuclearReactorsMaterialsAndWaste
+   RadioactiveAndNuclearMaterialsTransport - NuclearMaterial
+   LowHazardRadioactiveMaterialsTransport HighHazardRadioactiveMaterialsTransport - RadioactiveAndNuclearMaterialsTransport
+   RadioactiveMaterialUser - NuclearMaterial
+   IrradiationFacility ResearchFacilityWithRadioactiveMaterials MedicalFacilityWithRadioactiveMaterials
+   IndustrialFacilityWithNuclearMaterials - RadioactiveMaterialUser
+   RadioactiveSourceProductionOrDistributionFacility - NuclearMaterial
+   RadioactiveSourceManufacturing RadioactiveDeviceManufacturing RadioactiveSourceProducer
+   RadioactiveSourceImporterOrDistributor - RadioactiveSourceProductionOrDistributionFacility
+   NuclearFuelCycleFacility - NuclearMaterial
+   FuelFabricationFacility UraniumMiningOrInSituUraniumLeaching - NuclearFuelCycleFacility
+   CategoryIFacilitySpecialNuclearMaterials CategoryIIIFacilitySpecialNuclearMaterialsLowStrategicSignificance CategoryIIFacilitySpecialNuclearMaterialsModerateStrategicSignificance - FuelFabricationFacility
+   UraniumEnrichmentFacility UraniumConversionFacility UraniumOreMillingOrLeachateProcessing - NuclearFuelCycleFacility
+   NuclearFacility - NuclearReactorsMaterialsAndWaste
+   DecommissionedNuclearFacility - NuclearFacility
+   DecommissionedPowerReactorFacility OtherDecommissionedNuclearOrRadiologicalFacility DecommissionedResearchAndTrainingReactorFacility - DecommissionedNuclearFacility
+   OtherDecommissionedPowerReactorFacility DecommissionedBoilingWaterReactorFacility DecommissionedPressurizedWaterReactorFacility - DecommissionedPowerReactorFacility
+   DecommissionedFuelCycleFacility - DecommissionedNuclearFacility
+   ResearchTrainingOrTestReactor - NuclearFacility
+   PrivateResearchOrTestReactor UniversityResearchOrTrainingReactor GovernmentResearchOrTestReactor - ResearchTrainingOrTestReactor
+   NuclearPowerPlant - NuclearFacility
+   BoilingWaterReactor PressurizedWaterReactor - NuclearPowerPlant
+   NationalMonumentsAndIcons - Infrastructure
+   NationalMonumentIconDocumentOrObject OtherNationalMonumentsAndIcons - NationalMonumentsAndIcons
+   HistoricalSignificantObject HistoricalSignificantDocument - NationalMonumentIconDocumentOrObject
+   NationalMonumentIconStructure - NationalMonumentsAndIcons
+   Building MonumentOrMemorial OtherNationalMonumentIconStructure - NationalMonumentIconStructure
+   NationalMonumentIconGeographicArea - NationalMonumentsAndIcons
+   OtherNationalMonumentIconGeographicArea HistoricalOrHeritageLand ParkOrPublicLand - NationalMonumentIconGeographicArea
+   ChemicalAndHazardousMaterialsIndustry - Infrastructure
+   HazardousChemicalStorageStockpileUtilizationDistribution - ChemicalAndHazardousMaterialsIndustry
+   WarehousingAndStorage StorageAtManufacturingFacility - HazardousChemicalStorageStockpileUtilizationDistribution
+   BulkStorage RetailDistribution - WarehousingAndStorage
+   MarineBulkTerminal LandBasedBulkTerminal - BulkStorage
+   StorageAtNonManufacturingFacility - HazardousChemicalStorageStockpileUtilizationDistribution
+   HazardousChemicalTransport - ChemicalAndHazardousMaterialsIndustry
+   MarineTransport AirTransport - HazardousChemicalTransport
+   Tanker PortHandlingHazardousChemical - MarineTransport
+   Pipeline - (and Transportation HazardousChemicalTransport)
+   OtherPipelines PipelineComponent - Pipeline
+   OtherPipelineComponent OtherPipelineControlCenter OtherPipelineTerminal
+   OtherPipelinePumpingStation - OtherPipelines
+   PipelinePumpingStation PipelineControlCenter - Pipeline
+   RailTransport RoadTransport - HazardousChemicalTransport
+   RailroadTankCar RailroadLoadingRack - RailTransport
+   ChemicalManufacturingOrProcessingPlant OtherChemicalAndHazardousMaterial - ChemicalAndHazardousMaterialsIndustry
+   BasicChemicalProduction - ChemicalManufacturingOrProcessingPlant
+   InorganicChemicalProduction OtherIndustrialChemical - BasicChemicalProduction
+   AlkaliAndChlorine InorganicPigment OtherInorganicMaterial
+   Acid IndustrialGas - InorganicChemicalProduction
+   PetrochemicalAndDerivative - BasicChemicalProduction
+   SyntheticMaterial OtherOrganicMaterial OrganicChemical - PetrochemicalAndDerivative
+   SpecialtyChemicalProduction - ChemicalManufacturingOrProcessingPlant
+   Explosive Coating OtherSpecialty - SpecialtyChemicalProduction
+   AgriculturalChemicalProduction ConsumerProduct PharmaceuticalProduction - ChemicalManufacturingOrProcessingPlant
+   Fertilizer - (and AgriculturalChemicalProduction AgriculturalChemicalManufacturing)
+   InertChemical Organic - Fertilizer
+   CropProtection - AgriculturalChemicalProduction
+   OtherCropProtectionChemical - CropProtection
+   Pesticide - (and CropProtection AgriculturalChemicalManufacturing)
+   Poultry Livestock - Pesticide
+   Herbicide - CropProtection
+   PotentialChemicalWeaponAgentAndPrecursor - ChemicalManufacturingOrProcessingPlant
+   Water - Infrastructure
+   TreatedFinishedWaterStorage - Water
+   UncoveredReservoir Clearwell WaterTower
+   CoveredReservoir Standpipe - TreatedFinishedWaterStorage
+   RawWaterSupply - Water
+   GroundWater SurfaceWater - RawWaterSupply
+   TreatedWaterDistributionSystem TreatedWaterDistributionControlCenter - Water
+   WaterServiceLine WaterDistributionPumpingStation WaterTransmissionDistributionMain
+   FireHydrant Meter BackflowPreventer
+   BoosterDisinfectionFacility - TreatedWaterDistributionSystem
+   WastewaterFacility - Water
+   WastewaterCollectionSystem WastewaterRawInfluentStorage - WastewaterFacility
+   CombinedSewerOverflowOutfall Manhole Sewer
+   LiftPumpStation InvertedSiphon - WastewaterCollectionSystem
+   WastewaterControlCenter WastewaterTreatmentPlant TreatedWastewaterMonitoringSystem
+   TreatedWastewaterStorage TreatedWastewaterDischargeSystem - WastewaterFacility
+   RawWaterStorage TreatedWaterMonitoringSystem - Water
+   RawWaterStorageReservoir RawWaterStorageTank - RawWaterStorage
+   RawWaterTransmission - Water
+   Aqueduct - RawWaterTransmission
+   CatchBasin - (and RawWaterTransmission WastewaterCollectionSystem)
+   WaterPipeline - RawWaterTransmission
+   WaterPipelinePumpingStation WaterPipelineSegment - WaterPipeline
+   WaterTreatmentFacility - Water
+   BankingAndFinance - Infrastructure
+   InsuranceCompany - BankingAndFinance
+   InsuranceRegulatoryOversightOrIndustryOrganization ReinsuranceCompany DirectInsuranceCompany
+   InsuranceSupportOrganization - InsuranceCompany
+   InternationalInsuranceOrganization StateLocalRegionalInsuranceAgency FederalInsuranceAgency
+   InsuranceIndustryOrganization - InsuranceRegulatoryOversightOrIndustryOrganization
+   InsuranceProducer - InsuranceCompany
+   BankingAndCredit - BankingAndFinance
+   BankingOrCreditSupportingFacility - BankingAndCredit
+   BankingAndCreditEmergencyRedundancyServiceFacility FinancialTransactionProcessingOrClearinghouseFacility LoanBrokerage - BankingOrCreditSupportingFacility
+   BankingAndCreditCompanyEmergencyRedundancyServiceFacility BankingAndCreditContractEmergencyRedundancyServiceFacility - BankingAndCreditEmergencyRedundancyServiceFacility
+   PhysicalRepository - BankingOrCreditSupportingFacility
+   NonDepositoryCreditInstitution - BankingAndCredit
+   CreditCardCompany BusinessLending RealEstateCredit
+   ConsumerLending InternationalTradeFinancing OtherNonDepositoryCreditInstitution
+   GovernmentSponsoredEnterprise - NonDepositoryCreditInstitution
+   FederalReserveSystem - BankingAndCredit
+   FederalReserveBank FederalReserveHeadquarters - FederalReserveSystem
+   DepositoryCreditInstitution - BankingAndCredit
+   OtherDepositoryCreditInstitution - DepositoryCreditInstitution
+   OtherDepositoryCreditInstitutionCustomerServiceFacility OtherDepositoryCreditInstitutionOfficeBuilding - OtherDepositoryCreditInstitution
+   CreditUnion - DepositoryCreditInstitution
+   CreditUnionOfficeBuilding CreditUnionCustomerServiceFacility - CreditUnion
+   CommercialBank - DepositoryCreditInstitution
+   BankCustomerServiceFacility BankOfficeBuilding - CommercialBank
+   SavingsInstitution - DepositoryCreditInstitution
+   SavingsInstitutionCustomerServiceFacility SavingsInstitutionOfficeBuilding - SavingsInstitution
+   BankingAndCreditRegulatoryOversightOrIndustryOrganization - BankingAndCredit
+   StateLocalRegionalBankingOrCreditAgency BankingAndCreditIndustryOrganization InternationalBankingAndCreditOrganization
+   FederalBankingOrCreditAgency - BankingAndCreditRegulatoryOversightOrIndustryOrganization
+   SecuritiesCommoditiesOrFinancialInvestment - BankingAndFinance
+   SecuritiesCommoditiesOrFinancialInvestmentSupportingFacility SecuritiesAndCommoditiesExchange - SecuritiesCommoditiesOrFinancialInvestment
+   SecuritiesAndCommoditiesEmergencyRedundancyService - SecuritiesCommoditiesOrFinancialInvestmentSupportingFacility
+   SecuritiesAndCommoditiesCompanyEmergencyFacilitiesRedundancyServiceFacility SecuritiesAndCommoditiesContractEmergencyRedundancyServiceFacility - SecuritiesAndCommoditiesEmergencyRedundancyService
+   SecuritiesCommoditiesOrFinancialInvestmentProcessingAndClearinghouseActivity - SecuritiesCommoditiesOrFinancialInvestmentSupportingFacility
+   SecuritiesCommoditiesFinancialInvestmentRegulatoryOversightOrIndustryOrganization OtherFinancialInvestmentFacility - SecuritiesCommoditiesOrFinancialInvestment
+   StateLocalRegionalSecuritiesCommoditiesOrFinancialInvestmentAgency SecuritiesCommoditiesOrFinancialInvestmentIndustryOrganization InternationalSecuritiesCommoditiesOrFinancialInvestmentOrganization
+   FederalSecuritiesCommoditiesOrFinancialInvestmentAgency - SecuritiesCommoditiesFinancialInvestmentRegulatoryOversightOrIndustryOrganization
+   SecuritiesAndCommoditiesBroker - SecuritiesCommoditiesOrFinancialInvestment
+   GovernmentFacilities - Infrastructure
+   GovernmentStorageOrPreservationFacility - GovernmentFacilities
+   StorageOrPreservationBuildingOrStructure StorageAndPreservationLand - GovernmentStorageOrPreservationFacility
+   WeaponsOrAmmunitionStorage CurrencyStorage PreciousMetalStorage
+   SpecialNuclearMaterialsAndWasteStorage Warehouse ArchiveOrRecordCenter - StorageOrPreservationBuildingOrStructure
+   GovernmentSensorOrMonitoringSystem - GovernmentFacilities
+   GlobalPositioningSystemGPS - GovernmentSensorOrMonitoringSystem
+   GlobalPositioningSystemGPSSpaceSegment GlobalPositioningSystemGPSControlSegment - GlobalPositioningSystemGPS
+   GovernmentObservationSystem - GovernmentSensorOrMonitoringSystem
+   OtherGovernmentFacility - GovernmentFacilities
+   OtherGovernmentBuildingAndStructure OtherGovernmentLand - OtherGovernmentFacility
+   ServiceOrientedGovernmentFacility - GovernmentFacilities
+   ServiceOrientedBuildingOrStructure ServiceOrientedLand - ServiceOrientedGovernmentFacility
+   EmergencyServices MaintenanceOrRepairShop Library - ServiceOrientedBuildingOrStructure
+   EmergencyManagement - EmergencyServices
+   EmergencyManagementOperationalFacility - EmergencyManagement
+   MutualAidAndMultiAgencyCoordinationSystemEmergencyOperationsCenterEOC OtherSpecializedEmergencyManagementFacility IntelligenceFusionCenter - EmergencyManagementOperationalFacility
+   MobileCommunicationsCenterMobileEmergencyOperationsCenter MobileFeedingKitchenMobileFieldKitchen - MutualAidAndMultiAgencyCoordinationSystemEmergencyOperationsCenterEOC
+   PublicSafetyAnsweringPoint - EmergencyManagementOperationalFacility
+   EmergencyManagementCommunicationFacility EmergencyManagementAdministrativeOfficeHeadquarters EmergencyManagementTrainingFacility - EmergencyManagement
+   EmergencyManagementInformationSystem - EmergencyManagementCommunicationFacility
+   PrivateEmergencyManagementFacility OtherEmergencyManagementFacility PublicEmergencyShelter
+   EmergencyManagementSupplyFacility EmergencyManagementMaintenanceFacility - EmergencyManagement
+   EmergencyMedicalServicesEMS - EmergencyServices
+   EmergencyMedicalServicesMaintenanceFacility EmergencyMedicalServicesSupplyFacility EmergencyMedicalServicesCommunicationFacility
+   EmergencyMedicalServicesOperationalFacility EmergencyMedicalServicesAdministrationOfficeHeadquarters PrivateEmergencyMedicalServicesFacility
+   OtherSpecializedEmergencyMedicalServices OtherEmergencyMedicalServicesFacility EmergencyMedicalApparatus
+   EmergencyMedicalServicesTrainingFacility - EmergencyMedicalServicesEMS
+   LawEnforcement OtherEmergencyServicesFacility - EmergencyServices
+   LawEnforcementOperationalFacility LawEnforcementTrainingFacility LawEnforcementCommunicationFacility
+   LawEnforcementSupplyFacility - LawEnforcement
+   AviationUnit HazardousMaterialsHAZMATResponseUnit CanineK9Unit
+   CrimeSceneInvestigationUnit - LawEnforcementOperationalFacility
+   FixedWingAirplane Helicopter - AviationUnit
+   TacticalUnit MarineAndPortLawEnforcementUnit - LawEnforcementOperationalFacility
+   LawEnforcementPatrolTeamStrikeTeam RiotCrowdControl PublicSafetyDiveTeam
+   SpecialWeaponsAndTacticsSWATTeam BombSquadExplosivesUnit - TacticalUnit
+   OtherSpecializedLawEnforcementOperationalFacility - LawEnforcementOperationalFacility
+   LawEnforcementMaintenanceFacility OtherLawEnforcementFacility LawEnforcementAdministrativeOfficeHeadquarters
+   PrivateSecurityGuardOffice - LawEnforcement
+   PublicWorks - EmergencyServices
+   PublicWorksCommunicationFacility OtherPublicWorksFacility PublicWorksTrainingFacility
+   PublicWorksSupplyFacility PublicWorksAdministrationOfficeHeadquarters PublicWorksMaintenanceFacility
+   PrivatePublicWorksFacility PublicWorksOperationalFacility - PublicWorks
+   FireAndEmergencyServices - EmergencyServices
+   FireEmergencyServicesOperationalFacility PrivateFireEmergencyServicesFacility FireTrainingFacility
+   FireEmergencyServicesAdministrativeOfficeHeadquarters - FireAndEmergencyServices
+   SearchAndRescueUnit - (and FireEmergencyServicesOperationalFacility LawEnforcementOperationalFacility)
+   TacticalTeam OtherSpecializedFireAndEmergencyServicesFacility - FireEmergencyServicesOperationalFacility
+   HandCrew CrewTransportFirefightingCrew - TacticalTeam
+   AirEmergencyUnit MarineEmergencyUnit - FireEmergencyServicesOperationalFacility
+   AirSearchAndRescue AreaCommandTeamFirefighting AirSearchTeamFixedWing - AirEmergencyUnit
+   HazardousMaterialsHAZMATEntryTeam - FireEmergencyServicesOperationalFacility
+   FireEmergencyServicesApparatus - FireAndEmergencyServices
+   FireEngine WaterTenderFirefighting GasTankerOrAviationGasAvGasTanker
+   BrushPatrolUnit HelitankerFirefighting HelicopterFirefighting
+   FireBoat FireTruckAerialLadderOrPlatform FoamTenderFirefighting
+   PortablePump - FireEmergencyServicesApparatus
+   FireEmergencyServicesCommunicationFacility - FireAndEmergencyServices
+   MobileCommunicationsUnit - (and FireEmergencyServicesCommunicationFacility LawEnforcementCommunicationFacility)
+   FireAlarmSystem - FireEmergencyServicesCommunicationFacility
+   OtherFireEmergencyServicesFacility FireEmergencyServicesInvestigationLaboratory FireEmergencyServicesSupplyFacility
+   FireEmergencyServicesMaintenanceFacility - FireAndEmergencyServices
+   TrainingBuilding OperationsCommandDispatchOrControlCenter - ServiceOrientedBuildingOrStructure
+   GovernmentSpaceSystem - GovernmentFacilities
+   NationalAeronauticsAndSpaceAdministrationNASAFacility - (and SpaceTransportationFacility GovernmentSpaceSystem)
+   MilitaryFacility - (and GovernmentFacilities SpaceTransportationFacility GovernmentSpaceSystem)
+   LaunchVehicle - (and MilitaryFacility CommercialFacility NationalAeronauticsAndSpaceAdministrationNASAFacility)
+   AirForceBase NavyBase JointAndCombinedMilitaryInstallationOrReservation
+   NationalGuardFacility ArmyBase CoastGuardBase - MilitaryFacility
+   LaunchFacility - (and MilitaryFacility CommercialFacility NationalAeronauticsAndSpaceAdministrationNASAFacility)
+   Satellite - (and MilitaryFacility CommercialFacility NationalAeronauticsAndSpaceAdministrationNASAFacility)
+   MissionControlFacility - (and MilitaryFacility CommercialFacility NationalAeronauticsAndSpaceAdministrationNASAFacility)
+   MarineCorpsBase - MilitaryFacility
+   PersonnelOrientedGovernmentFacility - GovernmentFacilities
+   PersonnelOrientedBuildingOrStructure PersonnelOrientedLand - PersonnelOrientedGovernmentFacility
+   OfficeOrOfficeBuildingComplex ImmigrationAndCustomsAirportSeaport Housing - PersonnelOrientedBuildingOrStructure
+   LegislativeChamberOrOffice DataOrCallCenter JudicialChamberOrOffice
+   AgencyHeadquarters FieldDistrictOrSatelliteOffice - OfficeOrOfficeBuildingComplex
+   CorrectionalFacility - (and LawEnforcement PersonnelOrientedBuildingOrStructure)
+   BorderFacility EmbassyOrConsulate - PersonnelOrientedBuildingOrStructure
+   GovernmentResearchFacility - GovernmentFacilities
+   GovernmentResearchAndDevelopmentBuildingOrStructure GovernmentResearchAndDevelopmentLand - GovernmentResearchFacility
+   EnvironmentalResearch BasicScienceResearch AnalysisAndAssessmentResearchFacility
+   AerospaceResearchFacility MilitaryResearch - GovernmentResearchAndDevelopmentBuildingOrStructure
+   EducationFacility - GovernmentFacilities
+   PreK12School SpecializedEducationFacility HigherEducationFacility - EducationFacility
+   DefenseIndustrialBase - Infrastructure
+   WeaponsIndustry - DefenseIndustrialBase
+   ManPortableWeaponsManufacturingAndMaintenance MountedWeaponsManufacturingAndMaintenance CannonManufacturingAndMaintenance
+   ChemicalWeaponsManufacturingAndMaintenance LaserWeaponsManufacturingAndMaintenance NuclearWeaponsManufacturingAndMaintenance - WeaponsIndustry
+   AircraftIndustry - DefenseIndustrialBase
+   UnmannedAerialVehicleManufacturingAndMaintenance HelicopterManufacturingAndMaintenance FixedWingAircraftManufacturingAndMaintenance - AircraftIndustry
+   ShipbuildingIndustry - DefenseIndustrialBase
+   UnmannedVesselConstructionAndMaintenance SurfaceShipbuildingAndMaintenance SubsurfaceShipbuildingAndMaintenance - ShipbuildingIndustry
+   StructuralIndustryCommodityManufacturing - DefenseIndustrialBase
+   CeramicArmorManufacturing CastingManufacturing ForgingManufacturing
+   PreciousMetalProductManufacturing CompositeManufacturing DepletedUraniumArmorManufacturing - StructuralIndustryCommodityManufacturing
+   ElectricalIndustryCommodityManufacturing - DefenseIndustrialBase
+   ElectricGeneratorManufacturing AuxiliaryPowerUnitManufacturing BatteryManufacturing
+   PowerSourceManufacturing ElectricMotorManufacturing - ElectricalIndustryCommodityManufacturing
+   MissileIndustry - DefenseIndustrialBase
+   MissileDefenseSystemManufacturingAndMaintenance AirAirMissileManufacturingAndMaintenance SurfaceSurfaceMissileManufacturingAndMaintenance
+   PrecisionGuidedMunitionsManufacturingAndMaintenance AirSurfaceMissileManufacturingAndMaintenance SurfaceAirMissileManufacturingAndMaintenance - MissileIndustry
+   SpaceIndustry - DefenseIndustrialBase
+   SatelliteManufacturing LaunchVehicleManufacturingAndMaintenance - SpaceIndustry
+   MechanicalIndustryCommodityManufacturing - DefenseIndustrialBase
+   AutomotiveTransmissionManufacturing HydraulicEquipmentManufacturing RocketEngineManufacturing
+   AircraftTransmissionManufacturing PumpAndCompressorManufacturing DieselEngineManufacturing
+   LandingGearManufacturing NuclearComponentsManufacturing BearingsManufacturing
+   TurbineEngineManufacturing - MechanicalIndustryCommodityManufacturing
+   ElectronicIndustryCommodityManufacturing - DefenseIndustrialBase
+   GlobalPositioningSystemGPSReceiverManufacturing SemiconductorManufacturing MicrowaveDeviceManufacturing
+   OpticsManufacturing CircuitBoardManufacturing GuidanceControlEquipmentManufacturing - ElectronicIndustryCommodityManufacturing
+   ResearchDevelopmentFacility - DefenseIndustrialBase
+   Shipbuilding - ResearchDevelopmentFacility
+   ElectronicsIndustry - (and ResearchDevelopmentFacility DefenseIndustrialBase)
+   ElectronicsManufacturing AvionicsManufacturing SensorManufacturing
+   CommandControlCommunicationsComputersIntelligenceSurveillanceAndReconnaissanceC4ISRSystemsManufacturing - ElectronicsIndustry
+   StructuralIndustryCommodity Missile Space - ResearchDevelopmentFacility
+   TroopSupportIndustry - (and ResearchDevelopmentFacility DefenseIndustrialBase)
+   SoldierSystemManufacturing SubsistenceAndMedicalEquipmentManufacturing ClothingAndTextileManufacturing
+   ChemicalBiologicalDefenseSystemManufacturing - TroopSupportIndustry
+   CombatVehicleIndustry - (and ResearchDevelopmentFacility DefenseIndustrialBase)
+   TacticalVehicleManufacturingAndMaintenance UnmannedVehicleManufacturingAndMaintenance CombatVehicleManufacturingAndMaintenance - CombatVehicleIndustry
+   WeaponIndustry - ResearchDevelopmentFacility
+   InformationTechnologyIndustry - (and ResearchDevelopmentFacility DefenseIndustrialBase)
+   Security - InformationTechnologyIndustry
+   SoftwareProduction - (and InformationTechnologyIndustry InformationTechnology)
+   ControlSystemSoftware - SoftwareProduction
+   FieldDeviceSoftware - ControlSystemSoftware
+   SecuritySoftwareProduction BusinessSoftwareProduction OtherSoftwareDevelopmentFacility
+   OperatingSystemDevelopment - SoftwareProduction
+   TrainerAndSimulator NetworkDevelopmentAndMaintenance HardwareManufacturingAndMaintenance - InformationTechnologyIndustry
+   Aircraft - ResearchDevelopmentFacility
+   AmmunitionIndustry - (and ResearchDevelopmentFacility DefenseIndustrialBase)
+   RocketAndWarheadManufacturing TankAmmunitionManufacturing SmallCaliberMunitionsManufacturing
+   PropellingChargeManufacturing BombManufacturing DemolitionGrenadeAndMineManufacturing
+   PropellantAndExplosivesManufacturing FamilyOfScatterableMineManufacturing NavyGunMunitionsManufacturing
+   CannonCaliberMunitionsManufacturing DispenserMunitionsManufacturing FuseManufacturing
+   ArtilleryCaliberMunitionsManufacturing PyrotechnicsManufacturing MortarManufacturing - AmmunitionIndustry
+   MechanicalIndustryCommodity ElectricalIndustryCommodity - ResearchDevelopmentFacility
+   Energy - Infrastructure
+   Coal - Energy
+   CoalSupportingFacility OtherCoalFacility - Coal
+   CoalMarket - CoalSupportingFacility
+   CoalProcessing - Coal
+   CoalGasificationPlant CoalLiquefactionPlant CoalPreparationPlantCoalCleaningPlant - CoalProcessing
+   CoalSupply - Coal
+   SurfaceMine UndergroundMine - CoalSupply
+   CoalTransport - Coal
+   CoalWaterTransport - CoalTransport
+   CoalPort CoalBarge CoalWaterTransportRoute - CoalWaterTransport
+   CoalRailTransport - CoalTransport
+   CoalRailCar CoalUnitTrainRoute OtherCoalTrainRoute - CoalRailTransport
+   Petroleum - Energy
+   PetroleumProcessing - Petroleum
+   PetroleumRefinery - (and PetroleumAndCoalProductsManufacturing PetroleumProcessing)
+   CrudeOilSupply - Petroleum
+   OilShaleProduction GasOilSeparationPlant CrudeOilProductionFromOtherSources - CrudeOilSupply
+   PetroleumProductTransport - Petroleum
+   PetroleumProductRailTransport - PetroleumProductTransport
+   RailroadPetroleumTankCar - PetroleumProductRailTransport
+   PetroleumProductPipeline - (and PetroleumProductTransport Pipeline)
+   PetroleumProductPipelinePumpingStation PetroleumProductPipelineControlCenter - PetroleumProductPipeline
+   PetroleumProductStorage - (and PetroleumProductPipeline Petroleum)
+   PetroleumProductStorageForRetailDistribution - PetroleumProductStorage
+   HeatingOilDealer - PetroleumProductStorageForRetailDistribution
+   MotorVehicleFuelingStation - (and RoadTransportationSupportFacility PetroleumProductStorageForRetailDistribution)
+   LiquefiedPetroleumGasLPGDealer - PetroleumProductStorageForRetailDistribution
+   PetroleumProductBulkStorage - PetroleumProductStorage
+   PetroleumProductBulkPlant PetroleumProductLandBasedBulkTerminal PetroleumProductMarineBulkTerminal - PetroleumProductBulkStorage
+   EndUserPetroleumProductStorage - PetroleumProductStorage
+   MilitaryEndUserPetroleumProductStorage NonMilitaryEndUserPetroleumProductStorage - EndUserPetroleumProductStorage
+   UndergroundPetroleumGasStorage - PetroleumProductStorage
+   PetroleumProductPipelineSegment PetroleumProductPipelineComponentOrInterconnect - PetroleumProductPipeline
+   PetroleumProductMarineTransport - PetroleumProductTransport
+   PetroleumProductTanker PortsHandlingPetroleumProduct - PetroleumProductMarineTransport
+   PetroleumProductRoadTransport - PetroleumProductTransport
+   TankerTruckLoadingRack - (and PetroleumProductRoadTransport RoadTransport)
+   TankerTruck - (and PetroleumProductRoadTransport RoadTransport)
+   PetroleumSupportingFacility - Petroleum
+   CrudeOilMarket PetroleumProductMarket - PetroleumSupportingFacility
+   CrudeOilTransport - Petroleum
+   CrudeOilMarineTransport - CrudeOilTransport
+   CrudeOilTanker PortHandlingCrudeOil - CrudeOilMarineTransport
+   CrudeOilPipeline - (and CrudeOilTransport Pipeline)
+   CrudeOilPipelineControlCenter CrudeOilPipelineSegment CrudeOilPipelineHub - CrudeOilPipeline
+   CrudeOilStorage - (and CrudeOilPipeline Petroleum)
+   CrudeOilBulkStorage StrategicPetroleumReserve - CrudeOilStorage
+   CrudeOilLandBasedTerminal CrudeOilMarineTerminal - CrudeOilBulkStorage
+   CrudeOilPipelineComponent CrudeOilPipelinePumpingStation - CrudeOilPipeline
+   Biodiesel - Energy
+   BiodieselDistributionFacility BiodieselStorageFacility - Biodiesel
+   BiodieselFuelingStation - BiodieselDistributionFacility
+   OtherBiodieselSupportingFacility BiodieselFeedMaterialSupply BiodieselTransportFacility
+   BiodieselProductionFacility - Biodiesel
+   NaturalGas - Energy
+   NaturalGasSupply - NaturalGas
+   OnShoreWell - (and CrudeOilSupply NaturalGasSupply)
+   OffShoreWell - (and CrudeOilSupply NaturalGasSupply)
+   DrillingRig - (and CrudeOilSupply NaturalGasSupply)
+   NaturalGasProductionFromOtherSources UnconventionalGasExtractionFacility - NaturalGasSupply
+   NaturalGasProcessing - NaturalGas
+   NaturalGasProcessingPlant - NaturalGasProcessing
+   OtherNaturalGasFacility - NaturalGas
+   NaturalGasDistribution - (and NaturalGas Pipeline)
+   NaturalGasDistributionStorage CityGateStation NaturalGasDistributionControlOrDispatchCenter
+   CompressedNaturalGasCNGPlant NaturalGasDistributionPipelineNetwork NaturalGasDistributionControlAndDispatchCenter - NaturalGasDistribution
+   NaturalGasStorage - NaturalGas
+   UndergroundStorageFacility AboveGroundStorageFacility PropanePeakShavingFacility - NaturalGasStorage
+   NaturalGasSupportingFacility - NaturalGas
+   NaturalGasMarket - NaturalGasSupportingFacility
+   NaturalGasTransport - NaturalGas
+   LiquefiedNaturalGasLNGTransport - (and NaturalGasTransport Pipeline)
+   LiquefiedNaturalGasLNGTanker LiquefiedNaturalGasLNGPort - LiquefiedNaturalGasLNGTransport
+   NaturalGasTransmissionPipeline - (and NaturalGasTransport Pipeline)
+   NaturalGasPipelineHub NaturalGasPipelineInterconnect NaturalGasTransmissionPipelineCompressorStation
+   NaturalGasTransmissionPipelineSegment NaturalGasReceiptDeliveryMeteringStation NaturalGasTransmissionStorage
+   LiquefiedNaturalGasStorageTerminal NaturalGasTransmissionPipelineComponentOrInterconnect NaturalGasTransmissionPipelineControlCenter - NaturalGasTransmissionPipeline
+   LiquefiedNaturalGasLNGPlant - NaturalGas
+   LiquefiedNaturalGasLNGLiquefactionPlant LiquefiedNaturalGasLNGSatelliteStorageAndRegasificationPlant - LiquefiedNaturalGasLNGPlant
+   OtherEnergyConversionSystem - Energy
+   DistrictEnergySystem - OtherEnergyConversionSystem
+   DistrictCooling CombinedHeatAndPower DistrictPower
+   DistrictHeating - DistrictEnergySystem
+   Hydrogen - Energy
+   HydrogenDistributionFacility HydrogenTransportFacility HydrogenProductionFacility
+   HydrogenStorageFacility HydrogenSourceMaterialSupply OtherHydrogenSupportingFacility - Hydrogen
+   HydrogenFuelingStation - HydrogenDistributionFacility
+   RegulatoryOversightOrIndustryOrganization - (and Energy Water ChemicalAndHazardousMaterialsIndustry NuclearReactorsMaterialsAndWaste AgricultureAndFood Dams Communications Transportation HealthcareAndPublicHealth InformationTechnology)
+   HealthcareIndustryOrganization InternationalTransportationOrganization FederalWaterAgency
+   OccupationalHealthOrEnvironmentalHealthProgram LocalHealthcareAndPublicHealthAgencyOrDepartmentIncludesTribalAgencies IndustryOrTradeOrganization
+   StateLocalRegionalEnergyAgency WaterIndustryOrganization TransportationIndustryOrganization
+   InternationalOrganization - RegulatoryOversightOrIndustryOrganization
+   ProfessionalOrBusinessAssociation - HealthcareIndustryOrganization
+   ProfessionalOrTechnicalSociety InternationalChemicalOrganization StateLocalOrRegionalWaterAgency - RegulatoryOversightOrIndustryOrganization
+   FederalAgency - (and ClinicalAgencyDepartment RegulatoryOversightOrIndustryOrganization NonClinicalAgencyDepartment)
+   StateAgency - (and ClinicalAgencyDepartment RegulatoryOversightOrIndustryOrganization NonClinicalAgencyDepartment)
+   StateHealthcareAndPublicHealthAgencyOrDepartment StateLocalOrRegionalNuclearAgency FederalEnergyAgency
+   StateLocalRegionalAgricultureAndFoodAgency InternationalEnergyOrganization AgricultureAndFoodIndustryOrganization
+   RegionalHealthcareAndPublicHealthAgencyOrDepartment FederalNuclearAgency PrivateSectorWaterSupplyOrDistributionCompany
+   StateLocalRegionalChemicalsOversightAgency EnergyIndustryOrganization InternationalWaterOrganization
+   InternationalAgricultureAndFoodOrganization FederalChemicalsOversightAgency - RegulatoryOversightOrIndustryOrganization
+   ProfessionalLicensingBoard - StateHealthcareAndPublicHealthAgencyOrDepartment
+   NuclearIndustryOrganizations FederalHealthcareAgencyOrDepartment RegionalOrCrossSectorOrganization
+   FederalAgricultureAndFoodAgency InternationalCommunicationsOrganization InternationalNuclearOrganization
+   FederalCommunicationsAgency StateLocalOrRegionalCommunicationsAgency CommunicationsIndustryOrganization
+   AccreditationOrganization FederalTransportationAgency StateLocalOrRegionalTransportationAgency
+   ChemicalIndustryOrganizationOrTradeAssociation - RegulatoryOversightOrIndustryOrganization
+   Electricity - Energy
+   ElectricityDistribution - Electricity
+   DistributionLine DistributionSubstation DistributionControlAndDispatchCenter - ElectricityDistribution
+   ElectricityMarket - Electricity
+   GenerationMarket TransmissionMarket - ElectricityMarket
+   ElectricityTransmission - Electricity
+   TransmissionLine DirectCurrentDCConverterStation GenerationDispatchAndTransmissionControlCenter
+   TransmissionSubstation - ElectricityTransmission
+   ElectricityGeneration OtherElectricityFacility - Electricity
+   RenewableEnergyGeneration OtherElectricPowerGeneration - ElectricityGeneration
+   Geothermal Wind Solar - RenewableEnergyGeneration
+   NuclearElectricPowerGeneration - ElectricityGeneration
+   LightWaterReactorPowerPlant OtherReactorPowerPlant - NuclearElectricPowerGeneration
+   FossilFuelElectricPowerGeneration - ElectricityGeneration
+   CoalFiredGenerator NaturalGasFiredGenerator OilFiredGenerator - FossilFuelElectricPowerGeneration
+   HydroelectricPowerGeneration - ElectricityGeneration
+   RunOfRiverGenerator HydroelectricDam PumpedStorageFacility - HydroelectricPowerGeneration
+   ElectricVehicleChargingStation - Electricity
+   ElectricVehicleRapidChargingStation ElectricVehicleStandardChargingStation - ElectricVehicleChargingStation
+   Ethanol - Energy
+   EthanolTransport EthanolStorageFacility EthanolBlendingFacility
+   OtherEthanolSupportingFacility - Ethanol
+   EthanolRailCar EthanolNonUnitTrain EthanolUnitTrainRoute - EthanolTransport
+   EthanolDistributionFacility - Ethanol
+   E85FuelingStation - EthanolDistributionFacility
+   EthanolFeedMaterialSupply EthanolProductionFacility EthanolMarket - Ethanol))
