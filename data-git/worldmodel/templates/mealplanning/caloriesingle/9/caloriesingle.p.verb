@@ -1,0 +1,124 @@
+;; <problem-file>
+
+;; (generate the pantry problem from the pantry contents, so as to
+;;  limit the number of entries, as opposed to all possible)
+
+;; ((Home Storage Solutions 101: A place for everything that matters)
+
+;;  ((Fresh Food Stoage Guidelines for Refrigerator {Cheat Sheet})
+;;   (Freezer Storage Times {Cheat Sheet})
+;;   (Pantry Food Storage Chart: Common Shelf Life {Cheat Sheet})
+
+;;   (Michigan Availability Guide (Vegetables))
+;;   (Michigan Availability Guide (Fruits))
+;;   (What should be discarded after a power outage)
+
+;;   ))
+
+
+(define (problem mealPlanningPantry)
+
+ (:domain mealPlanningPantry)
+
+ ;; (:includes)
+
+ ;; (:timing
+ ;;  (start-date TZID=America/Chicago:20161228T010000)
+ ;;  (units 0000-00-00_01:00:00)
+ ;;  )
+
+ (:objects
+  andrewDougherty - AGENT
+
+  beefRavioli_ChefBoyardee spaghettiRingsPastaWithMeatballs_GreatValue
+  macAndCheese_ChefBoyardee chickenNoodeSoup_GreatValue
+  traditionalSplitPeaWithHam_Progresso - PRODUCT
+
+  beefRavioli_ChefBoyardee1
+  spaghettiRingsPastaWithMeatballs_GreatValue1
+  macAndCheese_ChefBoyardee1 chickenNoodeSoup_GreatValue1
+  traditionalSplitPeaWithHam_Progresso1 - INSTANCE
+
+  walmart1 - SUPPLIER
+
+  calories sodium - TYPE
+
+  pantry1 - STORAGELOCATION
+  )
+
+ (:init
+  (= (actions) 0.0)
+
+  (= (funds andrewDougherty) 5.00)
+
+  (= (intake calories andrewDougherty) 0.0)
+  (= (intake sodium andrewDougherty) 0.0)
+
+  ;; INSTANCES OF PRODUCT
+  (instanceFn beefRavioli_ChefBoyardee beefRavioli_ChefBoyardee1)
+  (instanceFn spaghettiRingsPastaWithMeatballs_GreatValue spaghettiRingsPastaWithMeatballs_GreatValue1)
+  (instanceFn macAndCheese_ChefBoyardee macAndCheese_ChefBoyardee1)
+  (instanceFn chickenNoodeSoup_GreatValue chickenNoodeSoup_GreatValue1)
+  (instanceFn traditionalSplitPeaWithHam_Progresso traditionalSplitPeaWithHam_Progresso1)
+
+  ;; OWNS
+  (owns_is beefRavioli_ChefBoyardee1 walmart1)
+  (owns_is spaghettiRingsPastaWithMeatballs_GreatValue1 walmart1)
+  (owns_is macAndCheese_ChefBoyardee1 walmart1)
+  (owns_is chickenNoodeSoup_GreatValue1 walmart1)
+  (owns_is traditionalSplitPeaWithHam_Progresso1 walmart1)
+
+  ;; CALORIE COUNT
+  (= (nf calories beefRavioli_ChefBoyardee) 460.0)
+  (= (nf calories spaghettiRingsPastaWithMeatballs_GreatValue) 460.0)
+  (= (nf calories macAndCheese_ChefBoyardee) 420.0)
+  (= (nf calories chickenNoodeSoup_GreatValue) 200.0)
+  (= (nf calories traditionalSplitPeaWithHam_Progresso) 280.0)
+
+  ;; SODIUM COUNT
+  (= (nf sodium beefRavioli_ChefBoyardee) 0.62)
+  (= (nf sodium spaghettiRingsPastaWithMeatballs_GreatValue) 0.50)
+  (= (nf sodium macAndCheese_ChefBoyardee) 0.56)
+  (= (nf sodium chickenNoodeSoup_GreatValue) 0.58)
+  (= (nf sodium traditionalSplitPeaWithHam_Progresso) 0.58)
+
+  ;; NOT CONSUMED PRODUCT
+  (notConsumed beefRavioli_ChefBoyardee1)
+  (notConsumed spaghettiRingsPastaWithMeatballs_GreatValue1)
+  (notConsumed macAndCheese_ChefBoyardee1)
+  (notConsumed chickenNoodeSoup_GreatValue1)
+  (notConsumed traditionalSplitPeaWithHam_Progresso1)
+
+  ;; PRODUCT COSTS
+  (= (costs beefRavioli_ChefBoyardee walmart1) 0.99)
+  (= (costs spaghettiRingsPastaWithMeatballs_GreatValue walmart1) 0.69)
+  (= (costs macAndCheese_ChefBoyardee walmart1) 0.99)
+  (= (costs chickenNoodeSoup_GreatValue walmart1) 0.99)
+  (= (costs traditionalSplitPeaWithHam_Progresso walmart1) 1.99)
+
+  ;; PRODUCT COSTS
+  (= (costs beefRavioli_ChefBoyardee walmart1) 0.99)
+  (= (costs spaghettiRingsPastaWithMeatballs_GreatValue walmart1) 0.69)
+  (= (costs macAndCheese_ChefBoyardee walmart1) 0.99)
+  (= (costs chickenNoodeSoup_GreatValue walmart1) 0.99)
+  (= (costs traditionalSplitPeaWithHam_Progresso walmart1) 1.99)
+
+  ;; STORAGE LOCATION OF INSTANCES
+  (storageLocation beefRavioli_ChefBoyardee1 pantry1)
+  (storageLocation spaghettiRingsPastaWithMeatballs_GreatValue1 pantry1)
+  (storageLocation macAndCheese_ChefBoyardee1 pantry1)
+  (storageLocation chickenNoodeSoup_GreatValue1 pantry1)
+  (storageLocation traditionalSplitPeaWithHam_Progresso1 pantry1)
+
+  )
+
+ (:goal
+  (and
+   (replete andrewDougherty)
+   )
+  )
+ 
+ (:metric minimize (intake calories andrewDougherty))
+ )
+
+;; </problem-file>

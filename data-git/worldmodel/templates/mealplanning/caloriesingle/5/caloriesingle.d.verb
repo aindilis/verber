@@ -1,0 +1,63 @@
+(define
+
+ (domain mealPlanningPantry)
+
+ (:requirements
+  :negative-preconditions :conditional-effects :equality :typing
+  :fluents :durative-actions :derived-predicates
+  :disjunctive-preconditions :timed-initial-literals
+
+  ;; :negative-preconditions :conditional-effects :equality :typing
+  ;; :fluents :durative-actions :disjunctive-preconditions
+  )
+
+ (:types
+  AGENT INSTANCE SUPPLIER TYPE - object
+  )
+ 
+ (:predicates
+  ;; (instanceFn ?product - PRODUCT ?instance - INSTANCE)
+  (consumed ?instance - INSTANCE)
+  (notConsumed ?instance - INSTANCE)
+  (consumedByAgent ?instance - INSTANCE ?agent - AGENT)
+  (replete ?agent - AGENT)
+  )
+
+ (:functions
+  ;; (costs ?product - PRODUCT ?supplier - SUPPLIER)
+  (nf ?type - TYPE ?instance - INSTANCE)
+  (intake ?type - TYPE ?agent - AGENT)
+  ;; (actions)
+  )
+
+ ;; DURATIVE ACTIONS
+ (:durative-action CONSUME
+  :parameters (?agent - AGENT ?instance - INSTANCE)
+  :duration (= ?duration 0.1)
+  :condition (and
+ 	      (at start (notConsumed ?instance))
+	      ;; (at start (instanceFn ?product ?instance))
+	      )
+  :effect (and 
+	   (at end (consumed ?instance))
+	   (at end (not (notConsumed ?instance)))
+	   (at end (consumedByAgent ?instance ?agent))
+	   (at end (increase (intake calories ?agent) (nf calories ?instance)))
+	   ;; (at end (assign (actions) (+ (actions) 1)))
+	   )
+  )
+
+ (:durative-action ISREPLETE
+  :parameters (?agent - AGENT)
+  :duration (= ?duration 0.1)
+  :condition (and
+	      (at start (>= (intake calories ?agent) 1500.0))
+	      (at end (<= (intake calories ?agent) 1900.0))
+	      ;; (at start (>= (sodiumIntake ?agent) 100.0))
+	      ;; (at end (<= (sodiumIntake ?agent) 100.0))
+	      )
+  :effect (and 
+	   (at end (replete ?agent))
+	   )
+  )
+ )

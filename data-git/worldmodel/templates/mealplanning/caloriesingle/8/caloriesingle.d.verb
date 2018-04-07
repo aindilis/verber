@@ -1,0 +1,105 @@
+(define
+
+ (domain mealPlanningPantry)
+
+ (:requirements
+  :negative-preconditions :conditional-effects :equality :typing
+  :fluents :durative-actions :derived-predicates
+  :disjunctive-preconditions :timed-initial-literals
+
+  ;; :negative-preconditions :conditional-effects :equality :typing
+  ;; :fluents :durative-actions :disjunctive-preconditions
+  )
+
+ (:types
+  AGENT INSTANCE SUPPLIER TYPE STORAGELOCATION - object
+  )
+ 
+ (:predicates
+  (instanceFn ?product - PRODUCT ?instance - INSTANCE)
+  (consumed ?instance - INSTANCE)
+  (notConsumed ?instance - INSTANCE)
+  (consumedByAgent ?instance - INSTANCE ?agent - AGENT)
+  (replete ?agent - AGENT)
+  (storageLocation ?instance - INSTANCE ?storagelocation - STORAGELOCATION)
+  (owns_is ?instance - INSTANCE ?supplier - SUPPLIER)
+  (owns_ia ?instance - INSTANCE ?agent - AGENT)
+  ;; (atLocation_asu ?agent - AGENT - ?supplier - SUPPLIER)
+  ;; (atLocation_ast ?agent - AGENT - ?storageLocation - STORAGELOCATION)
+  )
+
+ (:functions
+  (nf ?type - TYPE ?product - PRODUCT)
+  (intake ?type - TYPE ?agent - AGENT)
+  (costs ?product - PRODUCT ?supplier - SUPPLIER)
+  (funds ?agent - AGENT)
+  (actions)
+  )
+
+ ;; DURATIVE ACTIONS
+ (:durative-action PURCHASE
+  :parameters (?agent - AGENT ?product - PRODUCT ?instance - INSTANCE ?supplier - SUPPLIER)
+  :duration (= ?duration 0.1)
+  :condition (and
+ 	      (at start (owns_is ?instance ?supplier))
+ 	      (at start (not (owns_ia ?instance ?agent)))
+	      (at start (instanceFn ?product ?instance))
+	      )
+  :effect (and 
+	   (at end (not (owns_is ?instance ?supplier)))
+	   (at end (owns_ia ?instance ?agent))
+
+	   (at end (decrease (funds ?agent) (costs ?product ?supplier)))
+	   )
+  )
+
+ (:durative-action CONSUME
+  :parameters (?agent - AGENT ?product - PRODUCT ?instance - INSTANCE ?supplier - SUPPLIER)
+  :duration (= ?duration 0.1)
+  :condition (and
+ 	      (at start (owns_ia ?instance ?agent))
+ 	      (at start (notConsumed ?instance))
+	      (at start (instanceFn ?product ?instance))
+	      )
+  :effect (and 
+	   (at end (consumed ?instance))
+	   (at end (not (notConsumed ?instance)))
+	   (at end (consumedByAgent ?instance ?agent))
+
+	   (at end (increase (intake calories ?agent) (nf calories ?product)))
+	   (at end (increase (intake sodium ?agent) (nf sodium ?product)))
+
+	   (at end (assign (actions) (+ (actions) 1)))
+	   )
+  )
+
+ (:durative-action ISREPLETE
+  :parameters (?agent - AGENT)
+  :duration (= ?duration 0.1)
+  :condition (and
+
+
+	      ;; survival mode
+
+
+	      ;; savings mode
+
+
+	      ;; health mode
+
+	      (at start (>= (intake calories ?agent) 1500.0))
+	      (at end (<= (intake calories ?agent) 1900.0))
+
+	      ;; ;; (AT start (>= (intake sodium ?agent) 0.0))
+	      (at end (<= (intake sodium ?agent) 3.0))
+
+	      (at end (>= (funds ?agent) 0.0))
+
+	      ;; ;; (at start (>= (sodiumIntake ?agent) 100.0))
+	      ;; ;; (at end (<= (sodiumIntake ?agent) 100.0))
+	      )
+  :effect (and 
+	   (at end (replete ?agent))
+	   )
+  )
+ )
